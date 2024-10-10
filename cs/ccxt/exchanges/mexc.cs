@@ -217,6 +217,7 @@ public partial class mexc : Exchange
                             { "rebate/affiliate/commission/detail", 1 },
                             { "mxDeduct/enable", 1 },
                             { "userDataStream", 1 },
+                            { "selfSymbols", 1 },
                         } },
                         { "post", new Dictionary<string, object>() {
                             { "order", 1 },
@@ -4450,11 +4451,11 @@ public partial class mexc : Exchange
         object networkId = this.safeString(depositAddress, "netWork");
         this.checkAddress(address);
         return new Dictionary<string, object>() {
+            { "info", depositAddress },
             { "currency", this.safeCurrencyCode(currencyId, currency) },
+            { "network", this.networkIdToCode(networkId) },
             { "address", address },
             { "tag", this.safeString(depositAddress, "memo") },
-            { "network", this.networkIdToCode(networkId) },
-            { "info", depositAddress },
         };
     }
 
