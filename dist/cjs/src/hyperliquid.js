@@ -840,7 +840,7 @@ class hyperliquid extends hyperliquid$1 {
             'info': response,
             'USDC': {
                 'total': this.safeNumber(data, 'accountValue'),
-                'free': this.safeNumber(response, 'withdrawable'),
+                'used': this.safeNumber(data, 'totalMarginUsed'),
             },
         };
         const timestamp = this.safeInteger(response, 'time');
@@ -2327,6 +2327,11 @@ class hyperliquid extends hyperliquid$1 {
         }
         const totalAmount = this.safeString2(entry, 'origSz', 'totalSz');
         const remaining = this.safeString(entry, 'sz');
+        const tif = this.safeStringUpper(entry, 'tif');
+        let postOnly = undefined;
+        if (tif !== undefined) {
+            postOnly = (tif === 'ALO');
+        }
         return this.safeOrder({
             'info': order,
             'id': this.safeString(entry, 'oid'),
@@ -2337,8 +2342,8 @@ class hyperliquid extends hyperliquid$1 {
             'lastUpdateTimestamp': this.safeInteger(order, 'statusTimestamp'),
             'symbol': symbol,
             'type': this.parseOrderType(this.safeStringLower(entry, 'orderType')),
-            'timeInForce': this.safeStringUpper(entry, 'tif'),
-            'postOnly': undefined,
+            'timeInForce': tif,
+            'postOnly': postOnly,
             'reduceOnly': this.safeBool(entry, 'reduceOnly'),
             'side': side,
             'price': this.safeString(entry, 'limitPx'),
@@ -2460,6 +2465,11 @@ class hyperliquid extends hyperliquid$1 {
             side = (side === 'A') ? 'sell' : 'buy';
         }
         const fee = this.safeString(trade, 'fee');
+        let takerOrMaker = undefined;
+        const crossed = this.safeBool(trade, 'crossed');
+        if (crossed !== undefined) {
+            takerOrMaker = crossed ? 'taker' : 'maker';
+        }
         return this.safeTrade({
             'info': trade,
             'timestamp': timestamp,
@@ -2469,7 +2479,7 @@ class hyperliquid extends hyperliquid$1 {
             'order': this.safeString(trade, 'oid'),
             'type': undefined,
             'side': side,
-            'takerOrMaker': undefined,
+            'takerOrMaker': takerOrMaker,
             'price': price,
             'amount': amount,
             'cost': undefined,
@@ -3043,7 +3053,7 @@ class hyperliquid extends hyperliquid$1 {
             'tagTo': undefined,
             'tagFrom': undefined,
             'type': undefined,
-            'amount': this.safeInteger(delta, 'usdc'),
+            'amount': this.safeNumber(delta, 'usdc'),
             'currency': undefined,
             'status': this.safeString(transaction, 'status'),
             'updated': undefined,

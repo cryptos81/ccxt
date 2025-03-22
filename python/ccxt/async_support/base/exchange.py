@@ -2,7 +2,7 @@
 
 # -----------------------------------------------------------------------------
 
-__version__ = '4.4.68'
+__version__ = '4.4.69'
 
 # -----------------------------------------------------------------------------
 
@@ -283,6 +283,10 @@ class Exchange(BaseExchange):
             self.markets_loading = asyncio.ensure_future(coroutine)
         try:
             result = await self.markets_loading
+        except asyncio.CancelledError as e:  # CancelledError is a base exception so we need to catch it explicitly
+            self.reloading_markets = False
+            self.markets_loading = None
+            raise e
         except Exception as e:
             self.reloading_markets = False
             self.markets_loading = None

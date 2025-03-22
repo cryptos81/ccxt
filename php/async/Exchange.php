@@ -44,11 +44,11 @@ use React\EventLoop\Loop;
 
 use Exception;
 
-$version = '4.4.68';
+$version = '4.4.69';
 
 class Exchange extends \ccxt\Exchange {
 
-    const VERSION = '4.4.68';
+    const VERSION = '4.4.69';
 
     public $browser;
     public $marketsLoading = null;
@@ -662,7 +662,6 @@ class Exchange extends \ccxt\Exchange {
             ),
             'commonCurrencies' => array(
                 'XBT' => 'BTC',
-                'BCC' => 'BCH',
                 'BCHSV' => 'BSV',
             ),
             'precisionMode' => TICK_SIZE,
