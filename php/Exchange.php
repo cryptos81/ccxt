@@ -43,7 +43,7 @@ use BN\BN;
 use Sop\ASN1\Type\UnspecifiedType;
 use Exception;
 
-$version = '4.4.68';
+$version = '4.4.71';
 
 // rounding mode
 const TRUNCATE = 0;
@@ -62,7 +62,7 @@ const PAD_WITH_ZERO = 6;
 
 class Exchange {
 
-    const VERSION = '4.4.68';
+    const VERSION = '4.4.71';
 
     private static $base58_alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
     private static $base58_encoder = null;
@@ -433,7 +433,6 @@ class Exchange {
         'paymium',
         'phemex',
         'poloniex',
-        'poloniexfutures',
         'probit',
         'timex',
         'tokocrypto',
@@ -1149,6 +1148,10 @@ class Exchange {
         }
 
         $this->after_construct();
+
+        if ($this->safe_bool($options, 'sandbox') || $this->safe_bool($options, 'testnet')) {
+            $this->set_sandbox_mode(true);
+        }
     }
 
     public function init_throttler() {
@@ -2570,7 +2573,6 @@ class Exchange {
             ),
             'commonCurrencies' => array(
                 'XBT' => 'BTC',
-                'BCC' => 'BCH',
                 'BCHSV' => 'BSV',
             ),
             'precisionMode' => TICK_SIZE,
@@ -5244,6 +5246,25 @@ class Exchange {
             $params = $this->omit($params, array( $paramName1, $paramName2 ));
         }
         return array( $value, $params );
+    }
+
+    public function handle_request_network(array $params, array $request, string $exchangeSpecificKey, ?string $currencyCode = null, bool $isRequired = false) {
+        /**
+         * @param {array} $params - extra parameters
+         * @param {array} $request - existing dictionary of $request
+         * @param {string} $exchangeSpecificKey - the key for chain id to be set in $request
+         * @param {array} $currencyCode - (optional) existing dictionary of $request
+         * @param {boolean} $isRequired - (optional) whether that param is required to be present
+         * @return {array[]} - returns [$request, $params] where $request is the modified $request object and $params is the modified $params object
+         */
+        $networkCode = null;
+        list($networkCode, $params) = $this->handle_network_code_and_params($params);
+        if ($networkCode !== null) {
+            $request[$exchangeSpecificKey] = $this->network_code_to_id($networkCode, $currencyCode);
+        } elseif ($isRequired) {
+            throw new ArgumentsRequired($this->id . ' - "network" param is required for this request');
+        }
+        return array( $request, $params );
     }
 
     public function resolve_path($path, $params) {
