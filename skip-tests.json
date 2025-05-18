@@ -645,10 +645,6 @@
             "loadMarkets": {
                 "currencyIdAndCode": "some currencies show in fetchMarkets but not in fetchCurrencies"
             },
-            "fetchCurrencies": {
-                "precision": "not always provided",
-                "type": "todo"
-            },
             "fetchTrades": {
                 "side":"side is undefined"
             },
@@ -683,10 +679,6 @@
             },
             "ticker": {
                 "compareQuoteVolumeBaseVolume": "quote scale isn't right"
-            },
-            "fetchCurrencies": {
-                "type": "todo",
-                "activeMajorCurrencies": "todo"
             }
         }
     },
