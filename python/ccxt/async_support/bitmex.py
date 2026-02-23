@@ -85,6 +85,7 @@ class bitmex(Exchange, ImplicitAPI):
                 'fetchMyLiquidations': False,
                 'fetchMyTrades': True,
                 'fetchOHLCV': True,
+                'fetchOpenInterest': 'emulated',
                 'fetchOpenInterests': True,
                 'fetchOpenOrders': True,
                 'fetchOrder': True,
