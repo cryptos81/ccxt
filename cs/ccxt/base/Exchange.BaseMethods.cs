@@ -1320,10 +1320,16 @@ public partial class Exchange
         throw new NotSupported ((string)add(this.id, " watchFundingRate() is not supported yet")) ;
     }
 
-    public async virtual Task<object> watchFundingRates(object symbols, object parameters = null)
+    public async virtual Task<object> watchFundingRates(object symbols = null, object parameters = null)
     {
         parameters ??= new Dictionary<string, object>();
         throw new NotSupported ((string)add(this.id, " watchFundingRates() is not supported yet")) ;
+    }
+
+    public async virtual Task<object> unWatchFundingRates(object symbols = null, object parameters = null)
+    {
+        parameters ??= new Dictionary<string, object>();
+        throw new NotSupported ((string)add(this.id, " unWatchFundingRates() is not supported yet")) ;
     }
 
     public async virtual Task<object> watchFundingRatesForSymbols(object symbols, object parameters = null)
@@ -5045,6 +5051,12 @@ public partial class Exchange
     {
         parameters ??= new Dictionary<string, object>();
         throw new NotSupported ((string)add(this.id, " unWatchTickers() is not supported yet")) ;
+    }
+
+    public async virtual Task<object> unWatchFundingRate(object symbol, object parameters = null)
+    {
+        parameters ??= new Dictionary<string, object>();
+        throw new NotSupported ((string)add(this.id, " unWatchFundingRate() is not supported yet")) ;
     }
 
     public async virtual Task<object> fetchOrder(object id, object symbol = null, object parameters = null)

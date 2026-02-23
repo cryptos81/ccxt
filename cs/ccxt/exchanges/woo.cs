@@ -3391,12 +3391,25 @@ public partial class woo : Exchange
         //         "estFundingIntervalHours": 8
         //     }
         //
+        // watchFundingRate
+        //
+        //     {
+        //         "symbol": "PERP_BTC_USDT",
+        //         "fundingRate": 0.0001,
+        //         "fundingTs": 1771488000000
+        //     }
+        //
         object symbol = this.safeString(fundingRate, "symbol");
         market = this.market(symbol);
-        object nextFundingTimestamp = this.safeInteger(fundingRate, "nextFundingTime");
+        object nextFundingTimestamp = this.safeInteger2(fundingRate, "nextFundingTime", "fundingTs");
         object estFundingRateTimestamp = this.safeInteger(fundingRate, "estFundingRateTimestamp");
         object lastFundingRateTimestamp = this.safeInteger(fundingRate, "lastFundingRateTimestamp");
         object intervalString = this.safeString(fundingRate, "estFundingIntervalHours");
+        object interval = null;
+        if (isTrue(!isEqual(intervalString, null)))
+        {
+            interval = add(intervalString, "h");
+        }
         return new Dictionary<string, object>() {
             { "info", fundingRate },
             { "symbol", getValue(market, "symbol") },
@@ -3406,7 +3419,7 @@ public partial class woo : Exchange
             { "estimatedSettlePrice", null },
             { "timestamp", estFundingRateTimestamp },
             { "datetime", this.iso8601(estFundingRateTimestamp) },
-            { "fundingRate", this.safeNumber(fundingRate, "estFundingRate") },
+            { "fundingRate", this.safeNumber2(fundingRate, "estFundingRate", "fundingRate") },
             { "fundingTimestamp", nextFundingTimestamp },
             { "fundingDatetime", this.iso8601(nextFundingTimestamp) },
             { "nextFundingRate", null },
@@ -3415,7 +3428,7 @@ public partial class woo : Exchange
             { "previousFundingRate", this.safeNumber(fundingRate, "lastFundingRate") },
             { "previousFundingTimestamp", lastFundingRateTimestamp },
             { "previousFundingDatetime", this.iso8601(lastFundingRateTimestamp) },
-            { "interval", add(intervalString, "h") },
+            { "interval", interval },
         };
     }
 

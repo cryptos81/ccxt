@@ -192,7 +192,7 @@ public partial class Exchange
         var res = await this.watchFundingRate(symbol, parameters);
         return new FundingRate(res);
     }
-    public async Task<FundingRates> WatchFundingRates(List<string> symbols, Dictionary<string, object> parameters = null)
+    public async Task<FundingRates> WatchFundingRates(List<String> symbols = null, Dictionary<string, object> parameters = null)
     {
         var res = await this.watchFundingRates(symbols, parameters);
         return new FundingRates(res);
