@@ -5264,6 +5264,7 @@ fetches historical settlement records
 
 ##### Supported exchanges
 * [binance](/exchanges/binance.md#fetchsettlementhistory)
+* [bitmex](/exchanges/bitmex.md#fetchsettlementhistory)
 * [bybit](/exchanges/bybit.md#fetchsettlementhistory)
 * [cryptocom](/exchanges/cryptocom.md#fetchsettlementhistory)
 * [delta](/exchanges/delta.md#fetchsettlementhistory)

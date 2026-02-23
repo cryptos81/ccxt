@@ -37,6 +37,7 @@
 * [fetchOpenInterests](#fetchopeninterests)
 * [fetchLiquidations](#fetchliquidations)
 * [fetchPositionsADLRank](#fetchpositionsadlrank)
+* [fetchSettlementHistory](#fetchsettlementhistory)
 * [watchTicker](#watchticker)
 * [watchTickers](#watchtickers)
 * [watchLiquidations](#watchliquidations)
@@ -767,6 +768,34 @@ fetches the auto deleveraging rank and risk percentage for a list of symbols
 
 ```javascript
 bitmex.fetchPositionsADLRank ([symbols, params])
+```
+
+
+<a name="fetchSettlementHistory" id="fetchsettlementhistory"></a>
+
+### fetchSettlementHistory{docsify-ignore}
+fetches historical settlement records
+
+**Kind**: instance method of [<code>bitmex</code>](#bitmex)  
+**Returns**: <code>Array&lt;object&gt;</code> - a list of [settlement history objects](https://docs.ccxt.com/?id=settlement-history-structure)
+
+**See**: https://docs.bitmex.com/api-explorer/get-settlements  
+
+| Param | Type | Required | Description |
+| --- | --- | --- | --- |
+| symbol | <code>string</code> | Yes | unified market symbol of the settlement history |
+| since | <code>int</code> | No | timestamp in ms |
+| limit | <code>int</code> | No | number of records |
+| params | <code>object</code> | No | exchange specific params |
+| params.until | <code>int</code> | No | timestamp in ms EXCHANGE SPECIFIC PARAMETERS |
+| params.filter | <code>string</code> | No | generic table filter, send json key/value pairs, such as {"key": "value"}, you can key on individual fields, and do more advanced querying on timestamps, see the timestamp docs for more details, default value = {} |
+| params.columns | <code>string</code> | No | array of column names to fetch, if omitted, will return all columns, note that this method will always return item keys, even when not specified, so you may receive more columns that you expect |
+| params.start | <code>int</code> | No | possible values are >= 0 starting point for results, default value = 0 |
+| params.reverse | <code>boolean</code> | No | if true, will sort results newest first, default value = false |
+
+
+```javascript
+bitmex.fetchSettlementHistory (symbol[, since, limit, params])
 ```
 
 
