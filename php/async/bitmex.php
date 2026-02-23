@@ -80,6 +80,7 @@ class bitmex extends Exchange {
                 'fetchMyLiquidations' => false,
                 'fetchMyTrades' => true,
                 'fetchOHLCV' => true,
+                'fetchOpenInterest' => 'emulated',
                 'fetchOpenInterests' => true,
                 'fetchOpenOrders' => true,
                 'fetchOrder' => true,
