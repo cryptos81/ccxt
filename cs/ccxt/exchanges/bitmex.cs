@@ -70,12 +70,13 @@ public partial class bitmex : Exchange
                 { "fetchOrders", true },
                 { "fetchPosition", false },
                 { "fetchPositionADLRank", true },
-                { "fetchPositionsADLRank", true },
                 { "fetchPositionHistory", false },
                 { "fetchPositions", true },
+                { "fetchPositionsADLRank", true },
                 { "fetchPositionsHistory", false },
                 { "fetchPositionsRisk", false },
                 { "fetchPremiumIndexOHLCV", false },
+                { "fetchSettlementHistory", true },
                 { "fetchTicker", true },
                 { "fetchTickers", true },
                 { "fetchTrades", true },
@@ -3623,6 +3624,96 @@ public partial class bitmex : Exchange
             { "rank", this.safeInteger(info, "deleveragePercentile") },
             { "rating", null },
             { "percentage", null },
+            { "timestamp", this.parse8601(datetime) },
+            { "datetime", datetime },
+        };
+    }
+
+    /**
+     * @method
+     * @name bitmex#fetchSettlementHistory
+     * @description fetches historical settlement records
+     * @see https://docs.bitmex.com/api-explorer/get-settlements
+     * @param {string} symbol unified market symbol of the settlement history
+     * @param {int} [since] timestamp in ms
+     * @param {int} [limit] number of records
+     * @param {object} [params] exchange specific params
+     * @param {int} [params.until] timestamp in ms
+     *
+     * EXCHANGE SPECIFIC PARAMETERS
+     * @param {string} [params.filter] generic table filter, send json key/value pairs, such as {"key": "value"}, you can key on individual fields, and do more advanced querying on timestamps, see the timestamp docs for more details, default value = {}
+     * @param {string} [params.columns] array of column names to fetch, if omitted, will return all columns, note that this method will always return item keys, even when not specified, so you may receive more columns that you expect
+     * @param {int} [params.start] possible values are >= 0 starting point for results, default value = 0
+     * @param {boolean} [params.reverse] if true, will sort results newest first, default value = false
+     * @returns {object[]} a list of [settlement history objects]{@link https://docs.ccxt.com/?id=settlement-history-structure}
+     */
+    public async virtual Task<object> fetchSettlementHistory(object symbol = null, object since = null, object limit = null, object parameters = null)
+    {
+        parameters ??= new Dictionary<string, object>();
+        await this.loadMarkets();
+        object request = new Dictionary<string, object>() {};
+        object market = null;
+        if (isTrue(!isEqual(symbol, null)))
+        {
+            market = this.market(symbol);
+            ((IDictionary<string,object>)request)["symbol"] = getValue(market, "id");
+        }
+        if (isTrue(!isEqual(since, null)))
+        {
+            ((IDictionary<string,object>)request)["startTime"] = this.iso8601(since);
+        }
+        if (isTrue(!isEqual(limit, null)))
+        {
+            ((IDictionary<string,object>)request)["count"] = limit;
+        }
+        object until = this.safeString(parameters, "until");
+        if (isTrue(!isEqual(until, null)))
+        {
+            ((IDictionary<string,object>)request)["endTime"] = this.iso8601(since);
+            parameters = this.omit(parameters, "until");
+        }
+        object response = await this.publicGetSettlement(this.extend(request, parameters));
+        //
+        //    [
+        //        {
+        //            timestamp: '2025-03-28T12:00:00.000Z',
+        //            symbol: 'ETHUSDH25',
+        //            settlementType: 'Settlement',
+        //            settledPrice: '1897.53'
+        //        }
+        //    ]
+        //
+        return this.parseSettlements(response, market, since, limit);
+    }
+
+    public virtual object parseSettlements(object settlements, object market = null, object since = null, object limit = null)
+    {
+        object result = new List<object>() {};
+        for (object i = 0; isLessThan(i, getArrayLength(settlements)); postFixIncrement(ref i))
+        {
+            ((IList<object>)result).Add(this.parseSettlement(getValue(settlements, i), market));
+        }
+        object sorted = this.sortBy(result, "timestamp");
+        object symbol = this.safeString(market, "symbol");
+        return this.filterBySymbolSinceLimit(sorted, symbol, since, limit);
+    }
+
+    public virtual object parseSettlement(object settlement, object market = null)
+    {
+        //
+        //    {
+        //        timestamp: '2025-03-28T12:00:00.000Z',
+        //        symbol: 'ETHUSDH25',
+        //        settlementType: 'Settlement',
+        //        settledPrice: '1897.53'
+        //    }
+        //
+        object datetime = this.safeString(settlement, "timestamp");
+        object marketId = this.safeString(settlement, "symbol");
+        return new Dictionary<string, object>() {
+            { "info", settlement },
+            { "symbol", this.safeSymbol(marketId, market) },
+            { "price", this.safeNumber(settlement, "settledPrice") },
             { "timestamp", this.parse8601(datetime) },
             { "datetime", datetime },
         };
