@@ -84,6 +84,7 @@ class bitmex extends Exchange {
                 'fetchPositionsHistory' => false,
                 'fetchPositionsRisk' => false,
                 'fetchPremiumIndexOHLCV' => false,
+                'fetchSettlementHistory' => true,
                 'fetchTicker' => true,
                 'fetchTickers' => true,
                 'fetchTrades' => true,
@@ -3391,6 +3392,96 @@ class bitmex extends Exchange {
             'rank' => $this->safe_integer($info, 'deleveragePercentile'),
             'rating' => null,
             'percentage' => null,
+            'timestamp' => $this->parse8601($datetime),
+            'datetime' => $datetime,
+        );
+    }
+
+    public function fetch_settlement_history(?string $symbol = null, ?int $since = null, ?int $limit = null, $params = array ()) {
+        /**
+         * fetches historical settlement records
+         *
+         * @see https://docs.bitmex.com/api-explorer/get-settlements
+         *
+         * @param {string} $symbol unified $market $symbol of the settlement history
+         * @param {int} [$since] timestamp in ms
+         * @param {int} [$limit] number of records
+         * @param {array} [$params] exchange specific $params
+         * @param {int} [$params->until] timestamp in ms
+         *
+         * EXCHANGE SPECIFIC PARAMETERS
+         * @param {string} [$params->filter] generic table filter, send json key/value pairs, such as array("key" => "value"), you can key on individual fields, and do more advanced querying on timestamps, see the timestamp docs for more details, default value = array()
+         * @param {string} [$params->columns] array of column names to fetch, if omitted, will return all columns, note that this method will always return item keys, even when not specified, so you may receive more columns that you expect
+         * @param {int} [$params->start] possible values are >= 0 starting point for results, default value = 0
+         * @param {boolean} [$params->reverse] if true, will sort results newest first, default value = false
+         * @return {array[]} a list of ~@link https://docs.ccxt.com/?id=settlement-history-structure settlement history objects~
+         */
+        $this->load_markets();
+        $request = array(
+            // $symbol string Instrument $symbol-> Send a bare series (e.g. XBT) to get data for the nearest expiring contract in that series. You can also send a timeframe, e.g. XBT:quarterly. Timeframes are nearest, daily, weekly, monthly, quarterly, biquarterly, and perpetual. Symbols are case-insensitive.
+            // filter string Generic table filter. Send JSON key/value pairs, such as array("key" => "value"). You can key on individual fields, and do more advanced querying on timestamps. See the Timestamp Docs for more details. Default value => array()
+            // columns string Array of column names to fetch. If omitted, will return all columns. Note that this method will always return item keys, even when not specified, so you may receive more columns that you expect.
+            // count int32 Possible values => >= 1 and <= 500 Number of results to fetch. Must be a positive integer. Default value => 100
+            // start int32 Possible values => >= 0 Starting point for results. Default value => 0
+            // reverse boolean If true, will sort results newest first. Default value => false
+            // startTime string Starting time filter for results.
+            // endTime string Ending time filter for results.
+        );
+        $market = null;
+        if ($symbol !== null) {
+            $market = $this->market($symbol);
+            $request['symbol'] = $market['id'];
+        }
+        if ($since !== null) {
+            $request['startTime'] = $this->iso8601($since);
+        }
+        if ($limit !== null) {
+            $request['count'] = $limit;
+        }
+        $until = $this->safe_string($params, 'until');
+        if ($until !== null) {
+            $request['endTime'] = $this->iso8601($since);
+            $params = $this->omit($params, 'until');
+        }
+        $response = $this->publicGetSettlement ($this->extend($request, $params));
+        //
+        //    array(
+        //        {
+        //            timestamp => '2025-03-28T12:00:00.000Z',
+        //            $symbol => 'ETHUSDH25',
+        //            settlementType => 'Settlement',
+        //            settledPrice => '1897.53'
+        //        }
+        //    )
+        //
+        return $this->parse_settlements($response, $market, $since, $limit);
+    }
+
+    public function parse_settlements($settlements, $market = null, $since = null, $limit = null) {
+        $result = array();
+        for ($i = 0; $i < count($settlements); $i++) {
+            $result[] = $this->parse_settlement($settlements[$i], $market);
+        }
+        $sorted = $this->sort_by($result, 'timestamp');
+        $symbol = $this->safe_string($market, 'symbol');
+        return $this->filter_by_symbol_since_limit($sorted, $symbol, $since, $limit);
+    }
+
+    public function parse_settlement($settlement, $market = null) {
+        //
+        //    {
+        //        timestamp => '2025-03-28T12:00:00.000Z',
+        //        symbol => 'ETHUSDH25',
+        //        settlementType => 'Settlement',
+        //        settledPrice => '1897.53'
+        //    }
+        //
+        $datetime = $this->safe_string($settlement, 'timestamp');
+        $marketId = $this->safe_string($settlement, 'symbol');
+        return array(
+            'info' => $settlement,
+            'symbol' => $this->safe_symbol($marketId, $market),
+            'price' => $this->safe_number($settlement, 'settledPrice'),
             'timestamp' => $this->parse8601($datetime),
             'datetime' => $datetime,
         );
