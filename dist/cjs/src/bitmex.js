@@ -76,6 +76,7 @@ class bitmex extends bitmex$1["default"] {
                 'fetchMyLiquidations': false,
                 'fetchMyTrades': true,
                 'fetchOHLCV': true,
+                'fetchOpenInterest': 'emulated',
                 'fetchOpenInterests': true,
                 'fetchOpenOrders': true,
                 'fetchOrder': true,
