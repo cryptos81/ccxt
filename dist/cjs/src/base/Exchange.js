@@ -33,7 +33,6 @@ var typedData$1 = require('../static_dependencies/starknet/utils/typedData.js');
 var sha1 = require('../static_dependencies/noble-hashes/sha1.js');
 var onboarding = require('../static_dependencies/dydx-v4-client/onboarding.js');
 require('../static_dependencies/dydx-v4-client/helpers.js');
-var generic = require('./functions/generic.js');
 var misc = require('./functions/misc.js');
 var index$3 = require('../static_dependencies/dydx-v4-client/long/index.cjs.js');
 
@@ -191,8 +190,6 @@ class Exchange {
         this.deepExtend = deepExtend;
         this.deepExtendSafe = deepExtend;
         this.isNode = isNode;
-        this.keys = generic.keys;
-        this.values = generic.values;
         this.extend = extend;
         this.clone = clone;
         this.flatten = flatten;
