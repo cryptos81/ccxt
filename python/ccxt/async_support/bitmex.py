@@ -99,6 +99,7 @@ class bitmex(Exchange, ImplicitAPI):
                 'fetchPositionsHistory': False,
                 'fetchPositionsRisk': False,
                 'fetchPremiumIndexOHLCV': False,
+                'fetchSettlementHistory': True,
                 'fetchTicker': True,
                 'fetchTickers': True,
                 'fetchTrades': True,
@@ -3229,6 +3230,88 @@ class bitmex(Exchange, ImplicitAPI):
             'rank': self.safe_integer(info, 'deleveragePercentile'),
             'rating': None,
             'percentage': None,
+            'timestamp': self.parse8601(datetime),
+            'datetime': datetime,
+        }
+
+    async def fetch_settlement_history(self, symbol: Str = None, since: Int = None, limit: Int = None, params={}):
+        """
+        fetches historical settlement records
+
+        https://docs.bitmex.com/api-explorer/get-settlements
+
+        :param str symbol: unified market symbol of the settlement history
+        :param int [since]: timestamp in ms
+        :param int [limit]: number of records
+        :param dict [params]: exchange specific params
+        :param int [params.until]: timestamp in ms
+
+ EXCHANGE SPECIFIC PARAMETERS
+        :param str [params.filter]: generic table filter, send json key/value pairs, such as {"key": "value"}, you can key on individual fields, and do more advanced querying on timestamps, see the timestamp docs for more details, default value = {}
+        :param str [params.columns]: array of column names to fetch, if omitted, will return all columns, note that self method will always return item keys, even when not specified, so you may receive more columns that you expect
+        :param int [params.start]: possible values are >= 0 starting point for results, default value = 0
+        :param boolean [params.reverse]: if True, will sort results newest first, default value = False
+        :returns dict[]: a list of `settlement history objects <https://docs.ccxt.com/?id=settlement-history-structure>`
+        """
+        await self.load_markets()
+        request: dict = {
+            # symbol string Instrument symbol. Send a bare series(e.g. XBT) to get data for the nearest expiring contract in that series. You can also send a timeframe, e.g. XBT:quarterly. Timeframes are nearest, daily, weekly, monthly, quarterly, biquarterly, and perpetual. Symbols are case-insensitive.
+            # filter string Generic table filter. Send JSON key/value pairs, such as {"key": "value"}. You can key on individual fields, and do more advanced querying on timestamps. See the Timestamp Docs for more details. Default value: {}
+            # columns string Array of column names to fetch. If omitted, will return all columns. Note that self method will always return item keys, even when not specified, so you may receive more columns that you expect.
+            # count int32 Possible values: >= 1 and <= 500 Number of results to fetch. Must be a positive integer. Default value: 100
+            # start int32 Possible values: >= 0 Starting point for results. Default value: 0
+            # reverse boolean If True, will sort results newest first. Default value: False
+            # startTime string Starting time filter for results.
+            # endTime string Ending time filter for results.
+        }
+        market = None
+        if symbol is not None:
+            market = self.market(symbol)
+            request['symbol'] = market['id']
+        if since is not None:
+            request['startTime'] = self.iso8601(since)
+        if limit is not None:
+            request['count'] = limit
+        until = self.safe_string(params, 'until')
+        if until is not None:
+            request['endTime'] = self.iso8601(since)
+            params = self.omit(params, 'until')
+        response = await self.publicGetSettlement(self.extend(request, params))
+        #
+        #    [
+        #        {
+        #            timestamp: '2025-03-28T12:00:00.000Z',
+        #            symbol: 'ETHUSDH25',
+        #            settlementType: 'Settlement',
+        #            settledPrice: '1897.53'
+        #        }
+        #    ]
+        #
+        return self.parse_settlements(response, market, since, limit)
+
+    def parse_settlements(self, settlements, market=None, since=None, limit=None):
+        result = []
+        for i in range(0, len(settlements)):
+            result.append(self.parse_settlement(settlements[i], market))
+        sorted = self.sort_by(result, 'timestamp')
+        symbol = self.safe_string(market, 'symbol')
+        return self.filter_by_symbol_since_limit(sorted, symbol, since, limit)
+
+    def parse_settlement(self, settlement, market=None):
+        #
+        #    {
+        #        timestamp: '2025-03-28T12:00:00.000Z',
+        #        symbol: 'ETHUSDH25',
+        #        settlementType: 'Settlement',
+        #        settledPrice: '1897.53'
+        #    }
+        #
+        datetime = self.safe_string(settlement, 'timestamp')
+        marketId = self.safe_string(settlement, 'symbol')
+        return {
+            'info': settlement,
+            'symbol': self.safe_symbol(marketId, market),
+            'price': self.safe_number(settlement, 'settledPrice'),
             'timestamp': self.parse8601(datetime),
             'datetime': datetime,
         }
