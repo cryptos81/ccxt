@@ -206,11 +206,6 @@ export default class Exchange {
     deepExtend: (...args: any) => any;
     deepExtendSafe: (...args: any) => any;
     isNode: boolean;
-    keys: {
-        (o: object): string[];
-        (o: {}): string[];
-    };
-    values: (x: any[] | Dictionary<any>) => any[];
     extend: (...args: any[]) => any;
     clone: (x: any) => any;
     flatten: (x: any[], out?: any[]) => any[];

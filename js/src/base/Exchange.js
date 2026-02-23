@@ -6,7 +6,9 @@
 
 // ----------------------------------------------------------------------------
 import * as functions from './functions.js';
-import { keys as keysFunc, values as valuesFunc, 
+import { 
+// keys as keysFunc,
+// values as valuesFunc,
 // inArray as inArrayFunc,
 vwap as vwapFunc, } from './functions.js';
 // import exceptions from "./errors.js"
@@ -168,8 +170,6 @@ export default class Exchange {
         this.deepExtend = deepExtend;
         this.deepExtendSafe = deepExtend;
         this.isNode = isNode;
-        this.keys = keysFunc;
-        this.values = valuesFunc;
         this.extend = extend;
         this.clone = clone;
         this.flatten = flatten;
