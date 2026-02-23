@@ -36,6 +36,7 @@
 * [fetchDepositWithdrawFees](#fetchdepositwithdrawfees)
 * [fetchOpenInterests](#fetchopeninterests)
 * [fetchLiquidations](#fetchliquidations)
+* [fetchPositionsADLRank](#fetchpositionsadlrank)
 * [watchTicker](#watchticker)
 * [watchTickers](#watchtickers)
 * [watchLiquidations](#watchliquidations)
@@ -745,6 +746,27 @@ retrieves the public liquidations of a trading pair
 
 ```javascript
 bitmex.fetchLiquidations (symbol[, since, limit, params])
+```
+
+
+<a name="fetchPositionsADLRank" id="fetchpositionsadlrank"></a>
+
+### fetchPositionsADLRank{docsify-ignore}
+fetches the auto deleveraging rank and risk percentage for a list of symbols
+
+**Kind**: instance method of [<code>bitmex</code>](#bitmex)  
+**Returns**: <code>Array&lt;object&gt;</code> - an [auto de leverage structure](https://docs.ccxt.com/?id=auto-de-leverage-structure)
+
+**See**: https://www.bitmex.com/api/explorer/#!/Position/Position_get  
+
+| Param | Type | Required | Description |
+| --- | --- | --- | --- |
+| symbols | <code>Array&lt;string&gt;</code> | No | list of unified market symbols |
+| params | <code>object</code> | No | extra parameters specific to the exchange API endpoint |
+
+
+```javascript
+bitmex.fetchPositionsADLRank ([symbols, params])
 ```
 
 
