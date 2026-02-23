@@ -1184,6 +1184,58 @@ func (this *Bitmex) FetchPositionsADLRank(options ...FetchPositionsADLRankOption
 	return NewADLArray(res), nil
 }
 
+/**
+ * @method
+ * @name bitmex#fetchSettlementHistory
+ * @description fetches historical settlement records
+ * @see https://docs.bitmex.com/api-explorer/get-settlements
+ * @param {string} symbol unified market symbol of the settlement history
+ * @param {int} [since] timestamp in ms
+ * @param {int} [limit] number of records
+ * @param {object} [params] exchange specific params
+ * @param {int} [params.until] timestamp in ms
+ *
+ * EXCHANGE SPECIFIC PARAMETERS
+ * @param {string} [params.filter] generic table filter, send json key/value pairs, such as {"key": "value"}, you can key on individual fields, and do more advanced querying on timestamps, see the timestamp docs for more details, default value = {}
+ * @param {string} [params.columns] array of column names to fetch, if omitted, will return all columns, note that this method will always return item keys, even when not specified, so you may receive more columns that you expect
+ * @param {int} [params.start] possible values are >= 0 starting point for results, default value = 0
+ * @param {boolean} [params.reverse] if true, will sort results newest first, default value = false
+ * @returns {object[]} a list of [settlement history objects]{@link https://docs.ccxt.com/?id=settlement-history-structure}
+ */
+func (this *Bitmex) FetchSettlementHistory(options ...FetchSettlementHistoryOptions) (map[string]interface{}, error) {
+
+	opts := FetchSettlementHistoryOptionsStruct{}
+
+	for _, opt := range options {
+		opt(&opts)
+	}
+
+	var symbol interface{} = nil
+	if opts.Symbol != nil {
+		symbol = *opts.Symbol
+	}
+
+	var since interface{} = nil
+	if opts.Since != nil {
+		since = *opts.Since
+	}
+
+	var limit interface{} = nil
+	if opts.Limit != nil {
+		limit = *opts.Limit
+	}
+
+	var params interface{} = nil
+	if opts.Params != nil {
+		params = *opts.Params
+	}
+	res := <-this.Core.FetchSettlementHistory(symbol, since, limit, params)
+	if IsError(res) {
+		return map[string]interface{}{}, CreateReturnError(res)
+	}
+	return res.(map[string]interface{}), nil
+}
+
 // missing typed methods from base
 // nolint
 func (this *Bitmex) LoadMarkets(params ...interface{}) (map[string]MarketInterface, error) {
