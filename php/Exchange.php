@@ -3564,8 +3564,12 @@ class Exchange {
         throw new NotSupported($this->id . ' watchFundingRate() is not supported yet');
     }
 
-    public function watch_funding_rates(array $symbols, $params = array ()) {
+    public function watch_funding_rates(?array $symbols = null, $params = array ()) {
         throw new NotSupported($this->id . ' watchFundingRates() is not supported yet');
+    }
+
+    public function un_watch_funding_rates(?array $symbols = null, $params = array ()) {
+        throw new NotSupported($this->id . ' unWatchFundingRates() is not supported yet');
     }
 
     public function watch_funding_rates_for_symbols(array $symbols, $params = array ()) {
@@ -6528,6 +6532,10 @@ class Exchange {
 
     public function un_watch_tickers(?array $symbols = null, $params = array ()) {
         throw new NotSupported($this->id . ' unWatchTickers() is not supported yet');
+    }
+
+    public function un_watch_funding_rate(string $symbol, $params = array ()) {
+        throw new NotSupported($this->id . ' unWatchFundingRate() is not supported yet');
     }
 
     public function fetch_order(string $id, ?string $symbol = null, $params = array ()) {

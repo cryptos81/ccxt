@@ -3311,12 +3311,24 @@ class woo extends Exchange {
         //         "estFundingIntervalHours" => 8
         //     }
         //
+        // watchFundingRate
+        //
+        //     {
+        //         "symbol" => "PERP_BTC_USDT",
+        //         "fundingRate" => 0.0001,
+        //         "fundingTs" => 1771488000000
+        //     }
+        //
         $symbol = $this->safe_string($fundingRate, 'symbol');
         $market = $this->market($symbol);
-        $nextFundingTimestamp = $this->safe_integer($fundingRate, 'nextFundingTime');
+        $nextFundingTimestamp = $this->safe_integer_2($fundingRate, 'nextFundingTime', 'fundingTs');
         $estFundingRateTimestamp = $this->safe_integer($fundingRate, 'estFundingRateTimestamp');
         $lastFundingRateTimestamp = $this->safe_integer($fundingRate, 'lastFundingRateTimestamp');
         $intervalString = $this->safe_string($fundingRate, 'estFundingIntervalHours');
+        $interval = null;
+        if ($intervalString !== null) {
+            $interval = $intervalString . 'h';
+        }
         return array(
             'info' => $fundingRate,
             'symbol' => $market['symbol'],
@@ -3326,7 +3338,7 @@ class woo extends Exchange {
             'estimatedSettlePrice' => null,
             'timestamp' => $estFundingRateTimestamp,
             'datetime' => $this->iso8601($estFundingRateTimestamp),
-            'fundingRate' => $this->safe_number($fundingRate, 'estFundingRate'),
+            'fundingRate' => $this->safe_number_2($fundingRate, 'estFundingRate', 'fundingRate'),
             'fundingTimestamp' => $nextFundingTimestamp,
             'fundingDatetime' => $this->iso8601($nextFundingTimestamp),
             'nextFundingRate' => null,
@@ -3335,7 +3347,7 @@ class woo extends Exchange {
             'previousFundingRate' => $this->safe_number($fundingRate, 'lastFundingRate'),
             'previousFundingTimestamp' => $lastFundingRateTimestamp,
             'previousFundingDatetime' => $this->iso8601($lastFundingRateTimestamp),
-            'interval' => $intervalString . 'h',
+            'interval' => $interval,
         );
     }
 
