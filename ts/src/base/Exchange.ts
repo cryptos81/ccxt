@@ -2,8 +2,8 @@
 
 import * as functions from './functions.js';
 import {
-    keys as keysFunc,
-    values as valuesFunc,
+    // keys as keysFunc,
+    // values as valuesFunc,
     // inArray as inArrayFunc,
     vwap as vwapFunc,
 } from './functions.js';
@@ -434,8 +434,6 @@ export default class Exchange {
     deepExtend = deepExtend;
     deepExtendSafe = deepExtend;
     isNode = isNode;
-    keys = keysFunc;
-    values = valuesFunc;
     extend = extend;
     clone = clone;
     flatten = flatten;
