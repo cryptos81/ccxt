@@ -3148,12 +3148,23 @@ class woo(Exchange, ImplicitAPI):
         #         "estFundingIntervalHours": 8
         #     }
         #
+        # watchFundingRate
+        #
+        #     {
+        #         "symbol": "PERP_BTC_USDT",
+        #         "fundingRate": 0.0001,
+        #         "fundingTs": 1771488000000
+        #     }
+        #
         symbol = self.safe_string(fundingRate, 'symbol')
         market = self.market(symbol)
-        nextFundingTimestamp = self.safe_integer(fundingRate, 'nextFundingTime')
+        nextFundingTimestamp = self.safe_integer_2(fundingRate, 'nextFundingTime', 'fundingTs')
         estFundingRateTimestamp = self.safe_integer(fundingRate, 'estFundingRateTimestamp')
         lastFundingRateTimestamp = self.safe_integer(fundingRate, 'lastFundingRateTimestamp')
         intervalString = self.safe_string(fundingRate, 'estFundingIntervalHours')
+        interval = None
+        if intervalString is not None:
+            interval = intervalString + 'h'
         return {
             'info': fundingRate,
             'symbol': market['symbol'],
@@ -3163,7 +3174,7 @@ class woo(Exchange, ImplicitAPI):
             'estimatedSettlePrice': None,
             'timestamp': estFundingRateTimestamp,
             'datetime': self.iso8601(estFundingRateTimestamp),
-            'fundingRate': self.safe_number(fundingRate, 'estFundingRate'),
+            'fundingRate': self.safe_number_2(fundingRate, 'estFundingRate', 'fundingRate'),
             'fundingTimestamp': nextFundingTimestamp,
             'fundingDatetime': self.iso8601(nextFundingTimestamp),
             'nextFundingRate': None,
@@ -3172,7 +3183,7 @@ class woo(Exchange, ImplicitAPI):
             'previousFundingRate': self.safe_number(fundingRate, 'lastFundingRate'),
             'previousFundingTimestamp': lastFundingRateTimestamp,
             'previousFundingDatetime': self.iso8601(lastFundingRateTimestamp),
-            'interval': intervalString + 'h',
+            'interval': interval,
         }
 
     async def fetch_funding_interval(self, symbol: str, params={}) -> FundingRate:

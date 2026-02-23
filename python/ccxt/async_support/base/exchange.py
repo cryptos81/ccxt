@@ -780,8 +780,11 @@ class Exchange(BaseExchange):
     async def watch_funding_rate(self, symbol: str, params={}):
         raise NotSupported(self.id + ' watchFundingRate() is not supported yet')
 
-    async def watch_funding_rates(self, symbols: List[str], params={}):
+    async def watch_funding_rates(self, symbols: Strings = None, params={}):
         raise NotSupported(self.id + ' watchFundingRates() is not supported yet')
+
+    async def un_watch_funding_rates(self, symbols: Strings = None, params={}):
+        raise NotSupported(self.id + ' unWatchFundingRates() is not supported yet')
 
     async def watch_funding_rates_for_symbols(self, symbols: List[str], params={}):
         return await self.watch_funding_rates(symbols, params)
@@ -1206,6 +1209,9 @@ class Exchange(BaseExchange):
 
     async def un_watch_tickers(self, symbols: Strings = None, params={}):
         raise NotSupported(self.id + ' unWatchTickers() is not supported yet')
+
+    async def un_watch_funding_rate(self, symbol: str, params={}):
+        raise NotSupported(self.id + ' unWatchFundingRate() is not supported yet')
 
     async def fetch_order(self, id: str, symbol: Str = None, params={}):
         raise NotSupported(self.id + ' fetchOrder() is not supported yet')
