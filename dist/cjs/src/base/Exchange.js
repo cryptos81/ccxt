@@ -2624,8 +2624,11 @@ class Exchange {
     async watchFundingRate(symbol, params = {}) {
         throw new errors.NotSupported(this.id + ' watchFundingRate() is not supported yet');
     }
-    async watchFundingRates(symbols, params = {}) {
+    async watchFundingRates(symbols = undefined, params = {}) {
         throw new errors.NotSupported(this.id + ' watchFundingRates() is not supported yet');
+    }
+    async unWatchFundingRates(symbols = undefined, params = {}) {
+        throw new errors.NotSupported(this.id + ' unWatchFundingRates() is not supported yet');
     }
     async watchFundingRatesForSymbols(symbols, params = {}) {
         return await this.watchFundingRates(symbols, params);
@@ -5493,6 +5496,9 @@ class Exchange {
     }
     async unWatchTickers(symbols = undefined, params = {}) {
         throw new errors.NotSupported(this.id + ' unWatchTickers() is not supported yet');
+    }
+    async unWatchFundingRate(symbol, params = {}) {
+        throw new errors.NotSupported(this.id + ' unWatchFundingRate() is not supported yet');
     }
     async fetchOrder(id, symbol = undefined, params = {}) {
         throw new errors.NotSupported(this.id + ' fetchOrder() is not supported yet');

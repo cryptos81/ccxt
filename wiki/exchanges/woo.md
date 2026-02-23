@@ -74,6 +74,7 @@
 * [watchMyTrades](#watchmytrades)
 * [watchPositions](#watchpositions)
 * [watchBalance](#watchbalance)
+* [watchFundingRate](#watchfundingrate)
 
 <a name="fetchStatus" id="fetchstatus"></a>
 
@@ -1715,5 +1716,26 @@ watch balance and get the amount of funds available for trading or funds locked 
 
 ```javascript
 woo.watchBalance ([params])
+```
+
+
+<a name="watchFundingRate" id="watchfundingrate"></a>
+
+### watchFundingRate{docsify-ignore}
+watch the current funding rate
+
+**Kind**: instance method of [<code>woo</code>](#woo)  
+**Returns**: <code>object</code> - a [funding rate structure](https://docs.ccxt.com/?id=funding-rate-structure)
+
+**See**: https://docs.woox.io/#estfundingrate  
+
+| Param | Type | Required | Description |
+| --- | --- | --- | --- |
+| symbol | <code>string</code> | Yes | unified market symbol |
+| params | <code>object</code> | No | extra parameters specific to the exchange API endpoint |
+
+
+```javascript
+woo.watchFundingRate (symbol[, params])
 ```
 

@@ -49,6 +49,7 @@
 * [watchBalance](#watchbalance)
 * [watchOrdersForSymbols](#watchordersforsymbols)
 * [watchPositions](#watchpositions)
+* [watchFundingRate](#watchfundingrate)
 
 <a name="fetchMarkets" id="fetchmarkets"></a>
 
@@ -1091,5 +1092,26 @@ watch all open positions
 
 ```javascript
 blofin.watchPositions (symbols[, since, limit, params])
+```
+
+
+<a name="watchFundingRate" id="watchfundingrate"></a>
+
+### watchFundingRate{docsify-ignore}
+watch the current funding rate
+
+**Kind**: instance method of [<code>blofin</code>](#blofin)  
+**Returns**: <code>object</code> - a [funding rate structure](https://docs.ccxt.com/?id=funding-rate-structure)
+
+**See**: https://docs.blofin.com/index.html#ws-funding-rate-channel  
+
+| Param | Type | Required | Description |
+| --- | --- | --- | --- |
+| symbol | <code>string</code> | Yes | unified market symbol |
+| params | <code>object</code> | No | extra parameters specific to the exchange API endpoint |
+
+
+```javascript
+blofin.watchFundingRate (symbol[, params])
 ```
 
