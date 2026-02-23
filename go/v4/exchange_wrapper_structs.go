@@ -668,13 +668,39 @@ func WithWatchFundingRateParams(params map[string]interface{}) WatchFundingRateO
 }
 
 type WatchFundingRatesOptionsStruct struct {
-	Params *map[string]interface{}
+	Symbols *[]string
+	Params  *map[string]interface{}
 }
 
 type WatchFundingRatesOptions func(opts *WatchFundingRatesOptionsStruct)
 
+func WithWatchFundingRatesSymbols(symbols []string) WatchFundingRatesOptions {
+	return func(opts *WatchFundingRatesOptionsStruct) {
+		opts.Symbols = &symbols
+	}
+}
+
 func WithWatchFundingRatesParams(params map[string]interface{}) WatchFundingRatesOptions {
 	return func(opts *WatchFundingRatesOptionsStruct) {
+		opts.Params = &params
+	}
+}
+
+type UnWatchFundingRatesOptionsStruct struct {
+	Symbols *[]string
+	Params  *map[string]interface{}
+}
+
+type UnWatchFundingRatesOptions func(opts *UnWatchFundingRatesOptionsStruct)
+
+func WithUnWatchFundingRatesSymbols(symbols []string) UnWatchFundingRatesOptions {
+	return func(opts *UnWatchFundingRatesOptionsStruct) {
+		opts.Symbols = &symbols
+	}
+}
+
+func WithUnWatchFundingRatesParams(params map[string]interface{}) UnWatchFundingRatesOptions {
+	return func(opts *UnWatchFundingRatesOptionsStruct) {
 		opts.Params = &params
 	}
 }
@@ -1923,6 +1949,18 @@ func WithUnWatchTickersSymbols(symbols []string) UnWatchTickersOptions {
 
 func WithUnWatchTickersParams(params map[string]interface{}) UnWatchTickersOptions {
 	return func(opts *UnWatchTickersOptionsStruct) {
+		opts.Params = &params
+	}
+}
+
+type UnWatchFundingRateOptionsStruct struct {
+	Params *map[string]interface{}
+}
+
+type UnWatchFundingRateOptions func(opts *UnWatchFundingRateOptionsStruct)
+
+func WithUnWatchFundingRateParams(params map[string]interface{}) UnWatchFundingRateOptions {
+	return func(opts *UnWatchFundingRateOptionsStruct) {
 		opts.Params = &params
 	}
 }

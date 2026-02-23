@@ -855,12 +855,17 @@ func (this *ExchangeTyped) WatchFundingRate(symbol string, options ...WatchFundi
 	}
 	return NewFundingRate(res), nil
 }
-func (this *ExchangeTyped) WatchFundingRates(symbols []string, options ...WatchFundingRatesOptions) (FundingRates, error) {
+func (this *ExchangeTyped) WatchFundingRates(options ...WatchFundingRatesOptions) (FundingRates, error) {
 
 	opts := WatchFundingRatesOptionsStruct{}
 
 	for _, opt := range options {
 		opt(&opts)
+	}
+
+	var symbols interface{} = nil
+	if opts.Symbols != nil {
+		symbols = *opts.Symbols
 	}
 
 	var params interface{} = nil
@@ -872,6 +877,29 @@ func (this *ExchangeTyped) WatchFundingRates(symbols []string, options ...WatchF
 		return FundingRates{}, CreateReturnError(res)
 	}
 	return NewFundingRates(res), nil
+}
+func (this *ExchangeTyped) UnWatchFundingRates(options ...UnWatchFundingRatesOptions) (interface{}, error) {
+
+	opts := UnWatchFundingRatesOptionsStruct{}
+
+	for _, opt := range options {
+		opt(&opts)
+	}
+
+	var symbols interface{} = nil
+	if opts.Symbols != nil {
+		symbols = *opts.Symbols
+	}
+
+	var params interface{} = nil
+	if opts.Params != nil {
+		params = *opts.Params
+	}
+	res := <-this.Exchange.UnWatchFundingRates(symbols, params)
+	if IsError(res) {
+		return nil, CreateReturnError(res)
+	}
+	return res, nil
 }
 func (this *ExchangeTyped) WatchFundingRatesForSymbols(symbols []string, options ...WatchFundingRatesForSymbolsOptions) (map[string]interface{}, error) {
 
@@ -2400,6 +2428,24 @@ func (this *ExchangeTyped) UnWatchTickers(options ...UnWatchTickersOptions) (int
 		params = *opts.Params
 	}
 	res := <-this.Exchange.UnWatchTickers(symbols, params)
+	if IsError(res) {
+		return nil, CreateReturnError(res)
+	}
+	return res, nil
+}
+func (this *ExchangeTyped) UnWatchFundingRate(symbol string, options ...UnWatchFundingRateOptions) (interface{}, error) {
+
+	opts := UnWatchFundingRateOptionsStruct{}
+
+	for _, opt := range options {
+		opt(&opts)
+	}
+
+	var params interface{} = nil
+	if opts.Params != nil {
+		params = *opts.Params
+	}
+	res := <-this.Exchange.UnWatchFundingRate(symbol, params)
 	if IsError(res) {
 		return nil, CreateReturnError(res)
 	}

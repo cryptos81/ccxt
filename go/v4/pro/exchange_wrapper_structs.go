@@ -178,7 +178,13 @@ var WithWatchFundingRateParams = ccxt.WithWatchFundingRateParams
 
 type WatchFundingRatesOptionsStruct = ccxt.WatchFundingRatesOptionsStruct
 type WatchFundingRatesOptions = ccxt.WatchFundingRatesOptions
+var WithWatchFundingRatesSymbols = ccxt.WithWatchFundingRatesSymbols
 var WithWatchFundingRatesParams = ccxt.WithWatchFundingRatesParams
+
+type UnWatchFundingRatesOptionsStruct = ccxt.UnWatchFundingRatesOptionsStruct
+type UnWatchFundingRatesOptions = ccxt.UnWatchFundingRatesOptions
+var WithUnWatchFundingRatesSymbols = ccxt.WithUnWatchFundingRatesSymbols
+var WithUnWatchFundingRatesParams = ccxt.WithUnWatchFundingRatesParams
 
 type WatchFundingRatesForSymbolsOptionsStruct = ccxt.WatchFundingRatesForSymbolsOptionsStruct
 type WatchFundingRatesForSymbolsOptions = ccxt.WatchFundingRatesForSymbolsOptions
@@ -499,6 +505,10 @@ type UnWatchTickersOptionsStruct = ccxt.UnWatchTickersOptionsStruct
 type UnWatchTickersOptions = ccxt.UnWatchTickersOptions
 var WithUnWatchTickersSymbols = ccxt.WithUnWatchTickersSymbols
 var WithUnWatchTickersParams = ccxt.WithUnWatchTickersParams
+
+type UnWatchFundingRateOptionsStruct = ccxt.UnWatchFundingRateOptionsStruct
+type UnWatchFundingRateOptions = ccxt.UnWatchFundingRateOptions
+var WithUnWatchFundingRateParams = ccxt.WithUnWatchFundingRateParams
 
 type FetchOrderOptionsStruct = ccxt.FetchOrderOptionsStruct
 type FetchOrderOptions = ccxt.FetchOrderOptions
