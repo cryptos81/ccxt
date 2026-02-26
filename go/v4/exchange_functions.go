@@ -2,11 +2,11 @@ package ccxt
 
 import (
 	"encoding/json"
+	"fmt"
 	"reflect"
 	"regexp"
 	"sort"
 	"sync"
-	"fmt"
 )
 
 func (this *Exchange) Ordered(a interface{}) interface{} {
@@ -66,7 +66,6 @@ func (this *Exchange) Keysort(parameters2 interface{}) map[string]interface{} {
 	}
 	return outDict
 }
-
 
 func (this *Exchange) Sort(input interface{}) []interface{} {
 	var list []interface{}
