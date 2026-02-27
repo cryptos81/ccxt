@@ -67,14 +67,6 @@ let TxBody = undefined;
 let TxRaw = undefined;
 let SignDoc = undefined;
 let SignMode = undefined;
-(async () => {
-    try {
-        protobufMexc = await Promise.resolve().then(function () { return require('../protobuf/mexc/compiled.cjs.js'); });
-    }
-    catch (e) {
-        // TODO: handle error
-    }
-})();
 // -----------------------------------------------------------------------------
 /**
  * @class Exchange
@@ -398,6 +390,18 @@ class Exchange {
         this.afterConstruct();
         if (this.safeBool(userConfig, 'sandbox') || this.safeBool(userConfig, 'testnet')) {
             this.setSandboxMode(true);
+        }
+        // exchange specific libs
+        this.loadExchangeSpecificFiles();
+    }
+    async loadExchangeSpecificFiles() {
+        if (this.id === 'mexc') {
+            try {
+                protobufMexc = await Promise.resolve().then(function () { return require('../protobuf/mexc/compiled.cjs.js'); });
+            }
+            catch (e) {
+                // TODO: handle error
+            }
         }
     }
     uuid5(namespace, name) {

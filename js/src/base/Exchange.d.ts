@@ -316,6 +316,7 @@ export default class Exchange {
     existsFile: typeof functions.existsFile;
     getTempDir: typeof functions.getTempDir;
     constructor(userConfig?: ConstructorArgs);
+    loadExchangeSpecificFiles(): Promise<void>;
     uuid5(namespace: string, name: string): string;
     encodeURIComponent(...args: any[]): string;
     checkRequiredVersion(requiredVersion: any, error?: boolean): boolean;
