@@ -26,6 +26,7 @@ include_once __DIR__ . '/test_io.php';
 include_once __DIR__ . '/test_extract_params.php';
 include_once __DIR__ . '/test_sort_by.php';
 include_once __DIR__ . '/test_sum.php';
+include_once __DIR__ . '/test_unique.php';
 include_once __DIR__ . '/test_omit.php';
 include_once __DIR__ . '/test_group_by.php';
 include_once __DIR__ . '/test_index_by.php';
@@ -77,6 +78,7 @@ function base_tests_init() {
         Async\await(test_set_markets_from_exchange());
         test_eth_methods();
         test_keysort();
+        test_unique();
         Async\await(test_sleep());
         test_io();
     }) ();
