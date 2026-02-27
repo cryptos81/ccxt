@@ -17,6 +17,7 @@ import testIo from './test.io.js';
 import testExtractParams from './test.extractParams.js';
 import testSortBy from './test.sortBy.js';
 import testSum from './test.sum.js';
+import testUnique from './test.unique.js';
 import testOmit from './test.omit.js';
 import testGroupBy from './test.groupBy.js';
 import testIndexBy from './test.indexBy.js';
@@ -67,6 +68,7 @@ async function baseTestsInit () {
     await testSetMarketsFromExchange ();
     testEthMethods ();
     testKeysort ();
+    testUnique ();
     await testSleep ();
     testIo ();
 }
