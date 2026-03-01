@@ -33,7 +33,6 @@ var typedData$1 = require('../static_dependencies/starknet/utils/typedData.js');
 var sha1 = require('../static_dependencies/noble-hashes/sha1.js');
 var onboarding = require('../static_dependencies/dydx-v4-client/onboarding.js');
 require('../static_dependencies/dydx-v4-client/helpers.js');
-var misc = require('./functions/misc.js');
 var index$3 = require('../static_dependencies/dydx-v4-client/long/index.cjs.js');
 
 function _interopNamespace(e) {
@@ -218,7 +217,6 @@ class Exchange {
         this.implodeParams = implodeParams;
         this.extractParams = extractParams;
         this.json = json;
-        this.vwap = misc.vwap;
         this.merge = merge;
         this.binaryConcat = binaryConcat;
         this.hash = hash;

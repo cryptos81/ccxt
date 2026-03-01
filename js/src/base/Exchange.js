@@ -6,11 +6,12 @@
 
 // ----------------------------------------------------------------------------
 import * as functions from './functions.js';
-import { 
-// keys as keysFunc,
-// values as valuesFunc,
-// inArray as inArrayFunc,
-vwap as vwapFunc, } from './functions.js';
+// import {
+//     // keys as keysFunc,
+//     // values as valuesFunc,
+//     // inArray as inArrayFunc,
+//     // vwap as vwapFunc,
+// } from './functions.js';
 // import exceptions from "./errors.js"
 import { // eslint-disable-line object-curly-newline
 ExchangeError, BadSymbol, NullResponse, InvalidAddress, InvalidOrder, NotSupported, OperationFailed, BadResponse, AuthenticationError, DDoSProtection, RequestTimeout, NetworkError, InvalidProxySettings, ExchangeNotAvailable, ArgumentsRequired, RateLimitExceeded, BadRequest, UnsubscribeError, ExchangeClosedByUser, } from './errors.js';
@@ -198,7 +199,6 @@ export default class Exchange {
         this.implodeParams = implodeParams;
         this.extractParams = extractParams;
         this.json = json;
-        this.vwap = vwapFunc;
         this.merge = merge;
         this.binaryConcat = binaryConcat;
         this.hash = hash;
