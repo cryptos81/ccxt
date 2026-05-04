@@ -6668,7 +6668,7 @@ class Exchange(object):
         if cost is None:
             return None
         market = self.market(symbol)
-        return self.decimal_to_precision(cost, TRUNCATE, market['precision']['price'], self.precisionMode, self.paddingMode)
+        return self.decimal_to_precision(cost, TRUNCATE, self.safe_string_2(market['precision'], 'cost', 'price'), self.precisionMode, self.paddingMode)
 
     def price_to_precision(self, symbol: str, price):
         if price is None:
