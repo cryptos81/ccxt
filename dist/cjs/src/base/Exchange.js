@@ -6572,7 +6572,7 @@ class Exchange {
             return undefined;
         }
         const market = this.market(symbol);
-        return this.decimalToPrecision(cost, TRUNCATE, market['precision']['price'], this.precisionMode, this.paddingMode);
+        return this.decimalToPrecision(cost, TRUNCATE, this.safeString2(market['precision'], 'cost', 'price'), this.precisionMode, this.paddingMode);
     }
     priceToPrecision(symbol, price) {
         if (price === undefined) {
