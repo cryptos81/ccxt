@@ -8025,7 +8025,7 @@ func (this *Exchange) CostToPrecision(symbol interface{}, cost interface{}) inte
 
 	var market interface{} = this.DerivedExchange.Market(symbol)
 	PanicOnError(market)
-	return this.DecimalToPrecision(cost, TRUNCATE, GetValue(GetValue(market, "precision"), "price"), this.PrecisionMode, this.PaddingMode)
+	return this.DecimalToPrecision(cost, TRUNCATE, this.SafeString2(GetValue(market, "precision"), "cost", "price"), this.PrecisionMode, this.PaddingMode)
 }
 func (this *Exchange) PriceToPrecision(symbol interface{}, price interface{}) interface{} {
 	if IsTrue(IsEqual(price, nil)) {
