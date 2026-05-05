@@ -651,7 +651,7 @@ public partial class aster : Exchange
     public async override Task<object> fetchCurrencies(object parameters = null)
     {
         parameters ??= new Dictionary<string, object>();
-        object promises = new List<object> {callDynamically(this, "sapiPublicGetV3ExchangeInfo", new object[] { parameters }), this.fapiPublicGetV3ExchangeInfo(parameters)};
+        object promises = new List<object> {this.sapiPublicGetV3ExchangeInfo(parameters), this.fapiPublicGetV3ExchangeInfo(parameters)};
         object results = await promiseAll(promises);
         object sapiResult = this.safeDict(results, 0, new Dictionary<string, object>() {});
         object sapiRows = this.safeList(sapiResult, "assets", new List<object>() {});
@@ -716,7 +716,7 @@ public partial class aster : Exchange
     public async override Task<object> fetchMarkets(object parameters = null)
     {
         parameters ??= new Dictionary<string, object>();
-        object promises = new List<object> {callDynamically(this, "sapiPublicGetV3ExchangeInfo", new object[] { parameters }), this.fapiPublicGetV3ExchangeInfo(parameters)};
+        object promises = new List<object> {this.sapiPublicGetV3ExchangeInfo(parameters), this.fapiPublicGetV3ExchangeInfo(parameters)};
         ((IList<object>)promises).Add(this.signIn());
         object results = await promiseAll(promises);
         object sapiResult = this.safeDict(results, 0, new Dictionary<string, object>() {});
@@ -950,7 +950,7 @@ public partial class aster : Exchange
             response = await this.fapiPublicGetV3Time(parameters);
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3Time", new object[] { parameters }));
+            response = await this.sapiPublicGetV3Time(parameters);
         }
         //
         // both SPOT & PERP has same format
@@ -1042,7 +1042,7 @@ public partial class aster : Exchange
                 response = await this.fapiPublicGetV3Klines(this.extend(request, parameters));
             } else
             {
-                response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3Klines", new object[] { this.extend(request, parameters) }));
+                response = await this.sapiPublicGetV3Klines(this.extend(request, parameters));
             }
         }
         return this.parseOHLCVs(response, market, timeframe, since, limit);
@@ -1194,7 +1194,7 @@ public partial class aster : Exchange
                 response = await this.fapiPublicGetV3AggTrades(this.extend(request, parameters));
             } else
             {
-                response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3AggTrades", new object[] { this.extend(request, parameters) }));
+                response = await this.sapiPublicGetV3AggTrades(this.extend(request, parameters));
             }
         } else
         {
@@ -1203,7 +1203,7 @@ public partial class aster : Exchange
                 response = await this.fapiPublicGetV3Trades(this.extend(request, parameters));
             } else
             {
-                response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3Trades", new object[] { this.extend(request, parameters) }));
+                response = await this.sapiPublicGetV3Trades(this.extend(request, parameters));
             }
         }
         return this.parseTrades(response, market, since, limit);
@@ -1254,7 +1254,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateGetV3UserTrades(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3UserTrades", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateGetV3UserTrades(this.extend(request, parameters));
         }
         //
         // SPOT & PERP have similar format
@@ -1311,7 +1311,7 @@ public partial class aster : Exchange
             response = await this.fapiPublicGetV3Depth(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3Depth", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPublicGetV3Depth(this.extend(request, parameters));
         }
         //
         // both SPOT & PERP has same format
@@ -1452,7 +1452,7 @@ public partial class aster : Exchange
             response = await this.fapiPublicGetV3Ticker24hr(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3Ticker24hr", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPublicGetV3Ticker24hr(this.extend(request, parameters));
         }
         //
         // both SPOT & PERP has same format
@@ -1513,7 +1513,7 @@ public partial class aster : Exchange
             response = await this.fapiPublicGetV3Ticker24hr(parameters);
         } else if (isTrue(isEqual(marketType, "spot")))
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3Ticker24hr", new object[] { parameters }));
+            response = await this.sapiPublicGetV3Ticker24hr(parameters);
         }
         //
         //     [
@@ -1573,7 +1573,7 @@ public partial class aster : Exchange
             response = await this.fapiPublicGetV3TickerPrice(parameters);
         } else if (isTrue(isEqual(marketType, "spot")))
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3TickerPrice", new object[] { parameters }));
+            response = await this.sapiPublicGetV3TickerPrice(parameters);
         }
         //
         // both SPOT & SWAP has same format
@@ -1648,7 +1648,7 @@ public partial class aster : Exchange
             response = await this.fapiPublicGetV3TickerBookTicker(parameters);
         } else if (isTrue(isEqual(marketType, "spot")))
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPublicGetV3TickerBookTicker", new object[] { parameters }));
+            response = await this.sapiPublicGetV3TickerBookTicker(parameters);
         }
         //
         // SPOT & PERP have only one field difference
@@ -1919,7 +1919,7 @@ public partial class aster : Exchange
             data = await this.fapiPrivateGetV3Balance(parameters);
         } else if (isTrue(isEqual(marketType, "spot")))
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3Account", new object[] { parameters }));
+            response = await this.sapiPrivateGetV3Account(parameters);
             data = this.safeList(response, "balances", new List<object>() {});
         }
         return this.parseBalance(data);
@@ -2072,7 +2072,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateGetV3CommissionRate(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3CommissionRate", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateGetV3CommissionRate(this.extend(request, parameters));
         }
         //
         // both SPOT & SWAP has same format
@@ -2242,7 +2242,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateGetV3Order(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3Order", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateGetV3Order(this.extend(request, parameters));
         }
         //
         // SPOT & SWAP has similar formats
@@ -2311,7 +2311,7 @@ public partial class aster : Exchange
         object response = null;
         if (isTrue(getValue(market, "spot")))
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3OpenOrder", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateGetV3OpenOrder(this.extend(request, parameters));
         } else
         {
             response = await this.fapiPrivateGetV3OpenOrder(this.extend(request, parameters));
@@ -2390,7 +2390,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateGetV3AllOrders(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3AllOrders", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateGetV3AllOrders(this.extend(request, parameters));
         }
         //
         // SPOT & SWAP has similar responses
@@ -2475,7 +2475,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateGetV3OpenOrders(this.extend(request, parameters));
         } else if (isTrue(isEqual(marketType, "spot")))
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateGetV3OpenOrders", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateGetV3OpenOrders(this.extend(request, parameters));
         }
         //
         // SPOT & SWAP has similar responses
@@ -2545,7 +2545,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivatePostV3Order(request);
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivatePostV3Order", new object[] { request }));
+            response = await this.sapiPrivatePostV3Order(request);
         }
         //
         // SPOT & SWAP has similar responses
@@ -2888,7 +2888,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateDeleteV3AllOpenOrders(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateDeleteV3AllOpenOrders", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateDeleteV3AllOpenOrders(this.extend(request, parameters));
         }
         //
         // SPOT & SWAP has same response
@@ -2941,7 +2941,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateDeleteV3Order(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateDeleteV3Order", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateDeleteV3Order(this.extend(request, parameters));
         }
         return this.parseOrder(response, market);
     }
@@ -2987,7 +2987,7 @@ public partial class aster : Exchange
             response = await this.fapiPrivateDeleteV3BatchOrders(this.extend(request, parameters));
         } else
         {
-            response = await ((Task<object>)callDynamically(this, "sapiPrivateDeleteV3AllOpenOrders", new object[] { this.extend(request, parameters) }));
+            response = await this.sapiPrivateDeleteV3AllOpenOrders(this.extend(request, parameters));
         }
         return this.parseOrders(response, market);
     }
@@ -4245,7 +4245,7 @@ public partial class aster : Exchange
         parameters = this.omit(parameters, new List<object>() {"chainId", "network", "fee"});
         ((IDictionary<string,object>)request)["amount"] = this.currencyToPrecision(code, amount, network);
         ((IDictionary<string,object>)request)["userSignature"] = this.signWithdrawPayload(request, network);
-        object response = await ((Task<object>)callDynamically(this, "sapiPrivatePostV3AsterUserWithdraw", new object[] { this.extend(request, parameters) }));
+        object response = await this.sapiPrivatePostV3AsterUserWithdraw(this.extend(request, parameters));
         //
         //   {
         //       "withdrawId": "1097219372504338432",
@@ -4330,7 +4330,7 @@ public partial class aster : Exchange
         object clientTranId = this.safeString(parameters, "clientTranId", defaultClientTranId);
         ((IDictionary<string,object>)request)["kindType"] = type;
         ((IDictionary<string,object>)request)["clientTranId"] = clientTranId;
-        response = await ((Task<object>)callDynamically(this, "sapiPrivatePostV3AssetWalletTransfer", new object[] { this.extend(request, parameters) }));
+        response = await this.sapiPrivatePostV3AssetWalletTransfer(this.extend(request, parameters));
         return this.parseTransfer(response, currency);
     }
 
@@ -4554,7 +4554,7 @@ public partial class aster : Exchange
         {
             return true;  // skip if builder fee is already approved
         }
-        object result = await ((Task<object>)callDynamically(this, "fapiPrivateGetV3Builder", new object[] {  }));
+        object result = await this.fapiPrivateGetV3Builder();
         //
         //    [
         //        {
@@ -4590,7 +4590,7 @@ public partial class aster : Exchange
                     { "signatureChainId", this.safeInteger(this.options, "v3ChainId", 1666) },
                     { "asterChain", "Mainnet" },
                 };
-                object authResponse = await ((Task<object>)callDynamically(this, "fapiPrivatePostV3ApproveBuilder", new object[] { this.extend(request, parameters) }));
+                object authResponse = await this.fapiPrivatePostV3ApproveBuilder(this.extend(request, parameters));
                 //
                 // {"code": 200,"msg": "success"}
                 //

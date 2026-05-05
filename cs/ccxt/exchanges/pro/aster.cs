@@ -1335,7 +1335,7 @@ public partial class aster : ccxt.aster
             object response = null;
             if (isTrue(isEqual(type, "spot")))
             {
-                response = await ((Task<object>)callDynamically(this, "sapiPrivatePostV3ListenKey", new object[] { parameters }));
+                response = await this.sapiPrivatePostV3ListenKey(parameters);
             } else
             {
                 response = await this.fapiPrivatePostV3ListenKey(parameters);
@@ -1361,7 +1361,7 @@ public partial class aster : ccxt.aster
         }
         try
         {
-            await ((Task<object>)callDynamically(this, "sapiPrivatePutV3ListenKey", new object[] {  })); // extend the expiry
+            await this.sapiPrivatePutV3ListenKey(); // extend the expiry
         } catch(Exception error)
         {
             object url = add(add(getValue(getValue(getValue(getValue(this.urls, "api"), "ws"), "private"), type), "/"), listenKey);
