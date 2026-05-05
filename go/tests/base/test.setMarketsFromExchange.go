@@ -15,7 +15,8 @@ func TestSetMarketsFromExchange() <-chan interface{} {
 		emptyExchange.InitParent(map[string]interface{}{
 			"id": "sample0",
 		}, map[string]interface{}{}, emptyExchange)
-
+		//
+		emptyExchange.Describe() // avoid unused var
 		return nil
 	}()
 	return ch

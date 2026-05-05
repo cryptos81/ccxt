@@ -40,6 +40,7 @@ func TestTicker(exchange ccxt.ICoreExchange, skippedProperties interface{}, meth
 	var logText interface{} = LogTemplate(exchange, method, entry)
 	// check market
 	var market interface{} = nil
+	var isFetchTickerCalled interface{} = IsEqual(method, "fetchTicker")
 	var symbolForMarket interface{} = Ternary(IsTrue((!IsEqual(symbol, nil))), symbol, exchange.SafeString(entry, "symbol"))
 	if IsTrue(IsTrue(!IsEqual(symbolForMarket, nil)) && IsTrue((InOp(exchange.GetMarkets(), symbolForMarket)))) {
 		market = exchange.Market(symbolForMarket)
@@ -146,6 +147,14 @@ func TestTicker(exchange ccxt.ICoreExchange, skippedProperties interface{}, meth
 	var bidString interface{} = exchange.SafeString(entry, "bid")
 	if IsTrue(IsTrue(IsTrue((!IsEqual(askString, nil))) && IsTrue((!IsEqual(bidString, nil)))) && !IsTrue((InOp(skippedProperties, "spread")))) {
 		AssertGreater(exchange, skippedProperties, method, entry, "ask", exchange.SafeString(entry, "bid"))
+	}
+	// last price should be within 1% of the bid/ask median price, but let's check only targeted fetchTicker (where tests use major pair like BTC/USDT) to ensure the precision
+	var allowedPercentageVariation interface{} = "0.01"
+	if IsTrue(IsTrue(IsTrue(IsTrue(IsTrue(isFetchTickerCalled) && IsTrue(!IsEqual(lastString, nil))) && IsTrue(!IsEqual(bidString, nil))) && IsTrue(!IsEqual(askString, nil))) && !IsTrue((InOp(skippedProperties, "lastBetweenBidAsk")))) {
+		var medianPrice interface{} = ccxt.Precise.StringDiv(ccxt.Precise.StringAdd(bidString, askString), "2")
+		var medianLow interface{} = ccxt.Precise.StringMul(medianPrice, ccxt.Precise.StringSub("1", allowedPercentageVariation))
+		var medianHigh interface{} = ccxt.Precise.StringMul(medianPrice, ccxt.Precise.StringAdd("1", allowedPercentageVariation))
+		Assert(IsTrue(ccxt.Precise.StringGe(lastString, medianLow)) && IsTrue(ccxt.Precise.StringLe(lastString, medianHigh)), Add("last price should be within 1% of the bid/ask median price", logText))
 	}
 	var percentage interface{} = exchange.SafeString(entry, "percentage")
 	var change interface{} = exchange.SafeString(entry, "change")

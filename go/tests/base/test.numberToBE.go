@@ -11,6 +11,6 @@ func TestNumberToBE() {
 	exchange.InitParent(map[string]interface{}{
 		"id": "sampleexchange",
 	}, map[string]interface{}{}, exchange)
-	assert(ccxt.IsEqual(exchange.ParseNumber(nil), nil), "GO skip trick")
-
+	//
+	exchange.Describe() // avoid unused var
 }

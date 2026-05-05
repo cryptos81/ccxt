@@ -201,7 +201,11 @@ func HelperTestProperties() {
 	//
 	// common props
 	//
-
+	//
+	AssertDeepEqual(exchange, map[string]interface{}{}, "commonCurrencies", ExchangeProp(exchange, "commonCurrencies"), map[string]interface{}{
+		"XBT":   "BTC",
+		"BCHSV": "BSV",
+	})
 }
 func TestAfterConstructor() {
 	// here should be added all needed tests

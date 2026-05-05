@@ -11,6 +11,6 @@ func TestBase64ToBinary() {
 	exchange.InitParent(map[string]interface{}{
 		"id": "sampleexchange",
 	}, map[string]interface{}{}, exchange)
-
+	//
 	assert(ccxt.IsEqual(exchange.SafeString(nil, "key"), nil), "GO_WORKAROUND")
 }

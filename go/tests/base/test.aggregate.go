@@ -12,5 +12,6 @@ func TestAggregate() {
 		"id": "sampleexchange",
 	}, map[string]interface{}{}, exchange)
 	assert(ccxt.IsGreaterThan(exchange.Milliseconds(), 0), "go transpiler workaround")
-
+	//
+	exchange.Uuid() // placeholder for astt
 }
