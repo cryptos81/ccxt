@@ -6474,7 +6474,9 @@ func (this *Exchange) CreateTriggerOrder(symbol interface{}, typeVar interface{}
 		if IsTrue(IsEqual(triggerPrice, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " createTriggerOrder() requires a triggerPrice argument")))
 		}
-		AddElementToObject(params, "triggerPrice", triggerPrice)
+		params = this.Extend(params, map[string]interface{}{
+			"triggerPrice": triggerPrice,
+		})
 		if IsTrue(GetValue(this.Has, "createTriggerOrder")) {
 
 			retRes667619 := <-this.DerivedExchange.CreateOrder(symbol, typeVar, side, amount, price, params)
@@ -6514,7 +6516,9 @@ func (this *Exchange) CreateTriggerOrderWs(symbol interface{}, typeVar interface
 		if IsTrue(IsEqual(triggerPrice, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " createTriggerOrderWs() requires a triggerPrice argument")))
 		}
-		AddElementToObject(params, "triggerPrice", triggerPrice)
+		params = this.Extend(params, map[string]interface{}{
+			"triggerPrice": triggerPrice,
+		})
 		if IsTrue(GetValue(this.Has, "createTriggerOrderWs")) {
 
 			retRes670019 := <-this.DerivedExchange.CreateOrderWs(symbol, typeVar, side, amount, price, params)
@@ -6554,7 +6558,9 @@ func (this *Exchange) CreateStopLossOrder(symbol interface{}, typeVar interface{
 		if IsTrue(IsEqual(stopLossPrice, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " createStopLossOrder() requires a stopLossPrice argument")))
 		}
-		AddElementToObject(params, "stopLossPrice", stopLossPrice)
+		params = this.Extend(params, map[string]interface{}{
+			"stopLossPrice": stopLossPrice,
+		})
 		if IsTrue(GetValue(this.Has, "createStopLossOrder")) {
 
 			retRes672419 := <-this.DerivedExchange.CreateOrder(symbol, typeVar, side, amount, price, params)
@@ -6594,7 +6600,9 @@ func (this *Exchange) CreateStopLossOrderWs(symbol interface{}, typeVar interfac
 		if IsTrue(IsEqual(stopLossPrice, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " createStopLossOrderWs() requires a stopLossPrice argument")))
 		}
-		AddElementToObject(params, "stopLossPrice", stopLossPrice)
+		params = this.Extend(params, map[string]interface{}{
+			"stopLossPrice": stopLossPrice,
+		})
 		if IsTrue(GetValue(this.Has, "createStopLossOrderWs")) {
 
 			retRes674819 := <-this.DerivedExchange.CreateOrderWs(symbol, typeVar, side, amount, price, params)
@@ -6634,7 +6642,9 @@ func (this *Exchange) CreateTakeProfitOrder(symbol interface{}, typeVar interfac
 		if IsTrue(IsEqual(takeProfitPrice, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " createTakeProfitOrder() requires a takeProfitPrice argument")))
 		}
-		AddElementToObject(params, "takeProfitPrice", takeProfitPrice)
+		params = this.Extend(params, map[string]interface{}{
+			"takeProfitPrice": takeProfitPrice,
+		})
 		if IsTrue(GetValue(this.Has, "createTakeProfitOrder")) {
 
 			retRes677219 := <-this.DerivedExchange.CreateOrder(symbol, typeVar, side, amount, price, params)
@@ -6674,7 +6684,9 @@ func (this *Exchange) CreateTakeProfitOrderWs(symbol interface{}, typeVar interf
 		if IsTrue(IsEqual(takeProfitPrice, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " createTakeProfitOrderWs() requires a takeProfitPrice argument")))
 		}
-		AddElementToObject(params, "takeProfitPrice", takeProfitPrice)
+		params = this.Extend(params, map[string]interface{}{
+			"takeProfitPrice": takeProfitPrice,
+		})
 		if IsTrue(GetValue(this.Has, "createTakeProfitOrderWs")) {
 
 			retRes679619 := <-this.DerivedExchange.CreateOrderWs(symbol, typeVar, side, amount, price, params)
