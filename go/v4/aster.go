@@ -180,28 +180,218 @@ func (this *AsterCore) Describe() interface{} {
 			"setMargin":                            false,
 			"setMarginMode":                        true,
 			"setPositionMode":                      true,
-			"signIn":                               false,
+			"signIn":                               true,
 			"transfer":                             true,
 			"withdraw":                             true,
 		},
 		"api": map[string]interface{}{
 			"fapiPublic": map[string]interface{}{
-				"get": []interface{}{"v1/ping", "v3/ping", "v1/time", "v3/time", "v1/exchangeInfo", "v3/exchangeInfo", "v1/depth", "v3/depth", "v1/trades", "v3/trades", "v1/historicalTrades", "v3/historicalTrades", "v1/aggTrades", "v3/aggTrades", "v1/klines", "v3/klines", "v1/indexPriceKlines", "v3/indexPriceKlines", "v1/markPriceKlines", "v3/markPriceKlines", "v1/premiumIndex", "v3/premiumIndex", "v1/fundingRate", "v3/fundingRate", "v1/fundingInfo", "v3/fundingInfo", "v1/ticker/24hr", "v3/ticker/24hr", "v1/ticker/price", "v3/ticker/price", "v1/ticker/bookTicker", "v3/ticker/bookTicker", "v3/indexreferences", "v1/adlQuantile", "v1/forceOrders"},
+				"get": map[string]interface{}{
+					"v1/ping":              1,
+					"v3/ping":              1,
+					"v1/time":              1,
+					"v3/time":              1,
+					"v1/exchangeInfo":      1,
+					"v3/exchangeInfo":      1,
+					"v1/depth":             1,
+					"v3/depth":             2,
+					"v1/trades":            1,
+					"v3/trades":            1,
+					"v1/historicalTrades":  1,
+					"v3/historicalTrades":  20,
+					"v1/aggTrades":         1,
+					"v3/aggTrades":         20,
+					"v1/klines":            1,
+					"v3/klines":            1,
+					"v1/indexPriceKlines":  1,
+					"v3/indexPriceKlines":  1,
+					"v1/markPriceKlines":   1,
+					"v3/markPriceKlines":   1,
+					"v1/premiumIndex":      1,
+					"v3/premiumIndex":      1,
+					"v1/fundingRate":       1,
+					"v3/fundingRate":       1,
+					"v1/fundingInfo":       1,
+					"v3/fundingInfo":       1,
+					"v1/ticker/24hr":       1,
+					"v3/ticker/24hr":       1,
+					"v1/ticker/price":      1,
+					"v3/ticker/price":      1,
+					"v1/ticker/bookTicker": 1,
+					"v3/ticker/bookTicker": 1,
+					"v1/adlQuantile":       1,
+					"v1/forceOrders":       1,
+					"v3/indexreferences":   1,
+				},
 			},
 			"fapiPrivate": map[string]interface{}{
-				"get":    []interface{}{"v1/positionSide/dual", "v3/positionSide/dual", "v1/multiAssetsMargin", "v3/multiAssetsMargin", "v1/order", "v3/order", "v1/openOrder", "v3/openOrder", "v1/openOrders", "v3/openOrders", "v1/allOrders", "v3/allOrders", "v2/balance", "v3/balance", "v3/account", "v3/accountWithJoinMargin", "v4/account", "v1/positionMargin/history", "v3/positionMargin/history", "v2/positionRisk", "v3/positionRisk", "v1/userTrades", "v3/userTrades", "v1/income", "v3/income", "v1/leverageBracket", "v3/leverageBracket", "v3/adlQuantile", "v3/forceOrders", "v1/commissionRate", "v3/commissionRate", "v3/mmp"},
-				"post":   []interface{}{"v3/noop", "v1/positionSide/dual", "v3/positionSide/dual", "v1/multiAssetsMargin", "v3/multiAssetsMargin", "v1/order", "v3/order", "v1/order/test", "v3/order/test", "v1/batchOrders", "v3/batchOrders", "v1/asset/wallet/transfer", "v3/asset/wallet/transfer", "v1/countdownCancelAll", "v3/countdownCancelAll", "v1/leverage", "v3/leverage", "v1/marginType", "v3/marginType", "v1/positionMargin", "v3/positionMargin", "v3/mmp", "v3/mmpReset", "v1/listenKey", "v3/listenKey"},
-				"put":    []interface{}{"v1/listenKey", "v3/listenKey"},
-				"delete": []interface{}{"v1/order", "v3/order", "v1/allOpenOrders", "v3/allOpenOrders", "v1/batchOrders", "v3/batchOrders", "v3/mmp", "v1/listenKey", "v3/listenKey"},
+				"get": map[string]interface{}{
+					"v1/positionSide/dual":      1,
+					"v3/positionSide/dual":      30,
+					"v1/multiAssetsMargin":      1,
+					"v3/multiAssetsMargin":      1,
+					"v1/order":                  1,
+					"v3/order":                  1,
+					"v1/openOrder":              1,
+					"v3/openOrder":              1,
+					"v1/openOrders":             1,
+					"v3/openOrders":             1,
+					"v1/allOrders":              1,
+					"v3/allOrders":              1,
+					"v2/balance":                1,
+					"v3/balance":                1,
+					"v3/account":                1,
+					"v1/positionMargin/history": 1,
+					"v3/positionMargin/history": 1,
+					"v2/positionRisk":           1,
+					"v3/positionRisk":           1,
+					"v1/userTrades":             1,
+					"v3/userTrades":             5,
+					"v1/income":                 1,
+					"v3/income":                 1,
+					"v1/leverageBracket":        1,
+					"v3/leverageBracket":        1,
+					"v1/commissionRate":         1,
+					"v3/commissionRate":         1,
+					"v3/adlQuantile":            1,
+					"v3/forceOrders":            1,
+					"v3/mmp":                    1,
+					"v3/accountWithJoinMargin":  1,
+					"v4/account":                1,
+					"v3/agent":                  1,
+					"v3/builder":                1,
+				},
+				"post": map[string]interface{}{
+					"v1/positionSide/dual":     1,
+					"v3/positionSide/dual":     1,
+					"v1/multiAssetsMargin":     1,
+					"v3/multiAssetsMargin":     1,
+					"v1/order":                 1,
+					"v3/order":                 1,
+					"v1/order/test":            1,
+					"v3/order/test":            1,
+					"v1/batchOrders":           1,
+					"v3/batchOrders":           1,
+					"v1/asset/wallet/transfer": 1,
+					"v3/asset/wallet/transfer": 1,
+					"v1/countdownCancelAll":    1,
+					"v3/countdownCancelAll":    1,
+					"v1/leverage":              1,
+					"v3/leverage":              1,
+					"v1/marginType":            1,
+					"v3/marginType":            1,
+					"v1/positionMargin":        1,
+					"v3/positionMargin":        1,
+					"v1/listenKey":             1,
+					"v3/listenKey":             1,
+					"v3/mmp":                   1,
+					"v3/mmpReset":              1,
+					"v3/noop":                  1,
+					"v3/approveAgent":          1,
+					"v3/updateAgent":           1,
+					"v3/approveBuilder":        1,
+					"v3/updateBuilder":         1,
+				},
+				"put": map[string]interface{}{
+					"v1/listenKey": 1,
+					"v3/listenKey": 1,
+				},
+				"delete": map[string]interface{}{
+					"v1/order":         1,
+					"v3/order":         1,
+					"v1/allOpenOrders": 1,
+					"v3/allOpenOrders": 1,
+					"v1/batchOrders":   1,
+					"v3/batchOrders":   1,
+					"v3/mmp":           1,
+					"v1/listenKey":     1,
+					"v3/listenKey":     1,
+					"v3/agent":         1,
+					"v3/builder":       1,
+				},
 			},
 			"sapiPublic": map[string]interface{}{
-				"get": []interface{}{"v1/ping", "v1/time", "v1/exchangeInfo", "v1/depth", "v1/trades", "v1/historicalTrades", "v1/aggTrades", "v1/klines", "v1/ticker/24hr", "v1/ticker/price", "v1/ticker/bookTicker", "v1/aster/withdraw/estimateFee"},
+				"get": map[string]interface{}{
+					"v1/ping":                       1,
+					"v1/time":                       1,
+					"v1/exchangeInfo":               1,
+					"v1/depth":                      1,
+					"v1/trades":                     1,
+					"v1/historicalTrades":           1,
+					"v1/aggTrades":                  1,
+					"v1/klines":                     1,
+					"v1/ticker/24hr":                1,
+					"v1/ticker/price":               1,
+					"v1/ticker/bookTicker":          1,
+					"v1/aster/withdraw/estimateFee": 1,
+					"v3/ping":                       1,
+					"v3/time":                       1,
+					"v3/exchangeInfo":               1,
+					"v3/depth": map[string]interface{}{
+						"cost":    2,
+						"byLimit": []interface{}{[]interface{}{50, 2}, []interface{}{100, 5}, []interface{}{500, 10}, []interface{}{1000, 20}},
+					},
+					"v3/trades":           1,
+					"v3/historicalTrades": 20,
+					"v3/aggTrades":        20,
+					"v3/klines": map[string]interface{}{
+						"cost":    1,
+						"byLimit": []interface{}{[]interface{}{99, 1}, []interface{}{499, 2}, []interface{}{1000, 5}, []interface{}{10000, 10}},
+					},
+					"v3/ticker/24hr": map[string]interface{}{
+						"cost":     1,
+						"noSymbol": 40,
+					},
+					"v3/ticker/price": map[string]interface{}{
+						"cost":     1,
+						"noSymbol": 2,
+					},
+					"v3/ticker/bookTicker": map[string]interface{}{
+						"cost":     1,
+						"noSymbol": 2,
+					},
+					"v3/aster/withdraw/estimateFee": 1,
+				},
 			},
 			"sapiPrivate": map[string]interface{}{
-				"get":    []interface{}{"v1/commissionRate", "v1/order", "v1/openOrders", "v1/allOrders", "v1/transactionHistory", "v1/account", "v1/userTrades"},
-				"post":   []interface{}{"v1/order", "v1/asset/wallet/transfer", "v1/asset/sendToAddress", "v1/aster/user-withdraw", "v1/listenKey"},
-				"put":    []interface{}{"v1/listenKey"},
-				"delete": []interface{}{"v1/order", "v1/allOpenOrders", "v1/listenKey"},
+				"get": map[string]interface{}{
+					"v1/commissionRate":     1,
+					"v1/order":              1,
+					"v1/openOrders":         1,
+					"v1/allOrders":          1,
+					"v1/transactionHistory": 1,
+					"v1/account":            1,
+					"v1/userTrades":         1,
+					"v3/commissionRate": map[string]interface{}{
+						"cost":     1,
+						"noSymbol": 2,
+					},
+					"v3/order":      1,
+					"v3/openOrders": 1,
+					"v3/allOrders":  5,
+					"v3/account":    5,
+					"v3/userTrades": 5,
+					"v3/openOrder":  1,
+				},
+				"post": map[string]interface{}{
+					"v1/order":                 1,
+					"v1/asset/wallet/transfer": 5,
+					"v1/asset/sendToAddress":   1,
+					"v1/listenKey":             1,
+					"v3/order":                 1,
+					"v3/asset/wallet/transfer": 5,
+					"v3/aster/user-withdraw":   1,
+					"v3/listenKey":             1,
+				},
+				"put": []interface{}{"v1/listenKey", "v3/listenKey"},
+				"delete": map[string]interface{}{
+					"v1/order":         1,
+					"v1/allOpenOrders": 1,
+					"v1/listenKey":     1,
+					"v3/allOpenOrders": 1,
+					"v3/order":         1,
+					"v3/listenKey":     1,
+				},
 			},
 		},
 		"timeframes": map[string]interface{}{
@@ -223,8 +413,9 @@ func (this *AsterCore) Describe() interface{} {
 		},
 		"precisionMode": TICK_SIZE,
 		"requiredCredentials": map[string]interface{}{
-			"apiKey": true,
-			"secret": true,
+			"apiKey":     false,
+			"secret":     false,
+			"privateKey": true,
 		},
 		"fees": map[string]interface{}{
 			"trading": map[string]interface{}{
@@ -239,27 +430,34 @@ func (this *AsterCore) Describe() interface{} {
 			"recvWindow":         Multiply(10, 1000),
 			"defaultTimeInForce": "GTC",
 			"zeroAddress":        "0x0000000000000000000000000000000000000000",
+			"v3ChainId":          1666,
 			"quoteOrderQty":      true,
 			"accountsByType": map[string]interface{}{
 				"spot":   "SPOT",
+				"swap":   "FUTURE",
 				"future": "FUTURE",
 				"linear": "FUTURE",
-				"swap":   "FUTURE",
 			},
 			"networks": map[string]interface{}{
-				"ERC20": "ETH",
-				"BEP20": "BSC",
-				"ARB":   "Arbitrum",
+				"ERC20":  "ETH",
+				"BEP20":  "BSC",
+				"ARBONE": "Arbitrum",
 			},
 			"networksToChainId": map[string]interface{}{
 				"ETH":      1,
 				"BSC":      56,
 				"Arbitrum": 42161,
 			},
+			"fetchOpenOrders": map[string]interface{}{
+				"warnIfNoSymbol": true,
+			},
+			"builderFee":  true,
+			"builder":     "0x1F5877C19e3777Cfd15F9d57253eA4aA5254Ec39",
+			"builderRate": "0.001",
 		},
 		"exceptions": map[string]interface{}{
 			"exact": map[string]interface{}{
-				"-1000": OperationFailed,
+				"-1000": OperationRejected,
 				"-1001": NetworkError,
 				"-1002": AuthenticationError,
 				"-1003": RateLimitExceeded,
@@ -267,7 +465,7 @@ func (this *AsterCore) Describe() interface{} {
 				"-1005": BadRequest,
 				"-1006": BadResponse,
 				"-1007": RequestTimeout,
-				"-1010": OperationFailed,
+				"-1010": OperationRejected,
 				"-1011": PermissionDenied,
 				"-1013": BadRequest,
 				"-1014": OrderNotFillable,
@@ -419,6 +617,7 @@ func (this *AsterCore) Describe() interface{} {
 				"-4184": InvalidOrder,
 				"-5060": OperationRejected,
 				"-5076": OperationRejected,
+				"-4168": OperationRejected,
 			},
 			"broad": map[string]interface{}{},
 		},
@@ -447,8 +646,8 @@ func (this *AsterCore) IsLinear(typeVar interface{}, optionalArgs ...interface{}
  * @method
  * @name aster#fetchCurrencies
  * @description fetches all available currencies on an exchange
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#trading-specification-information
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#exchange-information
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#trading-specification-information
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#exchange-information
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} an associative dictionary of currencies
  */
@@ -459,7 +658,7 @@ func (this *AsterCore) FetchCurrencies(optionalArgs ...interface{}) <-chan inter
 		defer ReturnPanicError(ch)
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
-		var promises interface{} = []interface{}{this.SapiPublicGetV1ExchangeInfo(params), this.FapiPublicGetV1ExchangeInfo(params)}
+		var promises interface{} = []interface{}{this.SapiPublicGetV3ExchangeInfo(params), this.FapiPublicGetV3ExchangeInfo(params)}
 
 		results := (<-promiseAll(promises))
 		PanicOnError(results)
@@ -472,8 +671,8 @@ func (this *AsterCore) FetchCurrencies(optionalArgs ...interface{}) <-chan inter
 		//     [
 		//         {
 		//             "asset": "USDT",
-		//             "marginAvailable": true,
-		//             "autoAssetExchange": "-10000"
+		//             "marginAvailable": true,           // only in PERP
+		//             "autoAssetExchange": "-10000"      // only in PERP
 		//         }
 		//     ]
 		//
@@ -522,8 +721,8 @@ func (this *AsterCore) FetchCurrencies(optionalArgs ...interface{}) <-chan inter
  * @method
  * @name aster#fetchMarkets
  * @description retrieves data on all markets for bigone
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#trading-specification-information
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#exchange-information
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#trading-specification-information
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#exchange-information
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object[]} an array of objects representing market data
  */
@@ -534,7 +733,8 @@ func (this *AsterCore) FetchMarkets(optionalArgs ...interface{}) <-chan interfac
 		defer ReturnPanicError(ch)
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
-		var promises interface{} = []interface{}{this.SapiPublicGetV1ExchangeInfo(params), this.FapiPublicGetV1ExchangeInfo(params)}
+		var promises interface{} = []interface{}{this.SapiPublicGetV3ExchangeInfo(params), this.FapiPublicGetV3ExchangeInfo(params)}
+		AppendToArray(&promises, this.SignIn())
 
 		results := (<-promiseAll(promises))
 		PanicOnError(results)
@@ -542,226 +742,217 @@ func (this *AsterCore) FetchMarkets(optionalArgs ...interface{}) <-chan interfac
 		var sapiRows interface{} = this.SafeList(sapiResult, "symbols", []interface{}{})
 		var fapiResult interface{} = this.SafeDict(results, 1, map[string]interface{}{})
 		var fapiRows interface{} = this.SafeList(fapiResult, "symbols", []interface{}{})
-		var rows interface{} = this.ArrayConcat(sapiRows, fapiRows)
+		//
+		// example:
 		//
 		//     [
-		//         {
-		//             "symbol": "BTCUSDT",
-		//             "pair": "BTCUSDT",
-		//             "contractType": "PERPETUAL",
-		//             "deliveryDate": 4133404800000,
-		//             "onboardDate": 1627628400000,
-		//             "status": "TRADING",
-		//             "maintMarginPercent": "2.5000",
-		//             "requiredMarginPercent": "5.0000",
-		//             "baseAsset": "BTC",
-		//             "quoteAsset": "USDT",
-		//             "marginAsset": "USDT",
-		//             "pricePrecision": 1,
-		//             "quantityPrecision": 3,
-		//             "baseAssetPrecision": 8,
-		//             "quotePrecision": 8,
-		//             "underlyingType": "COIN",
-		//             "underlyingSubType": [],
-		//             "settlePlan": 0,
-		//             "triggerProtect": "0.0200",
-		//             "liquidationFee": "0.025000",
-		//             "marketTakeBound": "0.02",
-		//             "filters": [
-		//                 {
-		//                     "minPrice": "1",
-		//                     "maxPrice": "1000000",
-		//                     "filterType": "PRICE_FILTER",
-		//                     "tickSize": "0.1"
-		//                 },
-		//                 {
-		//                     "stepSize": "0.001",
-		//                     "filterType": "LOT_SIZE",
-		//                     "maxQty": "100",
-		//                     "minQty": "0.001"
-		//                 },
-		//                 {
-		//                     "stepSize": "0.001",
-		//                     "filterType": "MARKET_LOT_SIZE",
-		//                     "maxQty": "10",
-		//                     "minQty": "0.001"
-		//                 },
-		//                 {
-		//                     "limit": 200,
-		//                     "filterType": "MAX_NUM_ORDERS"
-		//                 },
-		//                 {
-		//                     "limit": 10,
-		//                     "filterType": "MAX_NUM_ALGO_ORDERS"
-		//                 },
-		//                 {
-		//                     "notional": "5",
-		//                     "filterType": "MIN_NOTIONAL"
-		//                 },
-		//                 {
-		//                     "multiplierDown": "0.9800",
-		//                     "multiplierUp": "1.0200",
-		//                     "multiplierDecimal": "4",
-		//                     "filterType": "PERCENT_PRICE"
-		//                 }
-		//             ],
-		//             "orderTypes": [
-		//                 "LIMIT",
-		//                 "MARKET",
-		//                 "STOP",
-		//                 "STOP_MARKET",
-		//                 "TAKE_PROFIT",
-		//                 "TAKE_PROFIT_MARKET",
-		//                 "TRAILING_STOP_MARKET"
-		//             ],
-		//             "timeInForce": [
-		//                 "GTC",
-		//                 "IOC",
-		//                 "FOK",
-		//                 "GTX",
-		//                 "RPI"
-		//             ]
-		//         }
+		//       {
+		//         symbol: "TESTUSDT",
+		//         status: "TRADING",
+		//         baseAsset: "TEST",
+		//         quoteAsset: "USDT",
+		//         pricePrecision: "2",
+		//         quantityPrecision: "5",
+		//         baseAssetPrecision: "8",
+		//         quotePrecision: "8",
+		//         listingTime: "1756289680210",      // only in SPOT
+		//         baseAssetAddress: null,            // only in SPOT
+		//         ocoAllowed: false,                 // only in SPOT
+		//         pair: "ASTERUSDT",                 // only in PERP
+		//         contractType: "PERPETUAL",         // only in PERP
+		//         deliveryDate: "4133404800000",     // only in PERP
+		//         onboardDate: "1758178800000",      // only in PERP
+		//         maintMarginPercent: "12.5000",     // only in PERP
+		//         requiredMarginPercent: "25.0000",  // only in PERP
+		//         marginAsset: "USDT",               // only in PERP
+		//         underlyingType: "COIN",            // only in PERP
+		//         underlyingSubType: [ "Top", ],     // only in PERP
+		//         symbolType: "0",                   // only in PERP
+		//         tradingMode: "0",                  // only in PERP
+		//         name: "",                          // only in PERP
+		//         channel: "{}",                     // only in PERP
+		//         sequenceNo: "100",                 // only in PERP
+		//         twapMinNotional: "1000",           // only in PERP
+		//         imn: "4000.00",                    // only in PERP
+		//         tags: [],                          // only in PERP
+		//         settlePlan: "0",                   // only in PERP
+		//         triggerProtect: "0.1500",          // only in PERP
+		//         liquidationFee: "0.025000",        // only in PERP
+		//         marketTakeBound: "0.05",           // only in PERP
+		//         createTime: "1758215451058",       // only in PERP
+		//         filters: [
+		//           {
+		//             minPrice: "0.01",
+		//             maxPrice: "1000000",
+		//             filterType: "PRICE_FILTER",
+		//             tickSize: "0.01",
+		//           },
+		//           {
+		//             stepSize: "0.00001",
+		//             filterType: "LOT_SIZE",
+		//             maxQty: "9000",
+		//             minQty: "0.00001",
+		//           },
+		//           {
+		//             stepSize: "0.00001",
+		//             filterType: "MARKET_LOT_SIZE",
+		//             maxQty: "9000",
+		//             minQty: "0.00001",
+		//           },
+		//           {
+		//             limit: "200",
+		//             filterType: "MAX_NUM_ORDERS",
+		//           },
+		//           {
+		//             minNotional: "5",
+		//             filterType: "MIN_NOTIONAL",
+		//           },
+		//           {
+		//             minNotional: "5",
+		//             avgPriceMins: "5",
+		//             applyMinToMarket: true,
+		//             filterType: "NOTIONAL",            // only in SPOT
+		//             applyMaxToMarket: true,
+		//           },
+		//           {
+		//             multiplierDown: "0.2",
+		//             multiplierUp: "5",
+		//             multiplierDecimal: "1",
+		//             filterType: "PERCENT_PRICE",
+		//           },
+		//           {
+		//             bidMultiplierUp: "5",
+		//             askMultiplierUp: "5",
+		//             bidMultiplierDown: "0.2",
+		//             avgPriceMins: "5",
+		//             multiplierDecimal: "1",
+		//             filterType: "PERCENT_PRICE_BY_SIDE",  // only in SPOT
+		//             askMultiplierDown: "0.2",
+		//           },
+		//         ],
+		//         orderTypes: [ "LIMIT", "MARKET", "STOP", "STOP_MARKET", "TAKE_PROFIT", "TAKE_PROFIT_MARKET", "TRAILING_STOP_MARKET", ],
+		//         timeInForce: [ "GTC", "IOC", "FOK", "GTX", "HIDDEN", ],
+		//       }
 		//     ]
 		//
-		var fees interface{} = this.Fees
-		var result interface{} = []interface{}{}
-		for i := 0; IsLessThan(i, GetArrayLength(rows)); i++ {
-			var swap interface{} = false
-			var market interface{} = GetValue(rows, i)
-			var id interface{} = this.SafeString(market, "symbol")
-			var baseId interface{} = this.SafeString(market, "baseAsset")
-			var quoteId interface{} = this.SafeString(market, "quoteAsset")
-			var base interface{} = this.SafeCurrencyCode(baseId)
-			var quote interface{} = this.SafeCurrencyCode(quoteId)
-			var contractType interface{} = this.SafeString(market, "contractType")
-			var contract interface{} = !IsEqual(contractType, nil)
-			var spot interface{} = true
-			if IsTrue(IsEqual(contractType, "PERPETUAL")) {
-				swap = true
-				spot = false
-			}
-			var contractSize interface{} = nil
-			var linear interface{} = nil
-			var inverse interface{} = nil
-			var symbol interface{} = Add(Add(base, "/"), quote)
-			var settle interface{} = nil
-			var settleId interface{} = nil
-			if IsTrue(contract) {
-				settleId = this.SafeString(market, "marginAsset")
-				settle = this.SafeCurrencyCode(settleId)
-				if IsTrue(swap) {
-					symbol = Add(Add(symbol, ":"), settle)
-				}
-				linear = IsEqual(settle, quote)
-				inverse = IsEqual(settle, base)
-				contractSize = this.SafeNumber2(market, "contractSize", "unit", this.ParseNumber("1"))
-			}
-			var unifiedType interface{} = nil
-			if IsTrue(spot) {
-				unifiedType = "spot"
-			} else if IsTrue(swap) {
-				unifiedType = "swap"
-			}
-			var status interface{} = this.SafeString(market, "status")
-			var active interface{} = IsEqual(status, "TRADING")
-			var filters interface{} = this.SafeList(market, "filters", []interface{}{})
-			var filtersByType interface{} = this.IndexBy(filters, "filterType")
-			var entry interface{} = this.SafeMarketStructure(map[string]interface{}{
-				"id":             id,
-				"symbol":         symbol,
-				"base":           base,
-				"quote":          quote,
-				"settle":         settle,
-				"baseId":         baseId,
-				"quoteId":        quoteId,
-				"settleId":       settleId,
-				"type":           unifiedType,
-				"spot":           spot,
-				"margin":         false,
-				"swap":           swap,
-				"future":         false,
-				"option":         false,
-				"active":         active,
-				"contract":       contract,
-				"linear":         linear,
-				"inverse":        inverse,
-				"taker":          GetValue(GetValue(fees, "trading"), "taker"),
-				"maker":          GetValue(GetValue(fees, "trading"), "maker"),
-				"contractSize":   contractSize,
-				"expiry":         nil,
-				"expiryDatetime": nil,
-				"strike":         nil,
-				"optionType":     nil,
-				"precision": map[string]interface{}{
-					"amount": this.ParseNumber(this.ParsePrecision(this.SafeString(market, "quantityPrecision"))),
-					"price":  this.ParseNumber(this.ParsePrecision(this.SafeString(market, "pricePrecision"))),
-					"base":   this.ParseNumber(this.ParsePrecision(this.SafeString(market, "baseAssetPrecision"))),
-					"quote":  this.ParseNumber(this.ParsePrecision(this.SafeString(market, "quotePrecision"))),
-				},
-				"limits": map[string]interface{}{
-					"leverage": map[string]interface{}{
-						"min": nil,
-						"max": nil,
-					},
-					"amount": map[string]interface{}{
-						"min": nil,
-						"max": nil,
-					},
-					"price": map[string]interface{}{
-						"min": nil,
-						"max": nil,
-					},
-					"cost": map[string]interface{}{
-						"min": nil,
-						"max": nil,
-					},
-				},
-				"created": this.SafeInteger(market, "onboardDate"),
-				"info":    market,
-			})
-			if IsTrue(InOp(filtersByType, "PRICE_FILTER")) {
-				var filter interface{} = this.SafeDict(filtersByType, "PRICE_FILTER", map[string]interface{}{})
-				AddElementToObject(GetValue(entry, "limits"), "price", map[string]interface{}{
-					"min": this.SafeNumber(filter, "minPrice"),
-					"max": this.SafeNumber(filter, "maxPrice"),
-				})
-				AddElementToObject(GetValue(entry, "precision"), "price", this.SafeNumber(filter, "tickSize"))
-			}
-			if IsTrue(InOp(filtersByType, "LOT_SIZE")) {
-				var filter interface{} = this.SafeDict(filtersByType, "LOT_SIZE", map[string]interface{}{})
-				AddElementToObject(GetValue(entry, "precision"), "amount", this.SafeNumber(filter, "stepSize"))
-				AddElementToObject(GetValue(entry, "limits"), "amount", map[string]interface{}{
-					"min": this.SafeNumber(filter, "minQty"),
-					"max": this.SafeNumber(filter, "maxQty"),
-				})
-			}
-			if IsTrue(InOp(filtersByType, "MARKET_LOT_SIZE")) {
-				var filter interface{} = this.SafeDict(filtersByType, "MARKET_LOT_SIZE", map[string]interface{}{})
-				AddElementToObject(GetValue(entry, "limits"), "market", map[string]interface{}{
-					"min": this.SafeNumber(filter, "minQty"),
-					"max": this.SafeNumber(filter, "maxQty"),
-				})
-			}
-			if IsTrue(IsTrue((InOp(filtersByType, "MIN_NOTIONAL"))) || IsTrue((InOp(filtersByType, "NOTIONAL")))) {
-				var filter interface{} = this.SafeDict2(filtersByType, "MIN_NOTIONAL", "NOTIONAL", map[string]interface{}{})
-				AddElementToObject(GetValue(GetValue(entry, "limits"), "cost"), "min", this.SafeNumber(filter, "notional"))
-			}
-			AppendToArray(&result, entry)
-		}
+		//
+		var rows interface{} = this.ArrayConcat(sapiRows, fapiRows)
 
-		ch <- result
+		ch <- this.ParseMarkets(rows)
 		return nil
 
 	}()
 	return ch
+}
+func (this *AsterCore) ParseMarket(market interface{}) interface{} {
+	var id interface{} = this.SafeString(market, "symbol")
+	var baseId interface{} = this.SafeString(market, "baseAsset")
+	var quoteId interface{} = this.SafeString(market, "quoteAsset")
+	var base interface{} = this.SafeCurrencyCode(baseId)
+	var quote interface{} = this.SafeCurrencyCode(quoteId)
+	var active interface{} = IsEqual(this.SafeString(market, "status"), "TRADING")
+	var spot interface{} = nil
+	var symbol interface{} = nil
+	var settle interface{} = nil
+	var settleId interface{} = nil
+	var swap interface{} = nil
+	var linear interface{} = nil
+	var inverse interface{} = nil
+	var contractSize interface{} = nil
+	var contractType interface{} = this.SafeString(market, "contractType")
+	var isContract interface{} = !IsEqual(contractType, nil)
+	if IsTrue(isContract) {
+		// currently, there is only perpetuals, not futures
+		spot = false
+		swap = true
+		settleId = this.SafeString(market, "marginAsset")
+		settle = this.SafeCurrencyCode(settleId)
+		symbol = Add(Add(Add(Add(base, "/"), quote), ":"), settle)
+		linear = IsEqual(settle, quote)
+		inverse = IsEqual(settle, base)
+		contractSize = this.SafeNumber2(market, "contractSize", "unit", this.ParseNumber("1"))
+	} else {
+		spot = true
+		swap = false
+		symbol = Add(Add(base, "/"), quote)
+	}
+	// filters
+	var filters interface{} = this.SafeList(market, "filters", []interface{}{})
+	var filtersByType interface{} = this.IndexBy(filters, "filterType")
+	var filterNotional interface{} = this.SafeDict2(filtersByType, "MIN_NOTIONAL", "NOTIONAL")
+	var filterPrice interface{} = this.SafeDict(filtersByType, "PRICE_FILTER")
+	var filterLotSize interface{} = this.SafeDict(filtersByType, "LOT_SIZE")
+	var filterMarketLotSize interface{} = this.SafeDict(filtersByType, "MARKET_LOT_SIZE", map[string]interface{}{})
+	var pricePrecision interface{} = this.SafeNumber(filterPrice, "tickSize")
+	if IsTrue(IsEqual(pricePrecision, nil)) {
+		pricePrecision = this.ParseNumber(this.ParsePrecision(this.SafeString(market, "pricePrecision")))
+	}
+	var amountPrecision interface{} = Ternary(IsTrue((!IsEqual(filterLotSize, nil))), this.SafeNumber(filterLotSize, "stepSize"), this.ParseNumber(this.ParsePrecision(this.SafeString(market, "quantityPrecision"))))
+	return this.SafeMarketStructure(map[string]interface{}{
+		"id":             id,
+		"symbol":         symbol,
+		"base":           base,
+		"quote":          quote,
+		"settle":         settle,
+		"baseId":         baseId,
+		"quoteId":        quoteId,
+		"settleId":       settleId,
+		"type":           Ternary(IsTrue(isContract), "swap", "spot"),
+		"spot":           spot,
+		"margin":         false,
+		"swap":           swap,
+		"future":         false,
+		"option":         false,
+		"active":         active,
+		"contract":       isContract,
+		"linear":         linear,
+		"inverse":        inverse,
+		"taker":          GetValue(GetValue(this.Fees, "trading"), "taker"),
+		"maker":          GetValue(GetValue(this.Fees, "trading"), "maker"),
+		"contractSize":   contractSize,
+		"expiry":         nil,
+		"expiryDatetime": nil,
+		"strike":         nil,
+		"optionType":     nil,
+		"precision": map[string]interface{}{
+			"amount": amountPrecision,
+			"price":  pricePrecision,
+			"base":   this.ParseNumber(this.ParsePrecision(this.SafeString(market, "baseAssetPrecision"))),
+			"quote":  this.ParseNumber(this.ParsePrecision(this.SafeString(market, "quotePrecision"))),
+		},
+		"limits": map[string]interface{}{
+			"leverage": map[string]interface{}{
+				"min": nil,
+				"max": nil,
+			},
+			"amount": map[string]interface{}{
+				"min": this.SafeNumber(filterLotSize, "minQty"),
+				"max": this.SafeNumber(filterLotSize, "maxQty"),
+			},
+			"price": map[string]interface{}{
+				"min": this.SafeNumber(filterPrice, "minPrice"),
+				"max": this.SafeNumber(filterPrice, "maxPrice"),
+			},
+			"cost": map[string]interface{}{
+				"min": this.SafeNumber2(filterNotional, "notional", "minNotional"),
+				"max": nil,
+			},
+			"market": map[string]interface{}{
+				"min": this.SafeNumber(filterMarketLotSize, "minQty"),
+				"max": this.SafeNumber(filterMarketLotSize, "maxQty"),
+			},
+		},
+		"created": this.SafeInteger2(market, "listingTime", "createTime"),
+		"info":    market,
+	})
 }
 
 /**
  * @method
  * @name aster#fetchTime
  * @description fetches the current integer timestamp in milliseconds from the exchange server
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#check-server-time
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#get-server-time
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#check-server-time
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {int} the current integer timestamp in milliseconds from the exchange server
  */
@@ -772,14 +963,27 @@ func (this *AsterCore) FetchTime(optionalArgs ...interface{}) <-chan interface{}
 		defer ReturnPanicError(ch)
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
+		var marketType interface{} = nil
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchTime", nil, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
+		var response interface{} = nil
+		if IsTrue(IsEqual(marketType, "swap")) {
 
-		response := (<-this.FapiPublicGetV1Time(params))
-		PanicOnError(response)
+			response = (<-this.FapiPublicGetV3Time(params))
+			PanicOnError(response)
+		} else {
+
+			response = (<-this.SapiPublicGetV3Time(params))
+			PanicOnError(response)
+		}
 
 		//
-		//     {
-		//         "serverTime": 1499827319559
-		//     }
+		// both SPOT & PERP has same format
+		//
+		// {
+		//     "serverTime": 1499827319559
+		// }
 		//
 		ch <- this.SafeInteger(response, "serverTime")
 		return nil
@@ -789,19 +993,21 @@ func (this *AsterCore) FetchTime(optionalArgs ...interface{}) <-chan interface{}
 }
 func (this *AsterCore) ParseOHLCV(ohlcv interface{}, optionalArgs ...interface{}) interface{} {
 	//
+	// spot:
+	//
 	//     [
-	//         1631158560000,
-	//         "208.1850",
-	//         "208.1850",
-	//         "208.1850",
-	//         "208.1850",
-	//         "11.84",
-	//         1631158619999,
-	//         "2464.910400",
-	//         1,
-	//         "11.84",
-	//         "2464.910400",
-	//         "0"
+	//         1499040000000, // Open time
+	//         "0.01634790", // Open
+	//         "0.80000000", // High
+	//         "0.01575800", // Low
+	//         "0.01577100", // Close
+	//         "148976.11427815", // Volume
+	//         1499644799999, // Close time
+	//         "2434.19055334", // Quote asset volume
+	//         308, // Number of trades
+	//         "1756.87402397", // Taker buy base asset volume
+	//         "28.46694368", // Taker buy quote asset volume
+	//         "0"  // ??
 	//     ]
 	//
 	market := GetArg(optionalArgs, 0, nil)
@@ -813,8 +1019,10 @@ func (this *AsterCore) ParseOHLCV(ohlcv interface{}, optionalArgs ...interface{}
  * @method
  * @name aster#fetchOHLCV
  * @description fetches historical candlestick data containing the open, high, low, and close price, and the volume of a market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#k-line-data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#klinecandlestick-data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#k-line-data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#klinecandlestick-data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#index-price-klinecandlestick-data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#mark-price-klinecandlestick-data
  * @param {string} symbol unified symbol of the market to fetch OHLCV data for
  * @param {string} timeframe the length of time each candle represents
  * @param {int} [since] timestamp in ms of the earliest candle to fetch
@@ -837,22 +1045,16 @@ func (this *AsterCore) FetchOHLCV(symbol interface{}, optionalArgs ...interface{
 		_ = limit
 		params := GetArg(optionalArgs, 3, map[string]interface{}{})
 		_ = params
-		if IsTrue(IsEqual(symbol, nil)) {
-			panic(ArgumentsRequired(Add(this.Id, " fetchOHLCV() requires a symbol argument")))
-		}
 
-		retRes9538 := (<-this.LoadMarkets())
-		PanicOnError(retRes9538)
+		retRes10138 := (<-this.LoadMarkets())
+		PanicOnError(retRes10138)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{}
 		if IsTrue(!IsEqual(since, nil)) {
 			AddElementToObject(request, "startTime", since)
 		}
 		if IsTrue(!IsEqual(limit, nil)) {
-			if IsTrue(IsGreaterThan(limit, 1500)) {
-				limit = 1500 // Default 500; max 1500.
-			}
-			AddElementToObject(request, "limit", limit)
+			AddElementToObject(request, "limit", mathMin(limit, 1500))
 		}
 		requestparamsVariable := this.HandleUntilOption("endTime", request, params)
 		request = GetValue(requestparamsVariable, 0)
@@ -866,44 +1068,26 @@ func (this *AsterCore) FetchOHLCV(symbol interface{}, optionalArgs ...interface{
 		if IsTrue(isMark) {
 			AddElementToObject(request, "symbol", GetValue(market, "id"))
 
-			response = (<-this.FapiPublicGetV1MarkPriceKlines(this.Extend(request, params)))
+			response = (<-this.FapiPublicGetV3MarkPriceKlines(this.Extend(request, params)))
 			PanicOnError(response)
 		} else if IsTrue(isIndex) {
 			AddElementToObject(request, "pair", GetValue(market, "id"))
 
-			response = (<-this.FapiPublicGetV1IndexPriceKlines(this.Extend(request, params)))
+			response = (<-this.FapiPublicGetV3IndexPriceKlines(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 			AddElementToObject(request, "symbol", GetValue(market, "id"))
 			if IsTrue(GetValue(market, "linear")) {
 
-				response = (<-this.FapiPublicGetV1Klines(this.Extend(request, params)))
+				response = (<-this.FapiPublicGetV3Klines(this.Extend(request, params)))
 				PanicOnError(response)
 			} else {
 
-				response = (<-this.SapiPublicGetV1Klines(this.Extend(request, params)))
+				response = (<-this.SapiPublicGetV3Klines(this.Extend(request, params)))
 				PanicOnError(response)
 			}
 		}
 
-		//
-		//     [
-		//         [
-		//             1631158560000,
-		//             "208.1850",
-		//             "208.1850",
-		//             "208.1850",
-		//             "208.1850",
-		//             "11.84",
-		//             1631158619999,
-		//             "2464.910400",
-		//             1,
-		//             "11.84",
-		//             "2464.910400",
-		//             "0"
-		//         ]
-		//     ]
-		//
 		ch <- this.ParseOHLCVs(response, market, timeframe, since, limit)
 		return nil
 
@@ -914,60 +1098,77 @@ func (this *AsterCore) ParseTrade(trade interface{}, optionalArgs ...interface{}
 	//
 	// fetchTrades
 	//
+	//     recent trades:
+	//
 	//     {
 	//         "id": 3913206,
 	//         "price": "644.100",
 	//         "qty": "0.08",
-	//         "quoteQty": "51.528",
+	//         "quoteQty": "51.528",      // present in PERP
+	//         "baseQty": "4.95049505",   // present in SPOT
 	//         "time": 1749784506633,
 	//         "isBuyerMaker": true
 	//     }
 	//
-	//     {
-	//         "id": 657,
-	//         "price": "1.01000000",
-	//         "qty": "5.00000000",
-	//         "baseQty": "4.95049505",
-	//         "time": 1755156533943,
-	//         "isBuyerMaker": false
-	//     }
-	//
-	// fetchMyTrades
+	//     aggrTrades
 	//
 	//     {
-	//         "buyer": false,
-	//         "commission": "-0.07819010",
-	//         "commissionAsset": "USDT",
-	//         "id": 698759,
-	//         "maker": false,
-	//         "orderId": 25851813,
-	//         "price": "7819.01",
-	//         "qty": "0.002",
-	//         "quoteQty": "15.63802",
-	//         "realizedPnl": "-0.91539999",
-	//         "side": "SELL",
-	//         "positionSide": "SHORT",
-	//         "symbol": "BTCUSDT",
-	//         "time": 1569514978020
+	//         "a": 26129, // Aggregate tradeId
+	//         "p": "0.01633102", // Price
+	//         "q": "4.70443515", // Quantity
+	//         "f": 27781, // First tradeId
+	//         "l": 27781, // Last tradeId
+	//         "T": 1498793709153, // Timestamp
+	//         "m": true, // Was the buyer the maker?
 	//     }
+	//
+	// fetchMyTrades  (SPOT & PERP have similar format)
+	//
+	// {
+	//     "symbol": "ETHUSDT",
+	//     "id": 2583152,
+	//     "orderId": 418588675,
+	//     "side": "SELL",
+	//     "price": "2330.04",
+	//     "qty": "0.0030",
+	//     "quoteQty": "6.99000000",
+	//     "commission": "0.00279605",
+	//     "commissionAsset": "USDT",
+	//     "time": 1776409179230,
+	//     "counterpartyId": 5143150,   // only in SPOT
+	//     "createUpdateId": null,      // only in SPOT
+	//     "maker": false,              // only in SPOT
+	//     "buyer": false,              // only in SPOT
+	//     "realizedPnl": "0.00029999", // only in PERP
+	//     "marginAsset": "USDT",       // only in PERP
+	//     "positionSide": "BOTH",      // only in PERP
+	// }
 	//
 	market := GetArg(optionalArgs, 0, nil)
 	_ = market
-	var id interface{} = this.SafeString(trade, "id")
-	var symbol interface{} = GetValue(market, "symbol")
-	var currencyId interface{} = this.SafeString(trade, "commissionAsset")
+	var id interface{} = this.SafeString2(trade, "id", "a")
+	var marketId interface{} = this.SafeString(trade, "symbol")
+	var marketType interface{} = Ternary(IsTrue((InOp(trade, "positionSide"))), "swap", "spot")
+	market = this.SafeMarket(marketId, market, nil, marketType)
+	var currencyId interface{} = this.SafeString2(trade, "commissionAsset", "marginAsset")
 	var currencyCode interface{} = this.SafeCurrencyCode(currencyId)
-	var amountString interface{} = this.SafeString(trade, "qty")
-	var priceString interface{} = this.SafeString(trade, "price")
+	var amountString interface{} = this.SafeString2(trade, "qty", "q")
+	var priceString interface{} = this.SafeString2(trade, "price", "p")
 	var costString interface{} = this.SafeString2(trade, "quoteQty", "baseQty")
-	var timestamp interface{} = this.SafeInteger(trade, "time")
+	var timestamp interface{} = this.SafeInteger2(trade, "time", "T")
 	var side interface{} = this.SafeStringLower(trade, "side")
 	var isMaker interface{} = this.SafeBool(trade, "maker")
 	var takerOrMaker interface{} = nil
 	if IsTrue(!IsEqual(isMaker, nil)) {
 		takerOrMaker = Ternary(IsTrue(isMaker), "maker", "taker")
+		if IsTrue(IsEqual(side, nil)) {
+			var isBuyer interface{} = this.SafeBool(trade, "buyer")
+			if IsTrue(!IsEqual(isBuyer, nil)) {
+				side = Ternary(IsTrue(isBuyer), "buy", "sell")
+			}
+		}
 	}
-	var isBuyerMaker interface{} = this.SafeBool(trade, "isBuyerMaker")
+	var isBuyerMaker interface{} = this.SafeBool2(trade, "isBuyerMaker", "m")
 	if IsTrue(!IsEqual(isBuyerMaker, nil)) {
 		side = Ternary(IsTrue(isBuyerMaker), "sell", "buy")
 	}
@@ -976,7 +1177,7 @@ func (this *AsterCore) ParseTrade(trade interface{}, optionalArgs ...interface{}
 		"info":         trade,
 		"timestamp":    timestamp,
 		"datetime":     this.Iso8601(timestamp),
-		"symbol":       symbol,
+		"symbol":       GetValue(market, "symbol"),
 		"order":        this.SafeString(trade, "orderId"),
 		"type":         nil,
 		"side":         side,
@@ -995,8 +1196,10 @@ func (this *AsterCore) ParseTrade(trade interface{}, optionalArgs ...interface{}
  * @method
  * @name aster#fetchTrades
  * @description get the list of most recent trades for a particular symbol
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#recent-trades-list
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#recent-trades-list
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#recent-trades-list
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#recent-trades-aggregated
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#recent-trades-list
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#compressedaggregate-trades-list
  * @param {string} symbol unified symbol of the market to fetch trades for
  * @param {int} [since] timestamp in ms of the earliest trade to fetch
  * @param {int} [limit] the maximum amount of trades to fetch
@@ -1014,31 +1217,46 @@ func (this *AsterCore) FetchTrades(symbol interface{}, optionalArgs ...interface
 		_ = limit
 		params := GetArg(optionalArgs, 2, map[string]interface{}{})
 		_ = params
-		if IsTrue(IsEqual(symbol, nil)) {
-			panic(ArgumentsRequired(Add(this.Id, " fetchTrades() requires a symbol argument")))
-		}
 
-		retRes11028 := (<-this.LoadMarkets())
-		PanicOnError(retRes11028)
+		retRes11778 := (<-this.LoadMarkets())
+		PanicOnError(retRes11778)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
 		}
 		if IsTrue(!IsEqual(limit, nil)) {
-			if IsTrue(IsGreaterThan(limit, 1000)) {
-				limit = 1000 // Default 500; max 1000.
-			}
-			AddElementToObject(request, "limit", limit)
+			AddElementToObject(request, "limit", mathMin(limit, 1000))
 		}
 		var response interface{} = nil
-		if IsTrue(GetValue(market, "swap")) {
+		var sinceDefined interface{} = !IsEqual(since, nil)
+		var untilDefined interface{} = (InOp(params, "until"))
+		if IsTrue(sinceDefined) {
+			AddElementToObject(request, "startTime", since)
+		}
+		if IsTrue(untilDefined) {
+			request = this.HandleUntilOption("endTime", request, params)
+		}
+		// use historical endpoint for targeted requests
+		if IsTrue(InOp(request, "startTime")) {
+			if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPublicGetV1Trades(this.Extend(request, params)))
-			PanicOnError(response)
+				response = (<-this.FapiPublicGetV3AggTrades(this.Extend(request, params)))
+				PanicOnError(response)
+			} else {
+
+				response = (<-this.SapiPublicGetV3AggTrades(this.Extend(request, params)))
+				PanicOnError(response)
+			}
 		} else {
+			if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.SapiPublicGetV1Trades(this.Extend(request, params)))
-			PanicOnError(response)
+				response = (<-this.FapiPublicGetV3Trades(this.Extend(request, params)))
+				PanicOnError(response)
+			} else {
+
+				response = (<-this.SapiPublicGetV3Trades(this.Extend(request, params)))
+				PanicOnError(response)
+			}
 		}
 
 		ch <- this.ParseTrades(response, market, since, limit)
@@ -1052,8 +1270,8 @@ func (this *AsterCore) FetchTrades(symbol interface{}, optionalArgs ...interface
  * @method
  * @name aster#fetchMyTrades
  * @description fetch all trades made by the user
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#account-trade-history-user_data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#account-trade-list-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#account-trade-history-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#account-trade-list-user_data
  * @param {string} [symbol] unified market symbol
  * @param {int} [since] the earliest time in ms to fetch trades for
  * @param {int} [limit] the maximum number of trades structures to retrieve
@@ -1074,58 +1292,61 @@ func (this *AsterCore) FetchMyTrades(optionalArgs ...interface{}) <-chan interfa
 		_ = limit
 		params := GetArg(optionalArgs, 3, map[string]interface{}{})
 		_ = params
-		if IsTrue(IsEqual(symbol, nil)) {
-			panic(ArgumentsRequired(Add(this.Id, " fetchMyTrades() requires a symbol argument")))
-		}
 
-		retRes11618 := (<-this.LoadMarkets())
-		PanicOnError(retRes11618)
-		var market interface{} = this.Market(symbol)
-		var request interface{} = map[string]interface{}{
-			"symbol": GetValue(market, "id"),
+		retRes12548 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes12548)
+		var request interface{} = map[string]interface{}{}
+		var market interface{} = nil
+		if IsTrue(!IsEqual(symbol, nil)) {
+			market = this.Market(symbol)
+			AddElementToObject(request, "symbol", GetValue(market, "id"))
 		}
+		var marketType interface{} = nil
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchTickers", market, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
 		if IsTrue(!IsEqual(since, nil)) {
 			AddElementToObject(request, "startTime", since)
 		}
 		if IsTrue(!IsEqual(limit, nil)) {
-			if IsTrue(IsGreaterThan(limit, 1000)) {
-				limit = 1000 // Default 500; max 1000.
-			}
-			AddElementToObject(request, "limit", limit)
+			AddElementToObject(request, "limit", mathMin(limit, 1000))
 		}
 		requestparamsVariable := this.HandleUntilOption("endTime", request, params)
 		request = GetValue(requestparamsVariable, 0)
 		params = GetValue(requestparamsVariable, 1)
 		var response interface{} = nil
-		if IsTrue(GetValue(market, "swap")) {
+		if IsTrue(IsEqual(marketType, "swap")) {
 
-			response = (<-this.FapiPrivateGetV1UserTrades(this.Extend(request, params)))
+			response = (<-this.FapiPrivateGetV3UserTrades(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivateGetV1UserTrades(this.Extend(request, params)))
+			response = (<-this.SapiPrivateGetV3UserTrades(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
 		//
-		//     [
-		//         {
-		//             "buyer": false,
-		//             "commission": "-0.07819010",
-		//             "commissionAsset": "USDT",
-		//             "id": 698759,
-		//             "maker": false,
-		//             "orderId": 25851813,
-		//             "price": "7819.01",
-		//             "qty": "0.002",
-		//             "quoteQty": "15.63802",
-		//             "realizedPnl": "-0.91539999",
-		//             "side": "SELL",
-		//             "positionSide": "SHORT",
-		//             "symbol": "BTCUSDT",
-		//             "time": 1569514978020
-		//         }
-		//     ]
+		// SPOT & PERP have similar format
+		//
+		// {
+		//     "symbol": "ETHUSDT",
+		//     "id": 2583152,
+		//     "orderId": 418588675,
+		//     "side": "SELL",
+		//     "price": "2330.04",
+		//     "qty": "0.0030",
+		//     "quoteQty": "6.99000000",
+		//     "commission": "0.00279605",
+		//     "commissionAsset": "USDT",
+		//     "time": 1776409179230,
+		//     "counterpartyId": 5143150,   // only in PERP
+		//     "createUpdateId": null,      // only in PERP
+		//     "maker": false,              // only in PERP
+		//     "buyer": false,              // only in PERP
+		//     "realizedPnl": "0.00029999", // only in SPOT
+		//     "marginAsset": "USDT",       // only in SPOT
+		//     "positionSide": "BOTH",      // only in SPOT
+		// }
 		//
 		ch <- this.ParseTrades(response, market, since, limit, params)
 		return nil
@@ -1138,8 +1359,8 @@ func (this *AsterCore) FetchMyTrades(optionalArgs ...interface{}) <-chan interfa
  * @method
  * @name aster#fetchOrderBook
  * @description fetches information on open orders with bid (buy) and ask (sell) prices, volumes and other data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#depth-information
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#order-book
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#depth-information
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#order-book
  * @param {string} symbol unified symbol of the market to fetch the order book for
  * @param {int} [limit] the maximum amount of order book entries to return
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -1154,33 +1375,28 @@ func (this *AsterCore) FetchOrderBook(symbol interface{}, optionalArgs ...interf
 		_ = limit
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
-		if IsTrue(IsEqual(symbol, nil)) {
-			panic(ArgumentsRequired(Add(this.Id, " fetchOrderBook() requires a symbol argument")))
-		}
 
-		retRes12208 := (<-this.LoadMarkets())
-		PanicOnError(retRes12208)
+		retRes13148 := (<-this.LoadMarkets())
+		PanicOnError(retRes13148)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
 		}
-		if IsTrue(!IsEqual(limit, nil)) {
-			// limit: [5, 10, 20, 50, 100, 500, 1000]. Default: 500
-			if IsTrue(IsGreaterThan(limit, 1000)) {
-				limit = 1000 // Default 500; max 1000.
-			}
-			AddElementToObject(request, "limit", limit)
-		}
 		var response interface{} = nil
+		if IsTrue(!IsEqual(limit, nil)) {
+			AddElementToObject(request, "limit", this.FindNearestCeiling([]interface{}{5, 10, 20, 50, 100, 500, 1000}, limit))
+		}
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPublicGetV1Depth(this.Extend(request, params)))
+			response = (<-this.FapiPublicGetV3Depth(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPublicGetV1Depth(this.Extend(request, params)))
+			response = (<-this.SapiPublicGetV3Depth(this.Extend(request, params)))
 			PanicOnError(response)
 		}
+		//
+		// both SPOT & PERP has same format
 		//
 		//     {
 		//         "lastUpdateId": 1027024,
@@ -1208,143 +1424,52 @@ func (this *AsterCore) FetchOrderBook(symbol interface{}, optionalArgs ...interf
 	}()
 	return ch
 }
-
-/**
- * @method
- * @name aster#fetchFundingRateHistory
- * @description fetches historical funding rate prices
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#get-funding-rate-history
- * @param {string} symbol unified symbol of the market to fetch the funding rate history for
- * @param {int} [since] timestamp in ms of the earliest funding rate to fetch
- * @param {int} [limit] the maximum amount of [funding rate structures]{@link https://docs.ccxt.com/#/?id=funding-rate-history-structure} to fetch
- * @param {object} [params] extra parameters specific to the exchange API endpoint
- * @param {int} [params.until] timestamp in ms of the latest funding rate
- * @returns {object[]} a list of [funding rate structures]{@link https://docs.ccxt.com/#/?id=funding-rate-history-structure}
- */
-func (this *AsterCore) FetchFundingRateHistory(optionalArgs ...interface{}) <-chan interface{} {
-	ch := make(chan interface{})
-	go func() interface{} {
-		defer close(ch)
-		defer ReturnPanicError(ch)
-		symbol := GetArg(optionalArgs, 0, nil)
-		_ = symbol
-		since := GetArg(optionalArgs, 1, nil)
-		_ = since
-		limit := GetArg(optionalArgs, 2, nil)
-		_ = limit
-		params := GetArg(optionalArgs, 3, map[string]interface{}{})
-		_ = params
-
-		retRes12748 := (<-this.LoadMarkets())
-		PanicOnError(retRes12748)
-		var request interface{} = map[string]interface{}{}
-		if IsTrue(!IsEqual(symbol, nil)) {
-			var market interface{} = this.Market(symbol)
-			AddElementToObject(request, "symbol", GetValue(market, "id"))
-		}
-		if IsTrue(!IsEqual(since, nil)) {
-			AddElementToObject(request, "startTime", since)
-		}
-		if IsTrue(!IsEqual(limit, nil)) {
-			if IsTrue(IsGreaterThan(limit, 1000)) {
-				limit = 1000 // Default 100; max 1000
-			}
-			AddElementToObject(request, "limit", limit)
-		}
-		requestparamsVariable := this.HandleUntilOption("endTime", request, params)
-		request = GetValue(requestparamsVariable, 0)
-		params = GetValue(requestparamsVariable, 1)
-
-		response := (<-this.FapiPublicGetV1FundingRate(this.Extend(request, params)))
-		PanicOnError(response)
-		//
-		//     [
-		//         {
-		//             "symbol": "BTCUSDT",
-		//             "fundingTime": 1747209600000,
-		//             "fundingRate": "0.00010000"
-		//         }
-		//     ]
-		//
-		var rates interface{} = []interface{}{}
-		for i := 0; IsLessThan(i, GetArrayLength(response)); i++ {
-			var entry interface{} = GetValue(response, i)
-			var timestamp interface{} = this.SafeInteger(entry, "fundingTime")
-			AppendToArray(&rates, map[string]interface{}{
-				"info":        entry,
-				"symbol":      this.SafeSymbol(this.SafeString(entry, "symbol"), nil, nil, "swap"),
-				"fundingRate": this.SafeNumber(entry, "fundingRate"),
-				"timestamp":   timestamp,
-				"datetime":    this.Iso8601(timestamp),
-			})
-		}
-		var sorted interface{} = this.SortBy(rates, "timestamp")
-
-		ch <- this.FilterBySymbolSinceLimit(sorted, symbol, since, limit)
-		return nil
-
-	}()
-	return ch
-}
 func (this *AsterCore) ParseTicker(ticker interface{}, optionalArgs ...interface{}) interface{} {
 	//
-	// spot
-	//     {
-	//         "symbol": "BTCUSDT",
-	//         "priceChange": "-2274.38",
-	//         "priceChangePercent": "-2.049",
-	//         "weightedAvgPrice": "109524.37084136",
-	//         "lastPrice": "108738.78",
-	//         "lastQty": "0.00034",
-	//         "openPrice": "111013.16",
-	//         "highPrice": "111975.81",
-	//         "lowPrice": "107459.25",
-	//         "volume": "28.67876",
-	//         "quoteVolume": "3141023.14551030",
-	//         "openTime": "1760578800000",
-	//         "closeTime": "1760665024749",
-	//         "firstId": "37447",
-	//         "lastId": "39698",
-	//         "count": "2252",
-	//         "baseAsset": "BTC",
-	//         "quoteAsset": "USDT",
-	//         "bidPrice": "108705.11",
-	//         "bidQty": "0.03351",
-	//         "askPrice": "108725.99",
-	//         "askQty": "0.08724"
-	//     }
-	// swap
-	//     {
-	//         "symbol": "BTCUSDT",
-	//         "priceChange": "1845.7",
-	//         "priceChangePercent": "1.755",
-	//         "weightedAvgPrice": "105515.5",
-	//         "lastPrice": "107037.7",
-	//         "lastQty": "0.004",
-	//         "openPrice": "105192.0",
-	//         "highPrice": "107223.5",
-	//         "lowPrice": "104431.6",
-	//         "volume": "8753.286",
-	//         "quoteVolume": "923607368.61",
-	//         "openTime": 1749976620000,
-	//         "closeTime": 1750063053754,
-	//         "firstId": 24195078,
-	//         "lastId": 24375783,
-	//         "count": 180706
-	//     }
+	// fetchTicker & fetchTickers: both SPOT & PERP has similar format
+	//
+	//    {
+	//        "symbol": "ETHUSDT",
+	//        "priceChange": "6.54",
+	//        "priceChangePercent": "0.279",
+	//        "weightedAvgPrice": "2330.70",
+	//        "lastPrice": "2350.00",
+	//        "lastQty": "4.437",
+	//        "openPrice": "2343.46",
+	//        "highPrice": "2363.20",
+	//        "lowPrice": "2283.86",
+	//        "volume": "267154.248",
+	//        "quoteVolume": "622657018.70",
+	//        "openTime": "1776329400000",
+	//        "closeTime": "1776415832593",
+	//        "firstId": "73520536",
+	//        "lastId": "73630176",
+	//        "count": "109640",
+	//        "baseAsset": "BTC",            // only in SPOT
+	//        "quoteAsset": "USDT",          // only in SPOT
+	//        "bidPrice": "71125.98",        // only in SPOT
+	//        "bidQty": "0.00737",           // only in SPOT
+	//        "askPrice": "71152.10",        // only in SPOT
+	//        "askQty": "0.32399"            // only in SPOT
+	//    }
+	//
+	//
+	// fetchBidsAsks: SPOT & PERP have only one field difference
+	//
+	//     [
+	//        {
+	//            "symbol": "BMTUSDT",
+	//            "bidPrice": "0.004000",
+	//            "bidQty": "1250.0",
+	//            "askPrice": "0.000000",
+	//            "askQty": "0.0",
+	//            "time": "1776411276072",
+	//            "lastUpdateId": "453174307613"   // only in PERP
+	//        }, ...
 	//
 	market := GetArg(optionalArgs, 0, nil)
 	_ = market
 	var timestamp interface{} = this.SafeInteger(ticker, "closeTime")
-	var marketType interface{} = nil
-	if IsTrue(InOp(ticker, "bidQty")) {
-		marketType = "spot"
-	} else {
-		marketType = "contract"
-	}
-	var marketId interface{} = this.SafeString(ticker, "symbol")
-	market = this.SafeMarket(marketId, market, nil, marketType)
-	var symbol interface{} = GetValue(market, "symbol")
 	var last interface{} = this.SafeString(ticker, "lastPrice")
 	var open interface{} = this.SafeString(ticker, "openPrice")
 	var percentage interface{} = this.SafeString(ticker, "priceChangePercent")
@@ -1353,8 +1478,17 @@ func (this *AsterCore) ParseTicker(ticker interface{}, optionalArgs ...interface
 	var baseVolume interface{} = this.SafeString(ticker, "volume")
 	var high interface{} = this.SafeString(ticker, "highPrice")
 	var low interface{} = this.SafeString(ticker, "lowPrice")
+	var isTickerResponse interface{} = (InOp(ticker, "priceChange"))
+	var marketType interface{} = nil
+	if IsTrue(isTickerResponse) {
+		marketType = Ternary(IsTrue((InOp(ticker, "baseAsset"))), "spot", "swap")
+	} else {
+		marketType = Ternary(IsTrue((InOp(ticker, "lastUpdateId"))), "swap", "spot")
+	}
+	var marketId interface{} = this.SafeString(ticker, "symbol")
+	market = this.SafeMarket(marketId, market, nil, marketType)
 	return this.SafeTicker(map[string]interface{}{
-		"symbol":        symbol,
+		"symbol":        GetValue(market, "symbol"),
 		"timestamp":     timestamp,
 		"datetime":      this.Iso8601(timestamp),
 		"high":          high,
@@ -1383,8 +1517,8 @@ func (this *AsterCore) ParseTicker(ticker interface{}, optionalArgs ...interface
  * @method
  * @name aster#fetchTicker
  * @description fetches a price ticker, a statistical calculation with the information calculated over the past 24 hours for a specific market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#24h-price-change
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#24hr-ticker-price-change-statistics
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#24h-price-change
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#24hr-ticker-price-change-statistics
  * @param {string} symbol unified symbol of the market to fetch the ticker for
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} a [ticker structure]{@link https://docs.ccxt.com/#/?id=ticker-structure}
@@ -1396,12 +1530,9 @@ func (this *AsterCore) FetchTicker(symbol interface{}, optionalArgs ...interface
 		defer ReturnPanicError(ch)
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
-		if IsTrue(IsEqual(symbol, nil)) {
-			panic(ArgumentsRequired(Add(this.Id, " fetchTicker() requires a symbol argument")))
-		}
 
-		retRes14218 := (<-this.LoadMarkets())
-		PanicOnError(retRes14218)
+		retRes14518 := (<-this.LoadMarkets())
+		PanicOnError(retRes14518)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
@@ -1409,14 +1540,42 @@ func (this *AsterCore) FetchTicker(symbol interface{}, optionalArgs ...interface
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPublicGetV1Ticker24hr(this.Extend(request, params)))
+			response = (<-this.FapiPublicGetV3Ticker24hr(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPublicGetV1Ticker24hr(this.Extend(request, params)))
+			response = (<-this.SapiPublicGetV3Ticker24hr(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
+		//
+		// both SPOT & PERP has same format
+		//
+		//    {
+		//        "symbol": "ETHUSDT",
+		//        "priceChange": "6.54",
+		//        "priceChangePercent": "0.279",
+		//        "weightedAvgPrice": "2330.70",
+		//        "lastPrice": "2350.00",
+		//        "lastQty": "4.437",
+		//        "openPrice": "2343.46",
+		//        "highPrice": "2363.20",
+		//        "lowPrice": "2283.86",
+		//        "volume": "267154.248",
+		//        "quoteVolume": "622657018.70",
+		//        "openTime": "1776329400000",
+		//        "closeTime": "1776415832593",
+		//        "firstId": "73520536",
+		//        "lastId": "73630176",
+		//        "count": "109640",
+		//        "baseAsset": "BTC",            // only in SPOT
+		//        "quoteAsset": "USDT",          // only in SPOT
+		//        "bidPrice": "71125.98",        // only in SPOT
+		//        "bidQty": "0.00737",           // only in SPOT
+		//        "askPrice": "71152.10",        // only in SPOT
+		//        "askQty": "0.32399"            // only in SPOT
+		//    }
+		//
 		ch <- this.ParseTicker(response, market)
 		return nil
 
@@ -1428,8 +1587,8 @@ func (this *AsterCore) FetchTicker(symbol interface{}, optionalArgs ...interface
  * @method
  * @name aster#fetchTickers
  * @description fetches price tickers for multiple markets, statistical information calculated over the past 24 hours for each market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#24h-price-change
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#24hr-ticker-price-change-statistics
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#24h-price-change
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#24hr-ticker-price-change-statistics
  * @param {string[]} symbols unified symbols of the markets to fetch the ticker for, all market tickers are returned if not assigned
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @param {string} [params.subType] "linear" or "inverse"
@@ -1446,29 +1605,23 @@ func (this *AsterCore) FetchTickers(optionalArgs ...interface{}) <-chan interfac
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes14928 := (<-this.LoadMarkets())
-		PanicOnError(retRes14928)
+		retRes15068 := (<-this.LoadMarkets())
+		PanicOnError(retRes15068)
 		symbols = this.MarketSymbols(symbols, nil, true, true, true)
 		var market interface{} = this.GetMarketFromSymbols(symbols)
-		var typeVar interface{} = nil
-		typeVarparamsVariable := this.HandleMarketTypeAndParams("fetchTickers", market, params)
-		typeVar = GetValue(typeVarparamsVariable, 0)
-		params = GetValue(typeVarparamsVariable, 1)
-		var subType interface{} = nil
-		subTypeparamsVariable := this.HandleSubTypeAndParams("fetchTickers", market, params)
-		subType = GetValue(subTypeparamsVariable, 0)
-		params = GetValue(subTypeparamsVariable, 1)
+		var marketType interface{} = nil
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchTickers", market, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
 		var response interface{} = nil
-		if IsTrue(this.IsLinear(typeVar, subType)) {
+		if IsTrue(IsEqual(marketType, "swap")) {
 
-			response = (<-this.FapiPublicGetV1Ticker24hr(params))
+			response = (<-this.FapiPublicGetV3Ticker24hr(params))
 			PanicOnError(response)
-		} else if IsTrue(IsEqual(typeVar, "spot")) {
+		} else if IsTrue(IsEqual(marketType, "spot")) {
 
-			response = (<-this.SapiPublicGetV1Ticker24hr(params))
+			response = (<-this.SapiPublicGetV3Ticker24hr(params))
 			PanicOnError(response)
-		} else {
-			panic(NotSupported(Add(Add(Add(this.Id, " fetchTickers() does not support "), typeVar), " markets yet")))
 		}
 
 		//
@@ -1489,7 +1642,13 @@ func (this *AsterCore) FetchTickers(optionalArgs ...interface{}) <-chan interfac
 		//             "closeTime": 1750063053754,
 		//             "firstId": 24195078,
 		//             "lastId": 24375783,
-		//             "count": 180706
+		//             "count": 180706,
+		//             "baseAsset": "BTC",              // only in SPOT
+		//             "quoteAsset": "USDT",            // only in SPOT
+		//             "bidPrice": "71125.98",          // only in SPOT
+		//             "bidQty": "0.00737",             // only in SPOT
+		//             "askPrice": "71152.10",          // only in SPOT
+		//             "askQty": "0.32399"              // only in SPOT
 		//         }
 		//     ]
 		//
@@ -1499,7 +1658,159 @@ func (this *AsterCore) FetchTickers(optionalArgs ...interface{}) <-chan interfac
 	}()
 	return ch
 }
+
+/**
+ * @method
+ * @name aster#fetchLastPrices
+ * @description fetches the last price for multiple markets
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#latest-price
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#symbol-price-ticker
+ * @param {string[]|undefined} symbols unified symbols of the markets to fetch the last prices
+ * @param {object} [params] extra parameters specific to the exchange API endpoint
+ * @param {string} [params.subType] "linear" or "inverse"
+ * @returns {object} a dictionary of lastprices structures
+ */
+func (this *AsterCore) FetchLastPrices(optionalArgs ...interface{}) <-chan interface{} {
+	ch := make(chan interface{})
+	go func() interface{} {
+		defer close(ch)
+		defer ReturnPanicError(ch)
+		symbols := GetArg(optionalArgs, 0, nil)
+		_ = symbols
+		params := GetArg(optionalArgs, 1, map[string]interface{}{})
+		_ = params
+
+		retRes15608 := (<-this.LoadMarkets())
+		PanicOnError(retRes15608)
+		symbols = this.MarketSymbols(symbols, nil, true, true, true)
+		var market interface{} = this.GetMarketFromSymbols(symbols)
+		var marketType interface{} = nil
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchLastPrices", market, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
+		var response interface{} = nil
+		if IsTrue(IsEqual(marketType, "swap")) {
+
+			response = (<-this.FapiPublicGetV3TickerPrice(params))
+			PanicOnError(response)
+		} else if IsTrue(IsEqual(marketType, "spot")) {
+
+			response = (<-this.SapiPublicGetV3TickerPrice(params))
+			PanicOnError(response)
+		}
+		//
+		// both SPOT & SWAP has same format
+		//
+		//     [
+		//         {
+		//             "symbol": "LTCBTC",
+		//             "price": "4.00000200"
+		//             "time": "1649666690902"
+		//         },
+		//         ...
+		//     ]
+		//
+		var results interface{} = []interface{}{}
+		for i := 0; IsLessThan(i, GetArrayLength(response)); i++ {
+			var marketId interface{} = this.SafeString(GetValue(response, i), "symbol")
+			var safeMarket interface{} = this.SafeMarket(marketId, nil, nil, marketType)
+			var priceData interface{} = this.Extend(this.ParseLastPrice(GetValue(response, i), safeMarket), params)
+			AppendToArray(&results, priceData)
+		}
+		symbols = this.MarketSymbols(symbols)
+
+		ch <- this.FilterByArray(results, "symbol", symbols)
+		return nil
+
+	}()
+	return ch
+}
+func (this *AsterCore) ParseLastPrice(entry interface{}, optionalArgs ...interface{}) interface{} {
+	//
+	// spot & swap
+	//
+	//     {
+	//         "symbol": "LTCBTC",
+	//         "price": "4.00000200"
+	//         "time": "1649666690902"
+	//     }
+	//
+	market := GetArg(optionalArgs, 0, nil)
+	_ = market
+	var timestamp interface{} = this.SafeInteger(entry, "time")
+	return map[string]interface{}{
+		"symbol":    GetValue(market, "symbol"),
+		"timestamp": timestamp,
+		"datetime":  this.Iso8601(timestamp),
+		"price":     this.SafeNumberOmitZero(entry, "price"),
+		"side":      nil,
+		"info":      entry,
+	}
+}
+
+/**
+ * @method
+ * @name aster#fetchBidsAsks
+ * @description fetches the bid and ask price and volume for multiple markets
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#current-best-order
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#symbol-order-book-ticker
+ * @param {string[]|undefined} symbols unified symbols of the markets to fetch the bids and asks for, all markets are returned if not assigned
+ * @param {object} [params] extra parameters specific to the exchange API endpoint
+ * @param {string} [params.subType] "linear" or "inverse"
+ * @returns {object} a dictionary of [ticker structures]{@link https://docs.ccxt.com/?id=ticker-structure}
+ */
+func (this *AsterCore) FetchBidsAsks(optionalArgs ...interface{}) <-chan interface{} {
+	ch := make(chan interface{})
+	go func() interface{} {
+		defer close(ch)
+		defer ReturnPanicError(ch)
+		symbols := GetArg(optionalArgs, 0, nil)
+		_ = symbols
+		params := GetArg(optionalArgs, 1, map[string]interface{}{})
+		_ = params
+
+		retRes16278 := (<-this.LoadMarkets())
+		PanicOnError(retRes16278)
+		symbols = this.MarketSymbols(symbols, nil, true, true, true)
+		var market interface{} = this.GetMarketFromSymbols(symbols)
+		var marketType interface{} = nil
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchBidsAsks", market, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
+		var response interface{} = nil
+		if IsTrue(IsEqual(marketType, "swap")) {
+
+			response = (<-this.FapiPublicGetV3TickerBookTicker(params))
+			PanicOnError(response)
+		} else if IsTrue(IsEqual(marketType, "spot")) {
+
+			response = (<-this.SapiPublicGetV3TickerBookTicker(params))
+			PanicOnError(response)
+		}
+
+		//
+		// SPOT & PERP have only one field difference
+		//
+		//     [
+		//        {
+		//            "symbol": "BMTUSDT",
+		//            "bidPrice": "0.004000",
+		//            "bidQty": "1250.0",
+		//            "askPrice": "0.000000",
+		//            "askQty": "0.0",
+		//            "time": "1776411276072",
+		//            "lastUpdateId": "453174307613"   // only in PERP
+		//        }, ...
+		//
+		ch <- this.ParseTickers(response, symbols)
+		return nil
+
+	}()
+	return ch
+}
 func (this *AsterCore) ParseFundingRate(contract interface{}, optionalArgs ...interface{}) interface{} {
+	//
+	// fundingRate
 	//
 	//     {
 	//         "symbol": "BTCUSDT",
@@ -1511,6 +1822,9 @@ func (this *AsterCore) ParseFundingRate(contract interface{}, optionalArgs ...in
 	//         "nextFundingTime": 1750147200000,
 	//         "time": 1750146970000
 	//     }
+	//
+	// funding interval
+	//
 	//     {
 	//         "symbol": "INJUSDT",
 	//         "interestRate": "0.00010000",
@@ -1556,7 +1870,7 @@ func (this *AsterCore) ParseFundingRate(contract interface{}, optionalArgs ...in
  * @method
  * @name aster#fetchFundingRate
  * @description fetch the current funding rate
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#mark-price
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#symbol-price-ticker
  * @param {string} symbol unified market symbol
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} a [funding rate structure]{@link https://docs.ccxt.com/#/?id=funding-rate-structure}
@@ -1572,14 +1886,14 @@ func (this *AsterCore) FetchFundingRate(symbol interface{}, optionalArgs ...inte
 			panic(ArgumentsRequired(Add(this.Id, " fetchFundingRate() requires a symbol argument")))
 		}
 
-		retRes15968 := (<-this.LoadMarkets())
-		PanicOnError(retRes15968)
+		retRes17248 := (<-this.LoadMarkets())
+		PanicOnError(retRes17248)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
 		}
 
-		response := (<-this.FapiPublicGetV1PremiumIndex(this.Extend(request, params)))
+		response := (<-this.FapiPublicGetV3PremiumIndex(this.Extend(request, params)))
 		PanicOnError(response)
 
 		//
@@ -1605,7 +1919,7 @@ func (this *AsterCore) FetchFundingRate(symbol interface{}, optionalArgs ...inte
  * @method
  * @name aster#fetchFundingRates
  * @description fetch the current funding rate for multiple symbols
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#24hr-ticker-price-change-statistics
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#symbol-price-ticker
  * @param {string[]} [symbols] list of unified market symbols
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object[]} a list of [funding rate structures]{@link https://docs.ccxt.com/#/?id=funding-rate-structure}
@@ -1620,11 +1934,11 @@ func (this *AsterCore) FetchFundingRates(optionalArgs ...interface{}) <-chan int
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes16278 := (<-this.LoadMarkets())
-		PanicOnError(retRes16278)
+		retRes17558 := (<-this.LoadMarkets())
+		PanicOnError(retRes17558)
 		symbols = this.MarketSymbols(symbols)
 
-		response := (<-this.FapiPublicGetV1PremiumIndex(this.Extend(params)))
+		response := (<-this.FapiPublicGetV3PremiumIndex(this.Extend(params)))
 		PanicOnError(response)
 
 		//
@@ -1652,7 +1966,7 @@ func (this *AsterCore) FetchFundingRates(optionalArgs ...interface{}) <-chan int
  * @method
  * @name aster#fetchFundingIntervals
  * @description fetch the funding rate interval for multiple markets
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#get-funding-rate-config
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#get-funding-rate-config
  * @param {string[]} [symbols] list of unified market symbols
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object[]} a list of [funding rate structures]{@link https://docs.ccxt.com/#/?id=funding-rate-structure}
@@ -1667,13 +1981,13 @@ func (this *AsterCore) FetchFundingIntervals(optionalArgs ...interface{}) <-chan
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes16578 := (<-this.LoadMarkets())
-		PanicOnError(retRes16578)
+		retRes17858 := (<-this.LoadMarkets())
+		PanicOnError(retRes17858)
 		if IsTrue(!IsEqual(symbols, nil)) {
 			symbols = this.MarketSymbols(symbols)
 		}
 
-		response := (<-this.FapiPublicGetV1FundingInfo(params))
+		response := (<-this.FapiPublicGetV3FundingInfo(params))
 		PanicOnError(response)
 
 		//
@@ -1694,29 +2008,95 @@ func (this *AsterCore) FetchFundingIntervals(optionalArgs ...interface{}) <-chan
 	}()
 	return ch
 }
-func (this *AsterCore) ParseBalance(response interface{}) interface{} {
-	var result interface{} = map[string]interface{}{
-		"info": response,
+
+/**
+ * @method
+ * @name aster#fetchFundingRateHistory
+ * @description fetches historical funding rate prices
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/market-data/#get-funding-rate-history
+ * @param {string} symbol unified symbol of the market to fetch the funding rate history for
+ * @param {int} [since] timestamp in ms of the earliest funding rate to fetch
+ * @param {int} [limit] the maximum amount of [funding rate structures]{@link https://docs.ccxt.com/#/?id=funding-rate-history-structure} to fetch
+ * @param {object} [params] extra parameters specific to the exchange API endpoint
+ * @param {int} [params.until] timestamp in ms of the latest funding rate
+ * @returns {object[]} a list of [funding rate structures]{@link https://docs.ccxt.com/#/?id=funding-rate-history-structure}
+ */
+func (this *AsterCore) FetchFundingRateHistory(optionalArgs ...interface{}) <-chan interface{} {
+	ch := make(chan interface{})
+	go func() interface{} {
+		defer close(ch)
+		defer ReturnPanicError(ch)
+		symbol := GetArg(optionalArgs, 0, nil)
+		_ = symbol
+		since := GetArg(optionalArgs, 1, nil)
+		_ = since
+		limit := GetArg(optionalArgs, 2, nil)
+		_ = limit
+		params := GetArg(optionalArgs, 3, map[string]interface{}{})
+		_ = params
+
+		retRes18188 := (<-this.LoadMarkets())
+		PanicOnError(retRes18188)
+		var request interface{} = map[string]interface{}{}
+		var market interface{} = nil
+		if IsTrue(!IsEqual(symbol, nil)) {
+			market = this.Market(symbol)
+			AddElementToObject(request, "symbol", GetValue(market, "id"))
+		}
+		if IsTrue(!IsEqual(since, nil)) {
+			AddElementToObject(request, "startTime", since)
+		}
+		if IsTrue(!IsEqual(limit, nil)) {
+			AddElementToObject(request, "limit", mathMin(limit, 1000))
+		}
+		requestparamsVariable := this.HandleUntilOption("endTime", request, params)
+		request = GetValue(requestparamsVariable, 0)
+		params = GetValue(requestparamsVariable, 1)
+
+		response := (<-this.FapiPublicGetV3FundingRate(this.Extend(request, params)))
+		PanicOnError(response)
+
+		//
+		//     [
+		//         {
+		//             "symbol": "BTCUSDT",
+		//             "fundingTime": 1747209600000,
+		//             "fundingRate": "0.00010000"
+		//         }
+		//     ]
+		//
+		ch <- this.ParseFundingRateHistories(response, market)
+		return nil
+
+	}()
+	return ch
+}
+func (this *AsterCore) ParseFundingRateHistory(contract interface{}, optionalArgs ...interface{}) interface{} {
+	//
+	//     {
+	//         "symbol": "BTCUSDT",
+	//         "fundingRate": "0.00063521",
+	//         "fundingTime": "1621267200000",
+	//     }
+	//
+	market := GetArg(optionalArgs, 0, nil)
+	_ = market
+	var timestamp interface{} = this.SafeInteger(contract, "fundingTime")
+	return map[string]interface{}{
+		"info":        contract,
+		"symbol":      this.SafeSymbol(this.SafeString(contract, "symbol"), nil, nil, "swap"),
+		"fundingRate": this.SafeNumber(contract, "fundingRate"),
+		"timestamp":   timestamp,
+		"datetime":    this.Iso8601(timestamp),
 	}
-	for i := 0; IsLessThan(i, GetArrayLength(response)); i++ {
-		var balance interface{} = GetValue(response, i)
-		var currencyId interface{} = this.SafeString(balance, "asset")
-		var code interface{} = this.SafeCurrencyCode(currencyId)
-		var account interface{} = this.Account()
-		AddElementToObject(account, "free", this.SafeString2(balance, "free", "maxWithdrawAmount"))
-		AddElementToObject(account, "used", this.SafeString(balance, "locked"))
-		AddElementToObject(account, "total", this.SafeString(balance, "walletBalance"))
-		AddElementToObject(result, code, account)
-	}
-	return this.SafeBalance(result)
 }
 
 /**
  * @method
  * @name aster#fetchBalance
  * @description query for balance and get the amount of funds available for trading or funds locked in orders
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#account-information-v4-user_data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#account-information-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#account-information-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#futures-account-balance-v3-user_data
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @param {string} [params.subType] "linear" or "inverse"
  * @param {string} [params.type] 'spot', 'option', use params["subType"] for swap and future markets
@@ -1729,28 +2109,24 @@ func (this *AsterCore) FetchBalance(optionalArgs ...interface{}) <-chan interfac
 		defer ReturnPanicError(ch)
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
-		var typeVar interface{} = nil
-		typeVarparamsVariable := this.HandleMarketTypeAndParams("fetchBalance", nil, params)
-		typeVar = GetValue(typeVarparamsVariable, 0)
-		params = GetValue(typeVarparamsVariable, 1)
-		var subType interface{} = nil
-		subTypeparamsVariable := this.HandleSubTypeAndParams("fetchBalance", nil, params)
-		subType = GetValue(subTypeparamsVariable, 0)
-		params = GetValue(subTypeparamsVariable, 1)
+
+		retRes18758 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes18758)
+		var marketType interface{} = nil
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchBalance", nil, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
 		var response interface{} = nil
 		var data interface{} = nil
-		if IsTrue(this.IsLinear(typeVar, subType)) {
+		if IsTrue(IsEqual(marketType, "swap")) {
 
-			response = (<-this.FapiPrivateGetV4Account(params))
-			PanicOnError(response)
-			data = this.SafeList(response, "assets", []interface{}{})
-		} else if IsTrue(IsEqual(typeVar, "spot")) {
+			data = (<-this.FapiPrivateGetV3Balance(params))
+			PanicOnError(data)
+		} else if IsTrue(IsEqual(marketType, "spot")) {
 
-			response = (<-this.SapiPrivateGetV1Account(params))
+			response = (<-this.SapiPrivateGetV3Account(params))
 			PanicOnError(response)
 			data = this.SafeList(response, "balances", []interface{}{})
-		} else {
-			panic(NotSupported(Add(Add(Add(this.Id, " fetchBalance() does not support "), typeVar), " markets yet")))
 		}
 
 		ch <- this.ParseBalance(data)
@@ -1759,12 +2135,28 @@ func (this *AsterCore) FetchBalance(optionalArgs ...interface{}) <-chan interfac
 	}()
 	return ch
 }
+func (this *AsterCore) ParseBalance(response interface{}) interface{} {
+	var result interface{} = map[string]interface{}{
+		"info": response,
+	}
+	for i := 0; IsLessThan(i, GetArrayLength(response)); i++ {
+		var balance interface{} = GetValue(response, i)
+		var currencyId interface{} = this.SafeString(balance, "asset")
+		var code interface{} = this.SafeCurrencyCode(currencyId)
+		var account interface{} = this.Account()
+		AddElementToObject(account, "free", this.SafeString2(balance, "free", "availableBalance"))
+		AddElementToObject(account, "used", this.SafeString(balance, "locked"))
+		AddElementToObject(account, "total", this.SafeString(balance, "balance"))
+		AddElementToObject(result, code, account)
+	}
+	return this.SafeBalance(result)
+}
 
 /**
  * @method
  * @name aster#setMarginMode
  * @description set margin mode to 'cross' or 'isolated'
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#change-margin-type-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#change-margin-type-trade
  * @param {string} marginMode 'cross' or 'isolated'
  * @param {string} symbol unified market symbol
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -1790,24 +2182,19 @@ func (this *AsterCore) SetMarginMode(marginMode interface{}, optionalArgs ...int
 			panic(BadRequest(Add(this.Id, " marginMode must be either isolated or cross")))
 		}
 
-		retRes17728 := (<-this.LoadMarkets())
-		PanicOnError(retRes17728)
+		retRes19488 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes19488)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol":     GetValue(market, "id"),
 			"marginType": marginMode,
 		}
 
-		response := (<-this.FapiPrivatePostV1MarginType(this.Extend(request, params)))
+		response := (<-this.FapiPrivatePostV3MarginType(this.Extend(request, params)))
 		PanicOnError(response)
 
 		//
-		//     {
-		//         "amount": 100.0,
-		//         "code": 200,
-		//         "msg": "Successfully modify position margin.",
-		//         "type": 1
-		//     }
+		//     { "code": 200,"msg": "success" }
 		//
 		ch <- response
 		return nil
@@ -1820,7 +2207,7 @@ func (this *AsterCore) SetMarginMode(marginMode interface{}, optionalArgs ...int
  * @method
  * @name aster#fetchPositionMode
  * @description fetchs the position mode, hedged or one way, hedged for aster is set identically for all linear markets or all inverse markets
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#get-current-position-modeuser_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#get-current-position-modeuser_data
  * @param {string} symbol unified symbol of the market to fetch the order book for
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} an object detailing whether the market is in hedged or one-way mode
@@ -1835,18 +2222,17 @@ func (this *AsterCore) FetchPositionMode(optionalArgs ...interface{}) <-chan int
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		response := (<-this.FapiPrivateGetV1PositionSideDual(params))
+		response := (<-this.FapiPrivateGetV3PositionSideDual(params))
 		PanicOnError(response)
+
 		//
 		//     {
 		//         "dualSidePosition": true // "true": Hedge Mode; "false": One-way Mode
 		//     }
 		//
-		var dualSidePosition interface{} = this.SafeBool(response, "dualSidePosition")
-
 		ch <- map[string]interface{}{
 			"info":   response,
-			"hedged": (IsEqual(dualSidePosition, true)),
+			"hedged": this.SafeBool(response, "dualSidePosition"),
 		}
 		return nil
 
@@ -1858,7 +2244,7 @@ func (this *AsterCore) FetchPositionMode(optionalArgs ...interface{}) <-chan int
  * @method
  * @name aster#setPositionMode
  * @description set hedged to true or false for a market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#change-position-modetrade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#change-position-modetrade
  * @param {bool} hedged set to true to use dualSidePosition
  * @param {string} symbol not used by bingx setPositionMode ()
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -1873,19 +2259,20 @@ func (this *AsterCore) SetPositionMode(hedged interface{}, optionalArgs ...inter
 		_ = symbol
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
+		var strValue interface{} = Ternary(IsTrue(hedged), "true", "false")
 		var request interface{} = map[string]interface{}{
-			"dualSidePosition": hedged,
+			"dualSidePosition": strValue,
 		}
 
-		retRes183315 := (<-this.FapiPrivatePostV1PositionSideDual(this.Extend(request, params)))
-		PanicOnError(retRes183315)
+		retRes200415 := (<-this.FapiPrivatePostV3PositionSideDual(this.Extend(request, params)))
+		PanicOnError(retRes200415)
 		//
 		//     {
 		//         "code": 200,
 		//         "msg": "success"
 		//     }
 		//
-		ch <- retRes183315
+		ch <- retRes200415
 		return nil
 
 	}()
@@ -1911,8 +2298,8 @@ func (this *AsterCore) ParseTradingFee(fee interface{}, optionalArgs ...interfac
  * @method
  * @name aster#fetchTradingFee
  * @description fetch the trading fees for a market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#get-symbol-fees
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#user-commission-rate-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/market-data/#get-symbol-fees
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#user-commission-rate-user_data
  * @param {string} symbol unified market symbol
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} a [fee structure]{@link https://docs.ccxt.com/#/?id=fee-structure}
@@ -1925,8 +2312,8 @@ func (this *AsterCore) FetchTradingFee(symbol interface{}, optionalArgs ...inter
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
 
-		retRes18618 := (<-this.LoadMarkets())
-		PanicOnError(retRes18618)
+		retRes20328 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes20328)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
@@ -1934,14 +2321,16 @@ func (this *AsterCore) FetchTradingFee(symbol interface{}, optionalArgs ...inter
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPrivateGetV1CommissionRate(this.Extend(request, params)))
+			response = (<-this.FapiPrivateGetV3CommissionRate(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivateGetV1CommissionRate(this.Extend(request, params)))
+			response = (<-this.SapiPrivateGetV3CommissionRate(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
+		//
+		// both SPOT & SWAP has same format
 		//
 		//     {
 		//         "symbol": "BTCUSDT",
@@ -2006,25 +2395,30 @@ func (this *AsterCore) ParseOrder(order interface{}, optionalArgs ...interface{}
 	//         "workingType": "CONTRACT_PRICE",
 	//         "priceProtect": false
 	//     }
+	//
 	// spot
-	//     {
-	//         "orderId": 38,
-	//         "symbol": "ADA25SLP25",
-	//         "status": "FILLED",
-	//         "clientOrderId": "afMd4GBQyHkHpGWdiy34Li",
-	//         "price": "20",
-	//         "avgPrice": "12.0000000000000000",
-	//         "origQty": "10",
-	//         "executedQty": "10",
-	//         "cumQuote": "120",
-	//         "timeInForce": "GTC",
-	//         "type": "LIMIT",
-	//         "side": "BUY",
-	//         "stopPrice": "0",
-	//         "origType": "LIMIT",
-	//         "time": 1649913186270,
-	//         "updateTime": 1649913186297
-	//     }
+	//
+	//   fetchOrders, fetchOpenOrders, fetchOpenOrder, fetchOrder, cancelOrder, createOrder
+	//
+	//        {
+	//            "orderId": "417594542",
+	//            "symbol": "ETHUSDT",
+	//            "status": "FILLED",
+	//            "clientOrderId": "web_qnvMAhOJsiVbSyu0BdKG",
+	//            "price": "0",                     // value set for unfilled
+	//            "avgPrice": "2351.580000",        // value zero for unfilled
+	//            "origQty": "0.0054",
+	//            "executedQty": "0.0054",          // value zero for unfilled
+	//            "cumQuote": "12.69853200",        // value zero for unfilled
+	//            "timeInForce": "GTC",
+	//            "type": "MARKET",
+	//            "side": "SELL",
+	//            "stopPrice": "0",
+	//            "origType": "MARKET",
+	//            "time": "1776274219582",
+	//            "updateTime": "1776274219609",
+	//            "orderListId": "-1"
+	//        }
 	//
 	market := GetArg(optionalArgs, 0, nil)
 	_ = market
@@ -2033,7 +2427,6 @@ func (this *AsterCore) ParseOrder(order interface{}, optionalArgs ...interface{}
 	market = this.SafeMarket(marketId, market)
 	var side interface{} = this.SafeStringLower(order, "side")
 	var timestamp interface{} = this.SafeInteger(order, "time")
-	var lastTradeTimestamp interface{} = this.SafeInteger(order, "updateTime")
 	var statusId interface{} = this.SafeStringUpper(order, "status")
 	var rawType interface{} = this.SafeStringUpper(order, "type")
 	var stopPriceString interface{} = this.SafeString(order, "stopPrice")
@@ -2045,7 +2438,7 @@ func (this *AsterCore) ParseOrder(order interface{}, optionalArgs ...interface{}
 		"symbol":              this.SafeSymbol(marketId, market),
 		"timestamp":           timestamp,
 		"datetime":            this.Iso8601(timestamp),
-		"lastTradeTimestamp":  lastTradeTimestamp,
+		"lastTradeTimestamp":  nil,
 		"lastUpdateTimestamp": this.SafeInteger(order, "updateTime"),
 		"type":                this.ParseOrderType(rawType),
 		"timeInForce":         this.SafeString(order, "timeInForce"),
@@ -2069,8 +2462,8 @@ func (this *AsterCore) ParseOrder(order interface{}, optionalArgs ...interface{}
  * @method
  * @name aster#fetchOrder
  * @description fetches information on an order made by the user
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#query-order-user_data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#query-order-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#query-order-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#query-order-user_data
  * @param {string} id the order id
  * @param {string} symbol unified symbol of the market the order was made in
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -2090,8 +2483,8 @@ func (this *AsterCore) FetchOrder(id interface{}, optionalArgs ...interface{}) <
 			panic(ArgumentsRequired(Add(this.Id, " fetchOrder() requires a symbol argument")))
 		}
 
-		retRes20088 := (<-this.LoadMarkets())
-		PanicOnError(retRes20088)
+		retRes21858 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes21858)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
@@ -2106,14 +2499,43 @@ func (this *AsterCore) FetchOrder(id interface{}, optionalArgs ...interface{}) <
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPrivateGetV1Order(this.Extend(request, params)))
+			response = (<-this.FapiPrivateGetV3Order(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivateGetV1Order(this.Extend(request, params)))
+			response = (<-this.SapiPrivateGetV3Order(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
+		//
+		// SPOT & SWAP has similar formats
+		//
+		//    {
+		//        "orderId": "17338441758",
+		//        "symbol": "ETHUSDT",
+		//        "status": "FILLED",
+		//        "clientOrderId": "727Wt3TIUgkUCxXp20E543",
+		//        "price": "0",
+		//        "avgPrice": "2304.56000",
+		//        "origQty": "0.010",
+		//        "executedQty": "0.010",
+		//        "cumQuote": "23.04560",
+		//        "timeInForce": "GTC",
+		//        "type": "MARKET",
+		//        "side": "BUY",
+		//        "stopPrice": "0",
+		//        "origType": "MARKET",
+		//        "time": "1776800300736",
+		//        "updateTime": "1776800300700",
+		//        "orderListId": "-1"                                   // only in SPOT
+		//        "positionSide": "BOTH",                               // only in SWAP
+		//        "reduceOnly": false,                                  // only in SWAP
+		//        "closePosition": false,                               // only in SWAP
+		//        "workingType": "CONTRACT_PRICE",                      // only in SWAP
+		//        "priceProtect": false,                                // only in SWAP
+		//        "newChainData": { "hash": "0x46aed5...67bdbec8ba" }   // only in SWAP
+		//    }
+		//
 		ch <- this.ParseOrder(response, market)
 		return nil
 
@@ -2125,7 +2547,8 @@ func (this *AsterCore) FetchOrder(id interface{}, optionalArgs ...interface{}) <
  * @method
  * @name aster#fetchOpenOrder
  * @description fetch an open order by the id
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#query-current-open-order-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#query-current-open-order-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#query-current-open-order-user_data
  * @param {string} id order id
  * @param {string} symbol unified market symbol
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -2144,8 +2567,8 @@ func (this *AsterCore) FetchOpenOrder(id interface{}, optionalArgs ...interface{
 			panic(ArgumentsRequired(Add(this.Id, " fetchOpenOrder() requires a symbol argument")))
 		}
 
-		retRes20438 := (<-this.LoadMarkets())
-		PanicOnError(retRes20438)
+		retRes22508 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes22508)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
@@ -2157,10 +2580,46 @@ func (this *AsterCore) FetchOpenOrder(id interface{}, optionalArgs ...interface{
 		} else {
 			AddElementToObject(request, "orderId", id)
 		}
+		var response interface{} = nil
+		if IsTrue(GetValue(market, "spot")) {
 
-		response := (<-this.FapiPrivateGetV1OpenOrder(this.Extend(request, params)))
-		PanicOnError(response)
+			response = (<-this.SapiPrivateGetV3OpenOrder(this.Extend(request, params)))
+			PanicOnError(response)
+		} else {
 
+			response = (<-this.FapiPrivateGetV3OpenOrder(this.Extend(request, params)))
+			PanicOnError(response)
+		}
+
+		//
+		// SPOT & SWAP has similar formats
+		//
+		//    {
+		//        "orderId": "17338441758",
+		//        "symbol": "ETHUSDT",
+		//        "status": "FILLED",
+		//        "clientOrderId": "727Wt3TIUgkUCxXp20E543",
+		//        "price": "0",
+		//        "avgPrice": "2304.56000",
+		//        "origQty": "0.010",
+		//        "executedQty": "0.010",
+		//        "cumQuote": "23.04560",
+		//        "timeInForce": "GTC",
+		//        "type": "MARKET",
+		//        "side": "BUY",
+		//        "stopPrice": "0",
+		//        "origType": "MARKET",
+		//        "time": "1776800300736",
+		//        "updateTime": "1776800300700",
+		//        "orderListId": "-1"                                   // only in SPOT
+		//        "positionSide": "BOTH",                               // only in SWAP
+		//        "reduceOnly": false,                                  // only in SWAP
+		//        "closePosition": false,                               // only in SWAP
+		//        "workingType": "CONTRACT_PRICE",                      // only in SWAP
+		//        "priceProtect": false,                                // only in SWAP
+		//        "newChainData": { "hash": "0x46aed5...67bdbec8ba" }   // only in SWAP
+		//    }
+		//
 		ch <- this.ParseOrder(response, market)
 		return nil
 
@@ -2172,8 +2631,8 @@ func (this *AsterCore) FetchOpenOrder(id interface{}, optionalArgs ...interface{
  * @method
  * @name aster#fetchOrders
  * @description fetches information on multiple orders made by the user
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#query-all-orders-user_data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#all-orders-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#query-all-orders-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#all-orders-user_data
  * @param {string} symbol unified market symbol of the market orders were made in
  * @param {int} [since] the earliest time in ms to fetch orders for
  * @param {int} [limit] the maximum number of order structures to retrieve
@@ -2194,24 +2653,21 @@ func (this *AsterCore) FetchOrders(optionalArgs ...interface{}) <-chan interface
 		_ = limit
 		params := GetArg(optionalArgs, 3, map[string]interface{}{})
 		_ = params
-
-		retRes20738 := (<-this.LoadMarkets())
-		PanicOnError(retRes20738)
 		if IsTrue(IsEqual(symbol, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " fetchOrders() requires a symbol argument")))
 		}
+
+		retRes23178 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes23178)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
 		}
+		if IsTrue(!IsEqual(limit, nil)) {
+			AddElementToObject(request, "limit", mathMin(limit, 1000))
+		}
 		if IsTrue(!IsEqual(since, nil)) {
 			AddElementToObject(request, "startTime", since)
-		}
-		if IsTrue(!IsEqual(limit, nil)) {
-			if IsTrue(IsGreaterThan(limit, 1000)) {
-				limit = 1000 // Default 500; max 1000
-			}
-			AddElementToObject(request, "limit", limit)
 		}
 		requestparamsVariable := this.HandleUntilOption("endTime", request, params)
 		request = GetValue(requestparamsVariable, 0)
@@ -2219,14 +2675,44 @@ func (this *AsterCore) FetchOrders(optionalArgs ...interface{}) <-chan interface
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPrivateGetV1AllOrders(this.Extend(request, params)))
+			response = (<-this.FapiPrivateGetV3AllOrders(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivateGetV1AllOrders(this.Extend(request, params)))
+			response = (<-this.SapiPrivateGetV3AllOrders(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
+		//
+		// SPOT & SWAP has similar responses
+		//
+		//    [
+		//        {
+		//            "orderId": "417594542",
+		//            "symbol": "ETHUSDT",
+		//            "status": "FILLED",
+		//            "clientOrderId": "web_qnvMAhOJsiVbSyu0BdKG",
+		//            "price": "0",                     // value set for unfilled
+		//            "avgPrice": "2351.580000",        // value zero for unfilled
+		//            "origQty": "0.0054",
+		//            "executedQty": "0.0054",          // value zero for unfilled
+		//            "cumQuote": "12.69853200",        // value zero for unfilled
+		//            "timeInForce": "GTC",
+		//            "type": "MARKET",
+		//            "side": "SELL",
+		//            "stopPrice": "0",
+		//            "origType": "MARKET",
+		//            "time": "1776274219582",
+		//            "updateTime": "1776274219609",
+		//            "orderListId": "-1",                                     // only in SPOT
+		//            "reduceOnly": false,                                     // only in PERP
+		//            "closePosition": false,                                  // only in PERP
+		//            "positionSide": "BOTH",                                  // only in PERP
+		//            "workingType": "CONTRACT_PRICE",                         // only in PERP
+		//            "priceProtect": false,                                   // only in PERP
+		//            "newChainData": { "hash": "0xe17d3d5b...dbca8b01" }      // only in PERP
+		//        }, ...
+		//
 		ch <- this.ParseOrders(response, market, since, limit)
 		return nil
 
@@ -2238,8 +2724,8 @@ func (this *AsterCore) FetchOrders(optionalArgs ...interface{}) <-chan interface
  * @method
  * @name aster#fetchOpenOrders
  * @description fetch all unfilled currently open orders
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#current-open-orders-user_data
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#current-all-open-orders-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#current-open-orders-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#current-all-open-orders-user_data
  * @param {string} symbol unified market symbol
  * @param {int} [since] the earliest time in ms to fetch open orders for
  * @param {int} [limit] the maximum number of  open orders structures to retrieve
@@ -2262,63 +2748,71 @@ func (this *AsterCore) FetchOpenOrders(optionalArgs ...interface{}) <-chan inter
 		params := GetArg(optionalArgs, 3, map[string]interface{}{})
 		_ = params
 
-		retRes21158 := (<-this.LoadMarkets())
-		PanicOnError(retRes21158)
+		retRes23838 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes23838)
 		var request interface{} = map[string]interface{}{}
 		var market interface{} = nil
-		var typeVar interface{} = nil
-		var subType interface{} = nil
-		subTypeparamsVariable := this.HandleSubTypeAndParams("fetchOpenOrders", market, params)
-		subType = GetValue(subTypeparamsVariable, 0)
-		params = GetValue(subTypeparamsVariable, 1)
+		var marketType interface{} = nil
 		if IsTrue(!IsEqual(symbol, nil)) {
 			market = this.Market(symbol)
 			AddElementToObject(request, "symbol", GetValue(market, "id"))
 		}
-		typeVarparamsVariable := this.HandleMarketTypeAndParams("fetchOpenOrders", market, params)
-		typeVar = GetValue(typeVarparamsVariable, 0)
-		params = GetValue(typeVarparamsVariable, 1)
-		var response interface{} = nil
-		if IsTrue(this.IsLinear(typeVar, subType)) {
-
-			response = (<-this.FapiPrivateGetV1OpenOrders(this.Extend(request, params)))
-			PanicOnError(response)
-		} else if IsTrue(IsEqual(typeVar, "spot")) {
-
-			response = (<-this.SapiPrivateGetV1OpenOrders(this.Extend(request, params)))
-			PanicOnError(response)
+		if IsTrue(IsEqual(symbol, nil)) {
+			if IsTrue(GetValue(GetValue(this.Options, "fetchOpenOrders"), "warnIfNoSymbol")) {
+				panic(ExchangeError(Add(Add(Add(this.Id, " fetchOpenOrders(): WARNING - this method without providing \"symbol\" argument uses 40 times more rate-limit quota. If you acknowledge this warning, set "), this.Id), ".options[\"fetchOpenOrders\"][\"warnIfNoSymbol\"] = false to suppress this warning message.")))
+			}
 		} else {
-			panic(NotSupported(Add(Add(Add(this.Id, " fetchOpenOrders() does not support "), typeVar), " markets yet")))
+			market = this.Market(symbol)
+			AddElementToObject(request, "symbol", GetValue(market, "id"))
+		}
+		marketTypeparamsVariable := this.HandleMarketTypeAndParams("fetchOpenOrders", market, params)
+		marketType = GetValue(marketTypeparamsVariable, 0)
+		params = GetValue(marketTypeparamsVariable, 1)
+		var subType interface{} = nil
+		subTypeparamsVariable := this.HandleSubTypeAndParams("fetchOpenOrders", market, params)
+		subType = GetValue(subTypeparamsVariable, 0)
+		params = GetValue(subTypeparamsVariable, 1)
+		var response interface{} = nil
+		if IsTrue(this.IsLinear(marketType, subType)) {
+
+			response = (<-this.FapiPrivateGetV3OpenOrders(this.Extend(request, params)))
+			PanicOnError(response)
+		} else if IsTrue(IsEqual(marketType, "spot")) {
+
+			response = (<-this.SapiPrivateGetV3OpenOrders(this.Extend(request, params)))
+			PanicOnError(response)
 		}
 
 		//
-		//     [
-		//         {
-		//             "avgPrice": "0.00000",
-		//             "clientOrderId": "abc",
-		//             "cumQuote": "0",
-		//             "executedQty": "0",
-		//             "orderId": 1917641,
-		//             "origQty": "0.40",
-		//             "origType": "TRAILING_STOP_MARKET",
-		//             "price": "0",
-		//             "reduceOnly": false,
-		//             "side": "BUY",
-		//             "positionSide": "SHORT",
-		//             "status": "NEW",
-		//             "stopPrice": "9300",
-		//             "closePosition": false,
-		//             "symbol": "BTCUSDT",
-		//             "time": 1579276756075,
-		//             "timeInForce": "GTC",
-		//             "type": "TRAILING_STOP_MARKET",
-		//             "activatePrice": "9020",
-		//             "priceRate": "0.3",
-		//             "updateTime": 1579276756075,
-		//             "workingType": "CONTRACT_PRICE",
-		//             "priceProtect": false
-		//         }
-		//     ]
+		// SPOT & SWAP has similar responses
+		//
+		//    [
+		//        {
+		//            "orderId": "17338239315",
+		//            "symbol": "ETHUSDT",
+		//            "status": "NEW",
+		//            "clientOrderId": "web_AD_mbhgla7k15gptmwyr_x",
+		//            "price": "2216.62",
+		//            "avgPrice": "0",
+		//            "origQty": "0.012",
+		//            "executedQty": "0",
+		//            "cumQuote": "0",
+		//            "timeInForce": "GTC",
+		//            "type": "LIMIT",
+		//            "side": "BUY",
+		//            "stopPrice": "0",
+		//            "origType": "LIMIT",
+		//            "time": "1776798208476",
+		//            "updateTime": "1776798208450",
+		//            "orderListId": "-1"                                   // only in SPOT
+		//            "reduceOnly": false,                                  // only in PERP
+		//            "closePosition": false,                               // only in PERP
+		//            "positionSide": "BOTH",                               // only in PERP
+		//            "workingType": "CONTRACT_PRICE",                      // only in PERP
+		//            "priceProtect": false,                                // only in PERP
+		//            "newChainData": { "hash": "0xf8a496....a7fd5" }       // only in PERP
+		//        }
+		//    ]
 		//
 		ch <- this.ParseOrders(response, market, since, limit)
 		return nil
@@ -2331,8 +2825,8 @@ func (this *AsterCore) FetchOpenOrders(optionalArgs ...interface{}) <-chan inter
  * @method
  * @name aster#createOrder
  * @description create a trade order
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#place-order-trade
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#new-order--trade
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#place-order-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#new-order-trade
  * @param {string} symbol unified symbol of the market to create an order in
  * @param {string} type 'market' or 'limit' or 'STOP' or 'STOP_MARKET' or 'TAKE_PROFIT' or 'TAKE_PROFIT_MARKET' or 'TRAILING_STOP_MARKET'
  * @param {string} side 'buy' or 'sell'
@@ -2359,29 +2853,51 @@ func (this *AsterCore) CreateOrder(symbol interface{}, typeVar interface{}, side
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes21898 := (<-this.LoadMarkets())
-		PanicOnError(retRes21898)
+		retRes24658 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes24658)
 		var market interface{} = this.Market(symbol)
-		var test interface{} = this.SafeBool(params, "test", false)
-		params = this.Omit(params, "test")
 		var request interface{} = this.CreateOrderRequest(symbol, typeVar, side, amount, price, params)
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
-			if IsTrue(test) {
 
-				response = (<-this.FapiPrivatePostV1OrderTest(request))
-				PanicOnError(response)
-			} else {
-
-				response = (<-this.FapiPrivatePostV1Order(request))
-				PanicOnError(response)
-			}
+			response = (<-this.FapiPrivatePostV3Order(request))
+			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivatePostV1Order(request))
+			response = (<-this.SapiPrivatePostV3Order(request))
 			PanicOnError(response)
 		}
 
+		//
+		// SPOT & SWAP has similar responses
+		//
+		//    {
+		//        "orderId": "17338441758",
+		//        "symbol": "ETHUSDT",
+		//        "status": "NEW",
+		//        "clientOrderId": "727Wt3TIUgkUCxXp20E543",
+		//        "price": "0",
+		//        "avgPrice": "0.00000",
+		//        "origQty": "0.010",
+		//        "executedQty": "0",
+		//        "cumQty": "0",
+		//        "cumQuote": "0",
+		//        "timeInForce": "GTC",
+		//        "type": "MARKET",
+		//        "side": "BUY",
+		//        "stopPrice": "0",
+		//        "origType": "MARKET",
+		//        "time": "1776800300700",
+		//        "updateTime": "1776800300700",
+		//        "orderListId": "-1",                              // only in SPOT
+		//        "workingType": "CONTRACT_PRICE",                  // only in PERP
+		//        "positionSide": "BOTH",                           // only in PERP
+		//        "reduceOnly": false,                              // only in PERP
+		//        "closePosition": false,                           // only in PERP
+		//        "priceProtect": false,                            // only in PERP
+		//        "newChainData": { "hash": "0x46ae....c8ba" }      // only in PERP
+		//    }
+		//
 		ch <- this.ParseOrder(response, market)
 		return nil
 
@@ -2393,7 +2909,7 @@ func (this *AsterCore) CreateOrder(symbol interface{}, typeVar interface{}, side
  * @method
  * @name aster#createOrders
  * @description create a list of trade orders
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#place-multiple-orders--trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#new-order-trade
  * @param {Array} orders list of orders to create, each object should contain the parameters required by createOrder, namely symbol, type, side, amount, price and params
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} an [order structure]{@link https://docs.ccxt.com/#/?id=order-structure}
@@ -2406,8 +2922,8 @@ func (this *AsterCore) CreateOrders(orders interface{}, optionalArgs ...interfac
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
 
-		retRes22178 := (<-this.LoadMarkets())
-		PanicOnError(retRes22178)
+		retRes25178 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes25178)
 		var ordersRequests interface{} = []interface{}{}
 		var orderSymbols interface{} = []interface{}{}
 		if IsTrue(IsGreaterThan(GetArrayLength(orders), 5)) {
@@ -2416,6 +2932,8 @@ func (this *AsterCore) CreateOrders(orders interface{}, optionalArgs ...interfac
 		for i := 0; IsLessThan(i, GetArrayLength(orders)); i++ {
 			var rawOrder interface{} = GetValue(orders, i)
 			var marketId interface{} = this.SafeString(rawOrder, "symbol")
+			var currentMarket interface{} = this.Market(marketId)
+			AppendToArray(&orderSymbols, GetValue(currentMarket, "symbol"))
 			var typeVar interface{} = this.SafeString(rawOrder, "type")
 			var side interface{} = this.SafeString(rawOrder, "side")
 			var amount interface{} = this.SafeValue(rawOrder, "amount")
@@ -2433,9 +2951,39 @@ func (this *AsterCore) CreateOrders(orders interface{}, optionalArgs ...interfac
 			"batchOrders": ordersRequests,
 		}
 
-		response := (<-this.FapiPrivatePostV1BatchOrders(this.Extend(request, params)))
+		response := (<-this.FapiPrivatePostV3BatchOrders(this.Extend(request, params)))
 		PanicOnError(response)
 
+		//
+		//    [
+		//        {
+		//            "orderId": 17338699853,
+		//            "symbol": "ETHUSDT",
+		//            "status": "NEW",
+		//            "clientOrderId": "NxMWPvOEyiF6TWh5UB8BQf0",
+		//            "price": "0",
+		//            "avgPrice": "0.00000",
+		//            "origQty": "0.010",
+		//            "executedQty": "0",
+		//            "cumQty": "0",
+		//            "cumQuote": "0",
+		//            "timeInForce": "GTC",
+		//            "type": "MARKET",
+		//            "reduceOnly": false,
+		//            "closePosition": false,
+		//            "side": "BUY",
+		//            "positionSide": "BOTH",
+		//            "stopPrice": "0",
+		//            "workingType": "CONTRACT_PRICE",
+		//            "priceProtect": false,
+		//            "origType": "MARKET",
+		//            "updateTime": 1776802276050,
+		//            "newChainData": {
+		//                "hash": "0x5e569d9794cf726f72c2d000d401d20315e78e4df7b58023a489864624527dfe"
+		//            }
+		//        }
+		//    ]
+		//
 		ch <- this.ParseOrders(response)
 		return nil
 
@@ -2604,6 +3152,10 @@ func (this *AsterCore) CreateOrderRequest(symbol interface{}, typeVar interface{
 		AddElementToObject(request, "timeInForce", this.SafeString(this.Options, "defaultTimeInForce")) // 'GTC' = Good To Cancel (default), 'IOC' = Immediate Or Cancel
 	}
 	var requestParams interface{} = this.Omit(params, []interface{}{"newClientOrderId", "clientOrderId", "stopPrice", "triggerPrice", "trailingTriggerPrice", "trailingPercent", "trailingDelta", "stopPrice", "stopLossPrice", "takeProfitPrice"})
+	if IsTrue(IsTrue(this.SafeBool(this.Options, "builderFee")) && IsTrue(GetValue(market, "swap"))) {
+		AddElementToObject(request, "builder", this.SafeString(this.Options, "builder"))
+		AddElementToObject(request, "feeRate", this.SafeString(this.Options, "builderRate"))
+	}
 	return this.Extend(request, requestParams)
 }
 
@@ -2611,8 +3163,8 @@ func (this *AsterCore) CreateOrderRequest(symbol interface{}, typeVar interface{
  * @method
  * @name aster#cancelAllOrders
  * @description cancel all open orders in a market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#cancel-all-open-orders-trade
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#cancel-all-open-orders-trade
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#cancel-all-open-orders-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#current-all-open-orders-user_data
  * @param {string} symbol unified market symbol of the market to cancel orders in
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object[]} a list of [order structures]{@link https://docs.ccxt.com/#/?id=order-structure}
@@ -2630,8 +3182,8 @@ func (this *AsterCore) CancelAllOrders(optionalArgs ...interface{}) <-chan inter
 			panic(ArgumentsRequired(Add(this.Id, " cancelAllOrders() requires a symbol argument")))
 		}
 
-		retRes24218 := (<-this.LoadMarkets())
-		PanicOnError(retRes24218)
+		retRes27578 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes27578)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
@@ -2639,14 +3191,16 @@ func (this *AsterCore) CancelAllOrders(optionalArgs ...interface{}) <-chan inter
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPrivateDeleteV1AllOpenOrders(this.Extend(request, params)))
+			response = (<-this.FapiPrivateDeleteV3AllOpenOrders(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivateDeleteV1AllOpenOrders(this.Extend(request, params)))
+			response = (<-this.SapiPrivateDeleteV3AllOpenOrders(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
+		//
+		// SPOT & SWAP has same response
 		//
 		//     {
 		//         "code": "200",
@@ -2666,8 +3220,8 @@ func (this *AsterCore) CancelAllOrders(optionalArgs ...interface{}) <-chan inter
  * @method
  * @name aster#cancelOrder
  * @description cancels an open order
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#cancel-order-trade
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#cancel-order-trade
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#cancel-order-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#cancel-order-trade
  * @param {string} id order id
  * @param {string} symbol unified symbol of the market the order was made in
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -2686,27 +3240,27 @@ func (this *AsterCore) CancelOrder(id interface{}, optionalArgs ...interface{}) 
 			panic(ArgumentsRequired(Add(this.Id, " cancelOrder() requires a symbol argument")))
 		}
 
-		retRes24608 := (<-this.LoadMarkets())
-		PanicOnError(retRes24608)
+		retRes27988 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes27988)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
 		}
-		var clientOrderId interface{} = this.SafeStringN(params, []interface{}{"origClientOrderId", "clientOrderId", "newClientStrategyId"})
+		var clientOrderId interface{} = this.SafeStringN(params, []interface{}{"origClientOrderId", "clientOrderId"})
 		if IsTrue(!IsEqual(clientOrderId, nil)) {
 			AddElementToObject(request, "origClientOrderId", clientOrderId)
 		} else {
 			AddElementToObject(request, "orderId", id)
 		}
-		params = this.Omit(params, []interface{}{"origClientOrderId", "clientOrderId", "newClientStrategyId"})
+		params = this.Omit(params, []interface{}{"origClientOrderId", "clientOrderId"})
 		var response interface{} = nil
 		if IsTrue(GetValue(market, "swap")) {
 
-			response = (<-this.FapiPrivateDeleteV1Order(this.Extend(request, params)))
+			response = (<-this.FapiPrivateDeleteV3Order(this.Extend(request, params)))
 			PanicOnError(response)
 		} else {
 
-			response = (<-this.SapiPrivateDeleteV1Order(this.Extend(request, params)))
+			response = (<-this.SapiPrivateDeleteV3Order(this.Extend(request, params)))
 			PanicOnError(response)
 		}
 
@@ -2721,7 +3275,8 @@ func (this *AsterCore) CancelOrder(id interface{}, optionalArgs ...interface{}) 
  * @method
  * @name aster#cancelOrders
  * @description cancel multiple orders
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#cancel-multiple-orders-trade
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#cancel-all-open-orders-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#cancel-multiple-orders-trade
  * @param {string[]} ids order ids
  * @param {string} [symbol] unified market symbol
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -2744,12 +3299,9 @@ func (this *AsterCore) CancelOrders(ids interface{}, optionalArgs ...interface{}
 			panic(ArgumentsRequired(Add(this.Id, " cancelOrders() requires a symbol argument")))
 		}
 
-		retRes24998 := (<-this.LoadMarkets())
-		PanicOnError(retRes24998)
+		retRes28388 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes28388)
 		var market interface{} = this.Market(symbol)
-		if IsTrue(GetValue(market, "spot")) {
-			panic(NotSupported(Add(Add(Add(this.Id, " cancelOrders() does not support "), GetValue(market, "type")), " orders")))
-		}
 		var request interface{} = map[string]interface{}{
 			"symbol": GetValue(market, "id"),
 		}
@@ -2759,42 +3311,17 @@ func (this *AsterCore) CancelOrders(ids interface{}, optionalArgs ...interface{}
 		} else {
 			AddElementToObject(request, "orderIdList", ids)
 		}
+		var response interface{} = nil
+		if IsTrue(GetValue(market, "swap")) {
 
-		response := (<-this.FapiPrivateDeleteV1BatchOrders(this.Extend(request, params)))
-		PanicOnError(response)
+			response = (<-this.FapiPrivateDeleteV3BatchOrders(this.Extend(request, params)))
+			PanicOnError(response)
+		} else {
 
-		//
-		//    [
-		//        {
-		//            "clientOrderId": "myOrder1",
-		//            "cumQty": "0",
-		//            "cumQuote": "0",
-		//            "executedQty": "0",
-		//            "orderId": 283194212,
-		//            "origQty": "11",
-		//            "origType": "TRAILING_STOP_MARKET",
-		//            "price": "0",
-		//            "reduceOnly": false,
-		//            "side": "BUY",
-		//            "positionSide": "SHORT",
-		//            "status": "CANCELED",
-		//            "stopPrice": "9300",                  // please ignore when order type is TRAILING_STOP_MARKET
-		//            "closePosition": false,               // if Close-All
-		//            "symbol": "BTCUSDT",
-		//            "timeInForce": "GTC",
-		//            "type": "TRAILING_STOP_MARKET",
-		//            "activatePrice": "9020",              // activation price, only return with TRAILING_STOP_MARKET order
-		//            "priceRate": "0.3",                   // callback rate, only return with TRAILING_STOP_MARKET order
-		//            "updateTime": 1571110484038,
-		//            "workingType": "CONTRACT_PRICE",
-		//            "priceProtect": false,                // if conditional order trigger is protected
-		//        },
-		//        {
-		//            "code": -2011,
-		//            "msg": "Unknown order sent."
-		//        }
-		//    ]
-		//
+			response = (<-this.SapiPrivateDeleteV3AllOpenOrders(this.Extend(request, params)))
+			PanicOnError(response)
+		}
+
 		ch <- this.ParseOrders(response, market)
 		return nil
 
@@ -2806,7 +3333,7 @@ func (this *AsterCore) CancelOrders(ids interface{}, optionalArgs ...interface{}
  * @method
  * @name aster#setLeverage
  * @description set the level of leverage for a market
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#change-initial-leverage-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#change-initial-leverage-trade
  * @param {float} leverage the rate of leverage
  * @param {string} symbol unified market symbol
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -2828,15 +3355,15 @@ func (this *AsterCore) SetLeverage(leverage interface{}, optionalArgs ...interfa
 			panic(BadRequest(Add(this.Id, " leverage should be between 1 and 125")))
 		}
 
-		retRes25668 := (<-this.LoadMarkets())
-		PanicOnError(retRes25668)
+		retRes29108 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes29108)
 		var market interface{} = this.Market(symbol)
 		var request interface{} = map[string]interface{}{
 			"symbol":   GetValue(market, "id"),
 			"leverage": leverage,
 		}
 
-		response := (<-this.FapiPrivatePostV1Leverage(this.Extend(request, params)))
+		response := (<-this.FapiPrivatePostV3Leverage(this.Extend(request, params)))
 		PanicOnError(response)
 
 		//
@@ -2857,7 +3384,7 @@ func (this *AsterCore) SetLeverage(leverage interface{}, optionalArgs ...interfa
  * @method
  * @name aster#fetchLeverages
  * @description fetch the set leverage for all markets
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#position-information-v2-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#position-information-v3-user_data
  * @param {string[]} [symbols] a list of unified market symbols
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} a list of [leverage structures]{@link https://docs.ccxt.com/#/?id=leverage-structure}
@@ -2872,10 +3399,10 @@ func (this *AsterCore) FetchLeverages(optionalArgs ...interface{}) <-chan interf
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes25938 := (<-this.LoadMarkets())
-		PanicOnError(retRes25938)
+		retRes29378 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes29378)
 
-		response := (<-this.FapiPrivateGetV2PositionRisk(params))
+		response := (<-this.FapiPrivateGetV3PositionRisk(params))
 		PanicOnError(response)
 
 		//
@@ -2954,7 +3481,7 @@ func (this *AsterCore) ParseLeverage(leverage interface{}, optionalArgs ...inter
  * @method
  * @name aster#fetchMarginModes
  * @description fetches margin mode of the user
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#position-information-v2-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#position-information-v3-user_data
  * @param {string[]} symbols unified market symbols
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} a list of [margin mode structures]{@link https://docs.ccxt.com/#/?id=margin-mode-structure}
@@ -2969,10 +3496,10 @@ func (this *AsterCore) FetchMarginModes(optionalArgs ...interface{}) <-chan inte
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes26728 := (<-this.LoadMarkets())
-		PanicOnError(retRes26728)
+		retRes30168 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes30168)
 
-		response := (<-this.FapiPrivateGetV2PositionRisk(params))
+		response := (<-this.FapiPrivateGetV3PositionRisk(params))
 		PanicOnError(response)
 
 		//
@@ -3039,7 +3566,7 @@ func (this *AsterCore) ParseMarginMode(marginMode interface{}, optionalArgs ...i
  * @method
  * @name aster#fetchMarginAdjustmentHistory
  * @description fetches the history of margin added or reduced from contract isolated positions
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#get-position-margin-change-history-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#get-position-margin-change-history-trade
  * @param {string} symbol unified market symbol
  * @param {string} [type] "add" or "reduce"
  * @param {int} [since] timestamp in ms of the earliest change to fetch
@@ -3063,12 +3590,12 @@ func (this *AsterCore) FetchMarginAdjustmentHistory(optionalArgs ...interface{})
 		_ = limit
 		params := GetArg(optionalArgs, 4, map[string]interface{}{})
 		_ = params
-
-		retRes27438 := (<-this.LoadMarkets())
-		PanicOnError(retRes27438)
 		if IsTrue(IsEqual(symbol, nil)) {
 			panic(ArgumentsRequired(Add(this.Id, " fetchMarginAdjustmentHistory () requires a symbol argument")))
 		}
+
+		retRes30908 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes30908)
 		var market interface{} = this.Market(symbol)
 		var until interface{} = this.SafeInteger(params, "until")
 		params = this.Omit(params, "until")
@@ -3078,17 +3605,17 @@ func (this *AsterCore) FetchMarginAdjustmentHistory(optionalArgs ...interface{})
 		if IsTrue(!IsEqual(typeVar, nil)) {
 			AddElementToObject(request, "type", Ternary(IsTrue((IsEqual(typeVar, "add"))), 1, 2))
 		}
+		if IsTrue(!IsEqual(limit, nil)) {
+			AddElementToObject(request, "limit", mathMin(limit, 1000))
+		}
 		if IsTrue(!IsEqual(since, nil)) {
 			AddElementToObject(request, "startTime", since)
-		}
-		if IsTrue(!IsEqual(limit, nil)) {
-			AddElementToObject(request, "limit", limit)
 		}
 		if IsTrue(!IsEqual(until, nil)) {
 			AddElementToObject(request, "endTime", until)
 		}
 
-		response := (<-this.FapiPrivateGetV1PositionMarginHistory(this.Extend(request, params)))
+		response := (<-this.FapiPrivateGetV3PositionMarginHistory(this.Extend(request, params)))
 		PanicOnError(response)
 		//
 		//     [
@@ -3158,8 +3685,8 @@ func (this *AsterCore) ModifyMarginHelper(symbol interface{}, amount interface{}
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
 
-		retRes28228 := (<-this.LoadMarkets())
-		PanicOnError(retRes28228)
+		retRes31668 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes31668)
 		var market interface{} = this.Market(symbol)
 		amount = this.AmountToPrecision(symbol, amount)
 		var request interface{} = map[string]interface{}{
@@ -3169,7 +3696,7 @@ func (this *AsterCore) ModifyMarginHelper(symbol interface{}, amount interface{}
 		}
 		var code interface{} = GetValue(market, "quote")
 
-		response := (<-this.FapiPrivatePostV1PositionMargin(this.Extend(request, params)))
+		response := (<-this.FapiPrivatePostV3PositionMargin(this.Extend(request, params)))
 		PanicOnError(response)
 
 		//
@@ -3193,7 +3720,7 @@ func (this *AsterCore) ModifyMarginHelper(symbol interface{}, amount interface{}
  * @method
  * @name aster#reduceMargin
  * @description remove margin from a position
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#modify-isolated-position-margin-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#modify-isolated-position-margin-trade
  * @param {string} symbol unified market symbol
  * @param {float} amount the amount of margin to remove
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -3207,9 +3734,9 @@ func (this *AsterCore) ReduceMargin(symbol interface{}, amount interface{}, opti
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
 
-		retRes285615 := (<-this.ModifyMarginHelper(symbol, amount, 2, params))
-		PanicOnError(retRes285615)
-		ch <- retRes285615
+		retRes319815 := (<-this.ModifyMarginHelper(symbol, amount, 2, params))
+		PanicOnError(retRes319815)
+		ch <- retRes319815
 		return nil
 
 	}()
@@ -3220,7 +3747,7 @@ func (this *AsterCore) ReduceMargin(symbol interface{}, amount interface{}, opti
  * @method
  * @name aster#addMargin
  * @description add margin
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#modify-isolated-position-margin-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#modify-isolated-position-margin-trade
  * @param {string} symbol unified market symbol
  * @param {float} amount amount of margin to add
  * @param {object} [params] extra parameters specific to the exchange API endpoint
@@ -3234,9 +3761,9 @@ func (this *AsterCore) AddMargin(symbol interface{}, amount interface{}, optiona
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
 
-		retRes287015 := (<-this.ModifyMarginHelper(symbol, amount, 1, params))
-		PanicOnError(retRes287015)
-		ch <- retRes287015
+		retRes321215 := (<-this.ModifyMarginHelper(symbol, amount, 1, params))
+		PanicOnError(retRes321215)
+		ch <- retRes321215
 		return nil
 
 	}()
@@ -3275,7 +3802,7 @@ func (this *AsterCore) ParseIncome(income interface{}, optionalArgs ...interface
  * @method
  * @name aster#fetchFundingHistory
  * @description fetch the history of funding payments paid and received on this account
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#get-income-historyuser_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#get-income-historyuser_data
  * @param {string} symbol unified market symbol
  * @param {int} [since] the earliest time in ms to fetch funding history for
  * @param {int} [limit] the maximum number of funding history structures to retrieve
@@ -3299,8 +3826,8 @@ func (this *AsterCore) FetchFundingHistory(optionalArgs ...interface{}) <-chan i
 		params := GetArg(optionalArgs, 3, map[string]interface{}{})
 		_ = params
 
-		retRes29158 := (<-this.LoadMarkets())
-		PanicOnError(retRes29158)
+		retRes32578 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes32578)
 		var market interface{} = nil
 		var request interface{} = map[string]interface{}{
 			"incomeType": "FUNDING_FEE",
@@ -3319,7 +3846,7 @@ func (this *AsterCore) FetchFundingHistory(optionalArgs ...interface{}) <-chan i
 			AddElementToObject(request, "limit", mathMin(limit, 1000)) // max 1000
 		}
 
-		response := (<-this.FapiPrivateGetV1Income(this.Extend(request, params)))
+		response := (<-this.FapiPrivateGetV3Income(this.Extend(request, params)))
 		PanicOnError(response)
 
 		ch <- this.ParseIncomes(response, market, since, limit)
@@ -3391,7 +3918,7 @@ func (this *AsterCore) ParseLedgerEntryType(typeVar interface{}) interface{} {
  * @method
  * @name aster#fetchLedger
  * @description fetch the history of changes, actions done by the user or operations that altered the balance of the user
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#get-income-historyuser_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#get-income-historyuser_data
  * @param {string} [code] unified currency code
  * @param {int} [since] timestamp in ms of the earliest ledger entry
  * @param {int} [limit] max number of ledger entries to return
@@ -3413,8 +3940,8 @@ func (this *AsterCore) FetchLedger(optionalArgs ...interface{}) <-chan interface
 		params := GetArg(optionalArgs, 3, map[string]interface{}{})
 		_ = params
 
-		retRes30068 := (<-this.LoadMarkets())
-		PanicOnError(retRes30068)
+		retRes33488 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes33488)
 		var currency interface{} = nil
 		if IsTrue(!IsEqual(code, nil)) {
 			currency = this.Currency(code)
@@ -3432,7 +3959,7 @@ func (this *AsterCore) FetchLedger(optionalArgs ...interface{}) <-chan interface
 			AddElementToObject(request, "endTime", until)
 		}
 
-		response := (<-this.FapiPrivateGetV1Income(this.Extend(request, params)))
+		response := (<-this.FapiPrivateGetV3Income(this.Extend(request, params)))
 		PanicOnError(response)
 
 		//
@@ -3631,7 +4158,7 @@ func (this *AsterCore) ParsePositionRisk(position interface{}, optionalArgs ...i
  * @method
  * @name aster#fetchPositionsRisk
  * @description fetch positions risk
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#position-information-v2-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#position-information-v3-user_data
  * @param {string[]|undefined} symbols list of unified market symbols
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @returns {object} data on the positions risk
@@ -3651,14 +4178,14 @@ func (this *AsterCore) FetchPositionsRisk(optionalArgs ...interface{}) <-chan in
 			}
 		}
 
-		retRes32268 := (<-this.LoadMarkets())
-		PanicOnError(retRes32268)
+		retRes35688 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes35688)
 
-		retRes32278 := (<-this.LoadLeverageBrackets(false, params))
-		PanicOnError(retRes32278)
+		retRes35698 := (<-this.LoadLeverageBrackets(false, params))
+		PanicOnError(retRes35698)
 		var request interface{} = map[string]interface{}{}
 
-		response := (<-this.FapiPrivateGetV2PositionRisk(this.Extend(request, params)))
+		response := (<-this.FapiPrivateGetV3PositionRisk(this.Extend(request, params)))
 		PanicOnError(response)
 		//
 		//     [
@@ -3700,7 +4227,7 @@ func (this *AsterCore) FetchPositionsRisk(optionalArgs ...interface{}) <-chan in
  * @method
  * @name aster#fetchPositions
  * @description fetch all open positions
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#position-information-v2-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#position-information-v3-user_data
  * @param {string[]} [symbols] list of unified market symbols
  * @param {object} [params] extra parameters specific to the exchange API endpoint
  * @param {string} [params.method] method name to call, "positionRisk", "account" or "option", default is "positionRisk"
@@ -3729,15 +4256,15 @@ func (this *AsterCore) FetchPositions(optionalArgs ...interface{}) <-chan interf
 		}
 		if IsTrue(IsEqual(defaultMethod, "positionRisk")) {
 
-			retRes328319 := (<-this.FetchPositionsRisk(symbols, params))
-			PanicOnError(retRes328319)
-			ch <- retRes328319
+			retRes362519 := (<-this.FetchPositionsRisk(symbols, params))
+			PanicOnError(retRes362519)
+			ch <- retRes362519
 			return nil
 		} else if IsTrue(IsEqual(defaultMethod, "account")) {
 
-			retRes328519 := (<-this.FetchAccountPositions(symbols, params))
-			PanicOnError(retRes328519)
-			ch <- retRes328519
+			retRes362719 := (<-this.FetchAccountPositions(symbols, params))
+			PanicOnError(retRes362719)
+			ch <- retRes362719
 			return nil
 		} else {
 			panic(NotSupported(Add(Add(Add(this.Id, ".options[\"fetchPositions\"][\"method\"] or params[\"method\"] = \""), defaultMethod), "\" is invalid, please choose between \"account\" and \"positionRisk\"")))
@@ -3950,16 +4477,18 @@ func (this *AsterCore) ParseAccountPosition(position interface{}, optionalArgs .
 	}
 }
 
-/**
- * @method
- * @name aster#fetchAccountPositions
- * @ignore
- * @description fetch account positions
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#position-information-v2-user_data
- * @param {string[]} [symbols] list of unified market symbols
- * @param {object} [params] extra parameters specific to the exchange API endpoint
- * @returns {object} data on account positions
- */
+/*
+*
+  - @method
+  - @name aster#fetchAccountPositions
+  - @ignore
+  - @description fetch account positions
+
+https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#position-information-v3-user_data
+  - @param {string[]} [symbols] list of unified market symbols
+  - @param {object} [params] extra parameters specific to the exchange API endpoint
+  - @returns {object} data on account positions
+*/
 func (this *AsterCore) FetchAccountPositions(optionalArgs ...interface{}) <-chan interface{} {
 	ch := make(chan interface{})
 	go func() interface{} {
@@ -3975,11 +4504,11 @@ func (this *AsterCore) FetchAccountPositions(optionalArgs ...interface{}) <-chan
 			}
 		}
 
-		retRes35088 := (<-this.LoadMarkets())
-		PanicOnError(retRes35088)
+		retRes38508 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes38508)
 
-		retRes35098 := (<-this.LoadLeverageBrackets(false, params))
-		PanicOnError(retRes35098)
+		retRes38518 := (<-this.LoadLeverageBrackets(false, params))
+		PanicOnError(retRes38518)
 
 		response := (<-this.FapiPrivateGetV4Account(params))
 		PanicOnError(response)
@@ -4006,15 +4535,38 @@ func (this *AsterCore) LoadLeverageBrackets(optionalArgs ...interface{}) <-chan 
 		params := GetArg(optionalArgs, 1, map[string]interface{}{})
 		_ = params
 
-		retRes35198 := (<-this.LoadMarkets())
-		PanicOnError(retRes35198)
+		retRes38618 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes38618)
 		// by default cache the leverage bracket
 		// it contains useful stuff like the maintenance margin and initial margin for positions
 		var leverageBrackets interface{} = this.SafeDict(this.Options, "leverageBrackets")
 		if IsTrue(IsTrue((IsEqual(leverageBrackets, nil))) || IsTrue((reload))) {
 
-			response := (<-this.FapiPrivateGetV1LeverageBracket(params))
+			response := (<-this.FapiPrivateGetV3LeverageBracket(params))
 			PanicOnError(response)
+			//
+			//    [
+			//        {
+			//            "symbol": "TRUTHUSDT",
+			//            "brackets": [
+			//                {
+			//                    "bracket": "1",
+			//                    "initialLeverage": "50",
+			//                    "notionalCap": "5000",
+			//                    "notionalFloor": "0",
+			//                    "maintMarginRatio": "0.01",
+			//                    "cum": "0.0"
+			//                },
+			//                {
+			//                    "bracket": "2",
+			//                    "initialLeverage": "20",
+			//                    "notionalCap": "10000",
+			//                    "notionalFloor": "5000",
+			//                    "maintMarginRatio": "0.025",
+			//                    "cum": "75.0"
+			//                },
+			//                ...
+			//
 			AddElementToObject(this.Options, "leverageBrackets", this.CreateSafeDictionary())
 			for i := 0; IsLessThan(i, GetArrayLength(response)); i++ {
 				var entry interface{} = GetValue(response, i)
@@ -4045,12 +4597,11 @@ func (this *AsterCore) SignMessage(message interface{}, privateKey interface{}) 
 	return this.SignHash(this.KeccakMessage(message), Slice(privateKey, OpNeg(64), nil))
 }
 func (this *AsterCore) SignWithdrawPayload(withdrawPayload interface{}, network interface{}) interface{} {
-	var zeroAddress interface{} = this.SafeString(this.Options, "zeroAddress")
 	var chainId interface{} = this.SafeInteger(withdrawPayload, "chainId")
 	var domain interface{} = map[string]interface{}{
 		"chainId":           chainId,
 		"name":              "Aster",
-		"verifyingContract": zeroAddress,
+		"verifyingContract": this.SafeString(this.Options, "zeroAddress"),
 		"version":           "1",
 	}
 	var messageTypes interface{} = map[string]interface{}{
@@ -4080,17 +4631,17 @@ func (this *AsterCore) SignWithdrawPayload(withdrawPayload interface{}, network 
 			"type": "string",
 		}},
 	}
-	var withdraw interface{} = map[string]interface{}{
+	var request interface{} = map[string]interface{}{
 		"type":              "Withdraw",
 		"destination":       this.SafeString(withdrawPayload, "receiver"),
 		"destination Chain": network,
 		"token":             this.SafeString(withdrawPayload, "asset"),
 		"amount":            this.SafeString(withdrawPayload, "amount"),
 		"fee":               this.SafeString(withdrawPayload, "fee"),
-		"nonce":             this.SafeInteger(withdrawPayload, "nonce"),
+		"nonce":             this.SafeInteger(withdrawPayload, "userNonce"),
 		"aster chain":       "Mainnet",
 	}
-	var msg interface{} = this.EthEncodeStructuredData(domain, messageTypes, withdraw)
+	var msg interface{} = this.EthEncodeStructuredData(domain, messageTypes, request)
 	var signature interface{} = this.SignMessage(msg, this.PrivateKey)
 	return signature
 }
@@ -4099,7 +4650,9 @@ func (this *AsterCore) SignWithdrawPayload(withdrawPayload interface{}, network 
  * @method
  * @name aster#withdraw
  * @description make a withdrawal
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#withdraw-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#withdraw-user_data
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/deposit%26withdrawal/#withdraw-by-fapiv3-evm-futures
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/deposit%26withdrawal/#withdraw-by-fapiv3-evm-spot
  * @param {string} code unified currency code
  * @param {float} amount the amount to withdraw
  * @param {string} address the address to withdraw to
@@ -4121,13 +4674,14 @@ func (this *AsterCore) Withdraw(code interface{}, amount interface{}, address in
 		params = GetValue(tagparamsVariable, 1)
 		this.CheckAddress(address)
 
-		retRes36038 := (<-this.LoadMarkets())
-		PanicOnError(retRes36038)
+		retRes39698 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes39698)
 		var currency interface{} = this.Currency(code)
+		var nonce interface{} = Multiply(this.Milliseconds(), 1000)
 		var request interface{} = map[string]interface{}{
-			"asset":    GetValue(currency, "id"),
-			"receiver": address,
-			"nonce":    Multiply(this.Milliseconds(), 1000),
+			"asset":     GetValue(currency, "id"),
+			"receiver":  address,
+			"userNonce": ToString(nonce),
 		}
 		var chainId interface{} = this.SafeInteger(params, "chainId")
 		// TODO: check how ARBI signature would work
@@ -4151,43 +4705,54 @@ func (this *AsterCore) Withdraw(code interface{}, amount interface{}, address in
 		AddElementToObject(request, "amount", this.CurrencyToPrecision(code, amount, network))
 		AddElementToObject(request, "userSignature", this.SignWithdrawPayload(request, network))
 
-		response := (<-this.SapiPrivatePostV1AsterUserWithdraw(this.Extend(request, params)))
+		response := (<-this.SapiPrivatePostV3AsterUserWithdraw(this.Extend(request, params)))
 		PanicOnError(response)
 
-		ch <- map[string]interface{}{
-			"info":        response,
-			"id":          this.SafeString(response, "withdrawId"),
-			"txid":        this.SafeString(response, "hash"),
-			"timestamp":   nil,
-			"datetime":    nil,
-			"network":     network,
-			"address":     address,
-			"addressTo":   address,
-			"addressFrom": nil,
-			"tag":         tag,
-			"tagTo":       tag,
-			"tagFrom":     nil,
-			"type":        "withdrawal",
-			"amount":      amount,
-			"currency":    code,
-			"status":      nil,
-			"updated":     nil,
-			"internal":    nil,
-			"comment":     nil,
-			"fee":         nil,
-		}
+		//
+		//   {
+		//       "withdrawId": "1097219372504338432",
+		//       "hash": "0x9e6baa3eb75d92a1164eef51a0cc97b9591930518ba3e8e5ab40ce524ba4e463"
+		//   }
+		//
+		ch <- this.ParseTransaction(response, currency)
 		return nil
 
 	}()
 	return ch
+}
+func (this *AsterCore) ParseTransaction(transaction interface{}, optionalArgs ...interface{}) interface{} {
+	currency := GetArg(optionalArgs, 0, nil)
+	_ = currency
+	return map[string]interface{}{
+		"info":        transaction,
+		"id":          this.SafeString(transaction, "withdrawId"),
+		"txid":        this.SafeString(transaction, "hash"),
+		"timestamp":   nil,
+		"datetime":    nil,
+		"network":     nil,
+		"address":     nil,
+		"addressTo":   nil,
+		"addressFrom": nil,
+		"tag":         nil,
+		"tagTo":       nil,
+		"tagFrom":     nil,
+		"type":        "withdrawal",
+		"amount":      nil,
+		"currency":    nil,
+		"status":      nil,
+		"updated":     nil,
+		"internal":    nil,
+		"comment":     nil,
+		"fee":         nil,
+	}
 }
 
 /**
  * @method
  * @name aster#transfer
  * @description transfer currency internally between wallets on the same account
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-spot-api.md#transfer-asset-to-other-address-trade
- * @see https://github.com/asterdex/api-docs/blob/master/aster-finance-futures-api.md#transfer-between-futures-and-spot-user_data
+ * @see https://asterdex.github.io/aster-api-website/spot-v3/account%26trades/#perp-spot-transfer-trade
+ * @see https://asterdex.github.io/aster-api-website/futures-v3/account%26trades/#transfer-between-futures-and-spot-transfer
  * @param {string} code unified currency code
  * @param {float} amount amount to transfer
  * @param {string} fromAccount account to transfer from
@@ -4203,8 +4768,8 @@ func (this *AsterCore) Transfer(code interface{}, amount interface{}, fromAccoun
 		params := GetArg(optionalArgs, 0, map[string]interface{}{})
 		_ = params
 
-		retRes36708 := (<-this.LoadMarkets())
-		PanicOnError(retRes36708)
+		retRes40478 := (<-this.LoadMarketsAndSignIn())
+		PanicOnError(retRes40478)
 		var currency interface{} = this.Currency(code)
 		var request interface{} = map[string]interface{}{
 			"asset":  GetValue(currency, "id"),
@@ -4224,55 +4789,45 @@ func (this *AsterCore) Transfer(code interface{}, amount interface{}, fromAccoun
 		} else if IsTrue(IsTrue(IsEqual(fromId, "FUTURE")) && IsTrue(IsEqual(toId, "SPOT"))) {
 			typeVar = "FUTURE_SPOT"
 		}
+		if IsTrue(IsEqual(typeVar, nil)) {
+			panic(ArgumentsRequired(Add(this.Id, " transfer() requires fromAccount and toAccount parameters to be either SPOT or FUTURE")))
+		}
 		var response interface{} = nil
-		if IsTrue(!IsEqual(typeVar, nil)) {
-			var defaultClientTranId interface{} = this.NumberToString(this.Milliseconds())
-			var clientTranId interface{} = this.SafeString(params, "clientTranId", defaultClientTranId)
-			AddElementToObject(request, "kindType", typeVar)
-			AddElementToObject(request, "clientTranId", clientTranId)
+		var defaultClientTranId interface{} = this.NumberToString(this.Milliseconds())
+		var clientTranId interface{} = this.SafeString(params, "clientTranId", defaultClientTranId)
+		AddElementToObject(request, "kindType", typeVar)
+		AddElementToObject(request, "clientTranId", clientTranId)
 
-			response = (<-this.FapiPrivatePostV1AssetWalletTransfer(this.Extend(request, params)))
-			PanicOnError(response)
-		} else {
-			// transfer asset to other address
-			AddElementToObject(request, "toAddress", toAccount)
+		response = (<-this.SapiPrivatePostV3AssetWalletTransfer(this.Extend(request, params)))
+		PanicOnError(response)
 
-			response = (<-this.SapiPrivatePostV1AssetSendToAddress(this.Extend(request, params)))
-			PanicOnError(response)
-		}
-
-		//
-		//     {
-		//         "tranId":13526853623,
-		//         "status": "SUCCESS"
-		//     }
-		//
-		ch <- map[string]interface{}{
-			"info":        response,
-			"id":          this.SafeString(response, "tranId"),
-			"txid":        nil,
-			"timestamp":   nil,
-			"datetime":    nil,
-			"network":     nil,
-			"address":     nil,
-			"addressTo":   fromAccount,
-			"addressFrom": toAccount,
-			"tag":         nil,
-			"tagTo":       nil,
-			"tagFrom":     nil,
-			"type":        "transfer",
-			"amount":      amount,
-			"currency":    code,
-			"status":      nil,
-			"updated":     nil,
-			"internal":    nil,
-			"comment":     nil,
-			"fee":         nil,
-		}
+		ch <- this.ParseTransfer(response, currency)
 		return nil
 
 	}()
 	return ch
+}
+func (this *AsterCore) ParseTransfer(transfer interface{}, optionalArgs ...interface{}) interface{} {
+	currency := GetArg(optionalArgs, 0, nil)
+	_ = currency
+	var currencyId interface{} = this.SafeString(transfer, "code")
+	return map[string]interface{}{
+		"info":        transfer,
+		"id":          this.SafeString(transfer, "tranId"),
+		"timestamp":   nil,
+		"datetime":    nil,
+		"currency":    this.SafeCurrencyCode(currencyId, currency),
+		"amount":      nil,
+		"fromAccount": nil,
+		"toAccount":   nil,
+		"status":      this.ParseTransferStatus(this.SafeString(transfer, "status")),
+	}
+}
+func (this *AsterCore) ParseTransferStatus(status interface{}) interface{} {
+	var statuses interface{} = map[string]interface{}{
+		"SUCCESS": "ok",
+	}
+	return this.SafeString(statuses, status, status)
 }
 func (this *AsterCore) HashMessage(binaryMessage interface{}) interface{} {
 	// const binaryMessage = this.encode (message);
@@ -4308,69 +4863,77 @@ func (this *AsterCore) Sign(path interface{}, optionalArgs ...interface{}) inter
 		}
 	} else if IsTrue(IsTrue(IsEqual(api, "fapiPrivate")) || IsTrue(IsEqual(api, "sapiPrivate"))) {
 		this.CheckRequiredCredentials()
-		headers = map[string]interface{}{
-			"X-MBX-APIKEY": this.ApiKey,
+		var nonce interface{} = Multiply(this.Milliseconds(), 1000)
+		// Sign using EIP-712 typed data per the AsterSignTransaction spec
+		var zeroAddress interface{} = this.SafeString(this.Options, "zeroAddress", "0x0000000000000000000000000000000000000000")
+		var v3ChainId interface{} = this.SafeInteger(this.Options, "v3ChainId", 1666)
+		var signerAddress interface{} = this.SafeString(this.Options, "signerAddress")
+		if IsTrue(IsEqual(signerAddress, nil)) {
+			panic(ArgumentsRequired(Add(this.Id, " requires signerAddress in options when use v3 api")))
 		}
-		var timestamp interface{} = this.Milliseconds()
-		// Nonce is in microseconds
-		var nonce interface{} = this.Microseconds()
-		var defaultRecvWindow interface{} = this.SafeInteger(this.Options, "recvWindow")
-		var extendedParams interface{} = this.Extend(map[string]interface{}{
-			"timestamp": timestamp,
+		var domain interface{} = map[string]interface{}{
+			"name":              "AsterSignTransaction",
+			"version":           "1",
+			"chainId":           v3ChainId,
+			"verifyingContract": zeroAddress,
+		}
+		var messageTypes interface{} = map[string]interface{}{
+			"Message": []interface{}{map[string]interface{}{
+				"name": "msg",
+				"type": "string",
+			}},
+		}
+		// Build v3 params: original endpoint params + nonce (macroseconds) + user + signer
+		// Note: timestamp and recvWindow are not used for v3; nonce replaces timestamp
+		var finalParams interface{} = this.Extend(map[string]interface{}{
+			"nonce":  ToString(nonce),
+			"user":   this.WalletAddress,
+			"signer": signerAddress,
 		}, params)
-		if IsTrue(!IsEqual(defaultRecvWindow, nil)) {
-			AddElementToObject(extendedParams, "recvWindow", defaultRecvWindow)
-		}
-		var recvWindow interface{} = this.SafeInteger(params, "recvWindow")
-		if IsTrue(!IsEqual(recvWindow, nil)) {
-			AddElementToObject(extendedParams, "recvWindow", recvWindow)
-		}
-		var query interface{} = nil
-		if IsTrue(IsTrue((IsEqual(method, "DELETE"))) && IsTrue((IsEqual(path, "v1/batchOrders")))) {
-			var orderidlist interface{} = this.SafeList(extendedParams, "orderIdList", []interface{}{})
-			var origclientorderidlist interface{} = this.SafeList(extendedParams, "origClientOrderIdList", []interface{}{})
-			extendedParams = this.Omit(extendedParams, []interface{}{"orderIdList", "origClientOrderIdList"})
-			query = this.Rawencode(extendedParams)
-			var orderidlistLength interface{} = GetArrayLength(orderidlist)
-			var origclientorderidlistLength interface{} = GetArrayLength(origclientorderidlist)
-			if IsTrue(IsGreaterThan(orderidlistLength, 0)) {
-				query = Add(Add(Add(Add(query, "&"), "orderidlist=%5B"), Join(orderidlist, "%2C")), "%5D")
+		var paramString interface{} = nil
+		var paramsToEncode interface{} = nil
+		var isApproveBuilder interface{} = (IsGreaterThanOrEqual(GetIndexOf(path, "/approveBuilder"), 0))
+		if IsTrue(isApproveBuilder) {
+			// domain['name'] = 'Aster';
+			messageTypes = map[string]interface{}{
+				"ApproveBuilder": []interface{}{map[string]interface{}{
+					"name": "Builder",
+					"type": "string",
+				}, map[string]interface{}{
+					"name": "MaxFeeRate",
+					"type": "string",
+				}, map[string]interface{}{
+					"name": "BuilderName",
+					"type": "string",
+				}, map[string]interface{}{
+					"name": "AsterChain",
+					"type": "string",
+				}, map[string]interface{}{
+					"name": "User",
+					"type": "string",
+				}, map[string]interface{}{
+					"name": "Nonce",
+					"type": "uint256",
+				}},
 			}
-			if IsTrue(IsGreaterThan(origclientorderidlistLength, 0)) {
-				query = Add(Add(Add(Add(query, "&"), "origclientorderidlist=%5B"), Join(origclientorderidlist, "%2C")), "%5D")
-			}
+			Remove(finalParams, "signer") // signer is not needed for approveBuilder endpoint
+			paramString = this.EncodeValuesWithJson(finalParams)
+			paramsToEncode = this.CapitalizeKeys(finalParams)
 		} else {
-			query = this.Rawencode(extendedParams)
-		}
-		var signature interface{} = ""
-		if IsTrue(IsGreaterThanOrEqual(GetIndexOf(path, "v3"), 0)) {
-			var signerAddress interface{} = GetValue(this.Options, "signerAddress")
-			if IsTrue(IsEqual(signerAddress, nil)) {
-				panic(ArgumentsRequired(Add(this.Id, " requires signerAddress in options when use v3 api")))
+			paramString = this.EncodeValuesWithJson(finalParams)
+			paramsToEncode = map[string]interface{}{
+				"msg": paramString,
 			}
-			// the keys order matter
-			var keys interface{} = ObjectKeys(extendedParams)
-			var sortedKeys interface{} = this.Sort(keys)
-			var signingPayload interface{} = map[string]interface{}{}
-			for i := 0; IsLessThan(i, GetArrayLength(sortedKeys)); i++ {
-				var key interface{} = GetValue(sortedKeys, i)
-				AddElementToObject(signingPayload, key, ToString(GetValue(extendedParams, key)))
-			}
-			var signingHash interface{} = this.HashMessage(this.Hash(this.EthAbiEncode([]interface{}{"string", "address", "address", "uint256"}, []interface{}{this.Json(signingPayload), this.WalletAddress, signerAddress, nonce}), keccak, "binary"))
-			signature = this.SignHash(signingHash, this.PrivateKey)
-			AddElementToObject(extendedParams, "user", this.WalletAddress)
-			AddElementToObject(extendedParams, "signer", signerAddress)
-			AddElementToObject(extendedParams, "nonce", nonce)
-			query = this.Rawencode(extendedParams)
-		} else {
-			signature = this.Hmac(this.Encode(query), this.Encode(this.Secret), sha256)
 		}
-		query = Add(query, Add(Add("&", "signature="), signature))
+		var encodedMessage interface{} = this.EthEncodeStructuredData(domain, messageTypes, paramsToEncode)
+		var signature interface{} = this.SignMessage(encodedMessage, this.PrivateKey)
+		var queryString interface{} = Add(Add(Add(paramString, "&"), "signature="), signature)
 		if IsTrue(IsEqual(method, "GET")) {
-			url = Add(url, Add("?", query))
+			url = Add(url, Add("?", queryString))
 		} else {
-			body = query
+			headers = map[string]interface{}{}
 			AddElementToObject(headers, "Content-Type", "application/x-www-form-urlencoded")
+			body = queryString
 		}
 	}
 	return map[string]interface{}{
@@ -4379,6 +4942,170 @@ func (this *AsterCore) Sign(path interface{}, optionalArgs ...interface{}) inter
 		"body":    body,
 		"headers": headers,
 	}
+}
+func (this *AsterCore) EncodeValuesWithJson(values interface{}) interface{} {
+	var encodedString interface{} = ""
+	var keys interface{} = ObjectKeys(values)
+	for i := 0; IsLessThan(i, GetArrayLength(keys)); i++ {
+		var key interface{} = GetValue(keys, i)
+		var value interface{} = GetValue(values, key)
+		var isObj interface{} = IsTrue(IsArray(value)) || IsTrue(this.IsDictionary(value))
+		var valueJsonified interface{} = Ternary(IsTrue(isObj), this.Json(value), ToString(value))
+		var encoded interface{} = this.EncodeURIComponent(valueJsonified)
+		encodedString = Add(encodedString, Add(Add(Add(key, "="), encoded), "&"))
+	}
+	return Slice(encodedString, 0, OpNeg(1))
+}
+func (this *AsterCore) CapitalizeKeys(dict interface{}) interface{} {
+	var capitalized interface{} = map[string]interface{}{}
+	var keys interface{} = ObjectKeys(dict)
+	for i := 0; IsLessThan(i, GetArrayLength(keys)); i++ {
+		var key interface{} = GetValue(keys, i)
+		var value interface{} = GetValue(dict, key)
+		var capitalizedKey interface{} = this.Capitalize(key)
+		AddElementToObject(capitalized, capitalizedKey, value)
+	}
+	return capitalized
+}
+func (this *AsterCore) LoadMarketsAndSignIn() <-chan interface{} {
+	ch := make(chan interface{})
+	go func() interface{} {
+		defer close(ch)
+		defer ReturnPanicError(ch)
+
+		retRes42168 := (<-promiseAll([]interface{}{this.LoadMarkets(), this.SignIn()}))
+		PanicOnError(retRes42168)
+		return nil
+	}()
+	return ch
+}
+
+/**
+ * @method
+ * @name aster#signIn
+ * @description sign in, must be called prior to using other authenticated methods
+ * @see https://asterdex.github.io/aster-api-website/asterCode/integration-flow/
+ * @param {object} [params] extra parameters specific to the exchange API endpoint
+ * @returns response from exchange
+ */
+func (this *AsterCore) SignIn(optionalArgs ...interface{}) <-chan interface{} {
+	ch := make(chan interface{})
+	go func() interface{} {
+		defer close(ch)
+		defer ReturnPanicError(ch)
+		params := GetArg(optionalArgs, 0, map[string]interface{}{})
+		_ = params
+		if IsTrue(this.IsEmptyString(this.PrivateKey)) {
+			if IsTrue(!IsTrue(this.IsEmptyString(this.ApiKey)) || !IsTrue(this.IsEmptyString(this.Secret))) {
+				panic(NotSupported(Add(this.Id, "after the latest upgrade (v4.5.52), CCXT now expects the l1 private key to be provided in the credentials.")))
+			}
+
+			ch <- false
+			return nil
+		}
+		if IsTrue(IsGreaterThan(GetLength(this.PrivateKey), 66)) {
+			panic(NotSupported(Add(this.Id, " after the latest update (v4.5.52), CCXT now expects the l1 private key to be provided in the credentials.")))
+		}
+
+		retRes42378 := (<-this.InitializeClient(params))
+		PanicOnError(retRes42378)
+
+		ch <- true
+		return nil
+
+	}()
+	return ch
+}
+func (this *AsterCore) InitializeClient(optionalArgs ...interface{}) <-chan interface{} {
+	ch := make(chan interface{})
+	go func() interface{} {
+		defer close(ch)
+		defer ReturnPanicError(ch)
+		params := GetArg(optionalArgs, 0, map[string]interface{}{})
+		_ = params
+		var builderFee interface{} = this.SafeBool(params, "builderFee", this.SafeBool(this.Options, "builderFee", true)) // we shouldn't omit here
+		if !IsTrue(builderFee) {
+
+			ch <- false // skip if builder fee is not enabled
+			return nil
+		}
+		var approvedBuilderFee interface{} = this.SafeBool(this.Options, "approvedBuilderFee", false)
+		if IsTrue(approvedBuilderFee) {
+
+			ch <- true // skip if builder fee is already approved
+			return nil
+		}
+
+		result := (<-this.FapiPrivateGetV3Builder())
+		PanicOnError(result)
+		//
+		//    [
+		//        {
+		//            "userAddress": "0x35a5B33Be664B09F78b5089eb6185f71c8a7f11f",
+		//            "builderAddress": "0x1F5877C19e3777Cfd15F9d57253eA4aA5254Ec39",
+		//            "maxFeeRate": "0.001",
+		//            "builderName": "ccxt"
+		//        }
+		//    ]
+		//
+		var approvedBuilders interface{} = result
+		var length interface{} = GetArrayLength(approvedBuilders)
+		var found interface{} = false
+		for i := 0; IsLessThan(i, length); i++ {
+			var builderInfo interface{} = this.SafeDict(approvedBuilders, i, map[string]interface{}{})
+			var builderAccountId interface{} = this.SafeString(builderInfo, "builderAddress")
+			if IsTrue(IsEqual(builderAccountId, this.SafeString(this.Options, "builder"))) {
+				found = true
+				break
+			}
+		}
+		if !IsTrue(found) {
+			AddElementToObject(this.Options, "approvedBuilderFee", true)
+
+			{
+				func(this *AsterCore) (ret_ interface{}) {
+					defer func() {
+						if e := recover(); e != nil {
+							if e == "break" {
+								return
+							}
+							ret_ = func(this *AsterCore) interface{} {
+								// catch block:
+								AddElementToObject(this.Options, "approvedBuilderFee", false)
+								AddElementToObject(this.Options, "builderFee", false) // disable if err
+								return nil
+							}(this)
+						}
+					}()
+					// try block:
+					var request interface{} = map[string]interface{}{
+						"builder":          this.SafeString(this.Options, "builder"),
+						"builderName":      this.SafeString(this.Options, "builderName", "ccxt"),
+						"maxFeeRate":       this.SafeString(this.Options, "builderRate"),
+						"signatureChainId": this.SafeInteger(this.Options, "v3ChainId", 1666),
+						"asterChain":       "Mainnet",
+					}
+
+					authResponse := (<-this.FapiPrivatePostV3ApproveBuilder(this.Extend(request, params)))
+					PanicOnError(authResponse)
+					//
+					// {"code": 200,"msg": "success"}
+					//
+					var codeRes interface{} = this.SafeInteger(authResponse, "code")
+					if IsTrue(!IsEqual(codeRes, 200)) {
+						panic(ExchangeError(Add("Builder authorization failed, ", this.Json(authResponse))))
+					}
+					return nil
+				}(this)
+
+			}
+		}
+
+		ch <- nil // just c#
+		return nil
+
+	}()
+	return ch
 }
 func (this *AsterCore) HandleErrors(httpCode interface{}, reason interface{}, url interface{}, method interface{}, headers interface{}, body interface{}, response interface{}, requestHeaders interface{}, requestBody interface{}) interface{} {
 	if IsTrue(IsEqual(response, nil)) {
