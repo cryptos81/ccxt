@@ -5687,6 +5687,7 @@ fetches historical positions
 
 ##### Supported exchanges
 * [bitget](/exchanges/bitget.md#fetchpositionshistory)
+* [blofin](/exchanges/blofin.md#fetchpositionshistory)
 * [bybit](/exchanges/bybit.md#fetchpositionshistory)
 * [bydfi](/exchanges/bydfi.md#fetchpositionshistory)
 * [gate](/exchanges/gate.md#fetchpositionshistory)
