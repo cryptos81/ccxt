@@ -5491,6 +5491,7 @@ fetches historical positions
 * [bingx](/exchanges/bingx.md#fetchpositionhistory)
 * [bydfi](/exchanges/bydfi.md#fetchpositionhistory)
 * [coinex](/exchanges/coinex.md#fetchpositionhistory)
+* [phemex](/exchanges/phemex.md#fetchpositionhistory)
 * [whitebit](/exchanges/whitebit.md#fetchpositionhistory)
 
 ---
