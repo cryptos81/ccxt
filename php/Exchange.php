@@ -439,7 +439,6 @@ class Exchange {
         'yobit',
         'zaif',
         'zebpay',
-        'zonda',
     );
 
     public static function split($string, $delimiters = array(' ')) {
