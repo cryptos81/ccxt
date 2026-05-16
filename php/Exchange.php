@@ -5924,7 +5924,7 @@ class Exchange {
         //
         $percentage = $this->safe_value($position, 'percentage');
         if (($percentage === null) && ($unrealizedPnlString !== null) && ($initialMarginString !== null)) {
-            // was done in all implementations ( aax, btcex, bybit, deribit, ftx, gate, kucoinfutures, phemex )
+            // was done in all implementations ( aax, btcex, bybit, deribit, gate, kucoinfutures, phemex )
             $percentageString = Precise::string_mul(Precise::string_div($unrealizedPnlString, $initialMarginString, 4), '100');
             $position['percentage'] = $this->parse_number($percentageString);
         }
