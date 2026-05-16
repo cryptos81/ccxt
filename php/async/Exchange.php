@@ -66,6 +66,8 @@ class Exchange extends \ccxt\Exchange {
         'maxPingPongMisses' => 2.0,
     );
 
+    public $response_buffer_max_size = 24 * 1024 * 1024; // React default is 16 MiB
+
     public $proxy_files_dir = __DIR__ . '/../static_dependencies/proxies/';
 
     use ClientTrait;
@@ -77,7 +79,9 @@ class Exchange extends \ccxt\Exchange {
     }
 
     public function set_request_browser($connector) {
-        $this->browser = (new React\Http\Browser($connector, Loop::get()))->withRejectErrorResponse(false);
+        $this->browser = (new React\Http\Browser($connector, Loop::get()))
+            ->withRejectErrorResponse(false)
+            ->withResponseBuffer($this->response_buffer_max_size);
     }
 
     public function create_connector ($connector_options = array()){
